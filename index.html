@@ -4,30 +4,124 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🌱 Daily English</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:#F5FBF5;
+      display:flex;
+      justify-content:center;
+    }
+
+    .container{
+      width:90%;
+      max-width:420px;
+      margin-top:40px;
+    }
+
+    h1{
+      text-align:center;
+      color:#3E7D3A;
+      margin-bottom:5px;
+    }
+
+    .subtitle{
+      text-align:center;
+      color:#666;
+      margin-bottom:30px;
+    }
+
+    .card{
+      background:white;
+      border-radius:20px;
+      padding:20px;
+      margin-bottom:20px;
+      box-shadow:0 5px 15px rgba(0,0,0,.08);
+    }
+
+    h2{
+      margin-top:0;
+      color:#2E5E2B;
+    }
+
+    button{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:15px;
+      background:#6FCF97;
+      color:white;
+      font-size:18px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    button:active{
+      transform:scale(.98);
+    }
+
+    .stats{
+      text-align:center;
+      color:#555;
+      line-height:2;
+    }
+
+    .footer{
+      text-align:center;
+      color:#888;
+      margin-top:25px;
+      font-size:14px;
+    }
+  </style>
+
 </head>
+
 <body>
+
+<div class="container">
 
 <h1>🌱 Daily English</h1>
 
-<p>Small steps. Big progress.</p>
+<p class="subtitle">
+Small steps. Big progress.
+</p>
 
-<hr>
+<div class="card">
 
-<h2>Today's Lesson</h2>
+<h2>🆕 Today's Lesson</h2>
 
-<button>Start</button>
+<button>
+Start
+</button>
 
-<hr>
+</div>
 
-<h2>Review</h2>
+<div class="card">
 
-<button>Start</button>
+<h2>🔄 Review</h2>
 
-<hr>
+<button>
+Start
+</button>
 
-<p>🔥 0 Day Streak</p>
+</div>
 
-<p>📚 Learned: 0 Sentences</p>
+<div class="card stats">
+
+🔥 0 Day Streak<br>
+
+📚 0 Sentences Learned
+
+</div>
+
+<p class="footer">
+
+Version 0.2
+
+</p>
+
+</div>
 
 </body>
 </html>
