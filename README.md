@@ -24,3 +24,8 @@ Daily English is my personal English learning app.
 ## Version
 
 **v0.1 - Project Started 🚀**
+---
+
+## Development Log
+
+- 2026-07-20 🌱 Project started
