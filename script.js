@@ -1,16 +1,20 @@
 const answers = document.querySelectorAll(".answer");
 
-answers.forEach(function(button){
+const correctAnswer = 0;
 
-  button.addEventListener("click",function(){
+
+answers.forEach(function(button, index){
+
+  button.addEventListener("click", function(){
 
     const result = document.getElementById("result");
 
-    if(button.classList.contains("correct")){
+
+    if(index === correctAnswer){
 
       result.textContent = "⭕ Correct!";
 
-    }else{
+    } else {
 
       result.textContent = "❌ Try again!";
 
