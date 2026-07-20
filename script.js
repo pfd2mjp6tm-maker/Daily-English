@@ -1,11 +1,21 @@
-function startLesson(){
+const answers = document.querySelectorAll(".answer");
 
-document.getElementById("home").style.display="none";
+answers.forEach(function(button){
 
-document.getElementById("lesson").style.display="block";
+  button.addEventListener("click",function(){
 
-}
+    const result = document.getElementById("result");
 
-document.getElementById("lesson").style.display="none";
+    if(button.classList.contains("correct")){
 
+      result.textContent = "⭕ Correct!";
 
+    }else{
+
+      result.textContent = "❌ Try again!";
+
+    }
+
+  });
+
+});
