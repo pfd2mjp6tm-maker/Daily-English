@@ -79,6 +79,8 @@
 
 <body>
 
+<div id="home">
+
 <div class="container">
 
 <h1>🌱 Daily English</h1>
@@ -91,9 +93,9 @@ Small steps. Big progress.
 
 <h2>🆕 Today's Lesson</h2>
 
-<a href="#lesson">
-  <button>Start</button>
-</a>
+<button onclick="startLesson()">
+Start
+</button>
 
 </div>
 
@@ -168,6 +170,20 @@ Version 0.2
 <button>④ Where did you go yesterday?</button>
 
 </div>
+
+<script>
+
+function startLesson(){
+
+document.getElementById("home").style.display="none";
+
+document.getElementById("lesson").style.display="block";
+
+}
+
+document.getElementById("lesson").style.display="none";
+
+</script>
 
 </body>
 </html>
