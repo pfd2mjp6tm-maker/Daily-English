@@ -6,6 +6,11 @@
       display:flex;
       justify-content:center;
     }
+    
+    button,
+    input {
+    font-family: inherit;
+    }
 
     .container{
       width:90%;
