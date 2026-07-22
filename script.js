@@ -20,3 +20,25 @@ currentQuestion.choices.forEach(function(choice){
     choicesDiv.appendChild(button);
 
 });
+
+const buttons = document.querySelectorAll(".answer");
+
+buttons.forEach(function(button, index){
+
+    button.addEventListener("click", function(){
+
+        const result = document.getElementById("result");
+
+        if(index === currentQuestion.answer){
+
+            result.textContent = "⭕ Correct!";
+
+        } else {
+
+            result.textContent = "❌ Try again!";
+
+        }
+
+    });
+
+});
