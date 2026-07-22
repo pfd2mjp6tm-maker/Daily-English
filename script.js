@@ -1,7 +1,8 @@
 let currentIndex = 0;
 let currentQuestion = questions[currentIndex];
+let answered = false;
 
-// 配列をシャッフルする関数
+// 配列をシャッフル
 function shuffleArray(array) {
     const newArray = [...array];
 
@@ -15,6 +16,8 @@ function shuffleArray(array) {
 
 function showQuestion() {
 
+    answered = false;
+
     currentQuestion = questions[currentIndex];
 
     document.getElementById("question-number").textContent =
@@ -23,13 +26,19 @@ function showQuestion() {
     document.getElementById("question-text").textContent =
         currentQuestion.japanese;
 
+    document.getElementById("result").textContent = "";
+
+    const nextButton = document.querySelector(".next");
+    nextButton.disabled = true;
+
     const choicesDiv = document.getElementById("choices");
     choicesDiv.innerHTML = "";
 
-    document.getElementById("result").textContent = "";
+    const correctAnswer =
+        currentQuestion.choices[currentQuestion.answer];
 
-    // 選択肢をシャッフル
-    const shuffledChoices = shuffleArray(currentQuestion.choices);
+    const shuffledChoices =
+        shuffleArray(currentQuestion.choices);
 
     shuffledChoices.forEach(function(choice) {
 
@@ -41,18 +50,41 @@ function showQuestion() {
 
         button.onclick = function() {
 
-            const result = document.getElementById("result");
+            if (answered) return;
 
-            if (choice === currentQuestion.choices[currentQuestion.answer]) {
+            answered = true;
+
+            nextButton.disabled = false;
+
+            const buttons =
+                document.querySelectorAll(".answer");
+
+            buttons.forEach(function(btn){
+
+                btn.disabled = true;
+
+                if(btn.textContent === correctAnswer){
+
+                    btn.classList.add("correct");
+
+                }
+
+            });
+
+            const result =
+                document.getElementById("result");
+
+            if(choice === correctAnswer){
 
                 result.textContent = "⭕ Correct!";
 
-            } else {
+            }else{
+
+                button.classList.add("wrong");
 
                 result.innerHTML =
-                    "❌ Incorrect!<br><br>" +
-                    "Correct answer:<br>" +
-                    currentQuestion.choices[currentQuestion.answer];
+                    "❌ Incorrect!<br><br>Correct answer:<br>" +
+                    correctAnswer;
 
             }
 
@@ -64,19 +96,17 @@ function showQuestion() {
 
 }
 
-// 最初の問題
 showQuestion();
 
-// Nextボタン
-document.querySelector(".next").onclick = function() {
+document.querySelector(".next").onclick = function(){
 
-    if (currentIndex < questions.length - 1) {
+    if(currentIndex < questions.length - 1){
 
         currentIndex++;
 
         showQuestion();
 
-    } else {
+    }else{
 
         alert("🎉 Today's Lesson Completed!");
 
