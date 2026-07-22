@@ -1,25 +1,22 @@
-const answers = document.querySelectorAll(".answer");
+const currentQuestion = questions[0];
 
-const correctAnswer = 0;
+// 問題番号
+document.getElementById("question-number").textContent = "Q1 / " + questions.length;
 
+// 問題文
+document.getElementById("question-text").textContent = currentQuestion.japanese;
 
-answers.forEach(function(button, index){
+// 選択肢
+const choicesDiv = document.getElementById("choices");
 
-  button.addEventListener("click", function(){
+currentQuestion.choices.forEach(function(choice){
 
-    const result = document.getElementById("result");
+    const button = document.createElement("button");
 
+    button.className = "answer";
 
-    if(index === correctAnswer){
+    button.textContent = choice;
 
-      result.textContent = "⭕ Correct!";
-
-    } else {
-
-      result.textContent = "❌ Try again!";
-
-    }
-
-  });
+    choicesDiv.appendChild(button);
 
 });
