@@ -1,26 +1,37 @@
 let currentIndex = 0;
 let currentQuestion = questions[currentIndex];
 
+// 配列をシャッフルする関数
+function shuffleArray(array) {
+    const newArray = [...array];
+
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+
+    return newArray;
+}
+
 function showQuestion() {
 
     currentQuestion = questions[currentIndex];
 
-    // 問題番号
     document.getElementById("question-number").textContent =
         "Q" + (currentIndex + 1) + " / " + questions.length;
 
-    // 問題文
     document.getElementById("question-text").textContent =
         currentQuestion.japanese;
 
-    // 選択肢
     const choicesDiv = document.getElementById("choices");
     choicesDiv.innerHTML = "";
 
-    // 結果表示をリセット
     document.getElementById("result").textContent = "";
 
-    currentQuestion.choices.forEach(function(choice, index) {
+    // 選択肢をシャッフル
+    const shuffledChoices = shuffleArray(currentQuestion.choices);
+
+    shuffledChoices.forEach(function(choice) {
 
         const button = document.createElement("button");
 
@@ -32,10 +43,17 @@ function showQuestion() {
 
             const result = document.getElementById("result");
 
-            if (index === currentQuestion.answer) {
+            if (choice === currentQuestion.choices[currentQuestion.answer]) {
+
                 result.textContent = "⭕ Correct!";
+
             } else {
-                result.textContent = "❌ Try again!";
+
+                result.innerHTML =
+                    "❌ Incorrect!<br><br>" +
+                    "Correct answer:<br>" +
+                    currentQuestion.choices[currentQuestion.answer];
+
             }
 
         };
@@ -46,7 +64,7 @@ function showQuestion() {
 
 }
 
-// 最初の問題を表示
+// 最初の問題
 showQuestion();
 
 // Nextボタン
