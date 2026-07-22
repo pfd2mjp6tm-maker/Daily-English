@@ -1,44 +1,67 @@
-const currentQuestion = questions[0];
+let currentIndex = 0;
+let currentQuestion = questions[currentIndex];
 
-// 問題番号
-document.getElementById("question-number").textContent = "Q1 / " + questions.length;
+function showQuestion() {
 
-// 問題文
-document.getElementById("question-text").textContent = currentQuestion.japanese;
+    currentQuestion = questions[currentIndex];
 
-// 選択肢
-const choicesDiv = document.getElementById("choices");
+    // 問題番号
+    document.getElementById("question-number").textContent =
+        "Q" + (currentIndex + 1) + " / " + questions.length;
 
-currentQuestion.choices.forEach(function(choice){
+    // 問題文
+    document.getElementById("question-text").textContent =
+        currentQuestion.japanese;
 
-    const button = document.createElement("button");
+    // 選択肢
+    const choicesDiv = document.getElementById("choices");
+    choicesDiv.innerHTML = "";
 
-    button.className = "answer";
+    // 結果表示をリセット
+    document.getElementById("result").textContent = "";
 
-    button.textContent = choice;
+    currentQuestion.choices.forEach(function(choice, index) {
 
-    choicesDiv.appendChild(button);
+        const button = document.createElement("button");
 
-});
+        button.className = "answer";
 
-const buttons = document.querySelectorAll(".answer");
+        button.textContent = choice;
 
-buttons.forEach(function(button, index){
+        button.onclick = function() {
 
-    button.addEventListener("click", function(){
+            const result = document.getElementById("result");
 
-        const result = document.getElementById("result");
+            if (index === currentQuestion.answer) {
+                result.textContent = "⭕ Correct!";
+            } else {
+                result.textContent = "❌ Try again!";
+            }
 
-        if(index === currentQuestion.answer){
+        };
 
-            result.textContent = "⭕ Correct!";
-
-        } else {
-
-            result.textContent = "❌ Try again!";
-
-        }
+        choicesDiv.appendChild(button);
 
     });
 
-});
+}
+
+// 最初の問題を表示
+showQuestion();
+
+// Nextボタン
+document.querySelector(".next").onclick = function() {
+
+    if (currentIndex < questions.length - 1) {
+
+        currentIndex++;
+
+        showQuestion();
+
+    } else {
+
+        alert("🎉 Today's Lesson Completed!");
+
+    }
+
+};
