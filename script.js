@@ -37,22 +37,38 @@ function speakEnglish(text) {
         return;
     }
 
-    // 前の音声を止める
     window.speechSynthesis.cancel();
 
     const utterance =
         new SpeechSynthesisUtterance(text);
 
-    // アメリカ英語
     utterance.lang = "en-US";
-
-    // 少しゆっくり
     utterance.rate = 0.9;
-
-    // 少し低めの音程
     utterance.pitch = 1.0;
 
     window.speechSynthesis.speak(utterance);
+}
+
+
+// ============================
+// LessonをReview用に保存
+// ============================
+
+function saveLessonForReview() {
+
+    const reviewData = {
+
+        date: new Date().toISOString(),
+
+        questions: questions
+
+    };
+
+    localStorage.setItem(
+        "dailyEnglishLastLesson",
+        JSON.stringify(reviewData)
+    );
+
 }
 
 
@@ -69,7 +85,8 @@ function showQuestion() {
 
     // 問題番号
     document.getElementById("question-number").textContent =
-        "Q" + (currentIndex + 1) +
+        "Q" +
+        (currentIndex + 1) +
         " / " +
         questions.length;
 
@@ -109,10 +126,6 @@ function showQuestion() {
         shuffleArray(currentQuestion.choices);
 
 
-    // ============================
-    // 選択肢を表示
-    // ============================
-
     shuffledChoices.forEach(function(choice) {
 
         const button =
@@ -123,31 +136,23 @@ function showQuestion() {
         button.textContent = choice;
 
 
-        // 回答
         button.onclick = function() {
 
-            // 回答済みなら何もしない
             if (answered) return;
 
             answered = true;
 
-
-            // Nextを有効にする
             nextButton.disabled = false;
 
 
-            // 全ボタンを取得
             const buttons =
                 document.querySelectorAll(".answer");
 
 
-            // 全ボタンを無効化
             buttons.forEach(function(btn) {
 
                 btn.disabled = true;
 
-
-                // 正解を緑にする
                 if (btn.textContent === correctAnswer) {
 
                     btn.classList.add("correct");
@@ -161,10 +166,7 @@ function showQuestion() {
                 document.getElementById("result");
 
 
-            // ============================
             // 正解
-            // ============================
-
             if (choice === correctAnswer) {
 
                 score++;
@@ -177,10 +179,7 @@ function showQuestion() {
             }
 
 
-            // ============================
             // 不正解
-            // ============================
-
             else {
 
                 button.classList.add("wrong");
@@ -193,10 +192,7 @@ function showQuestion() {
             }
 
 
-            // ============================
-            // 🔊 Listenボタン
-            // ============================
-
+            // Listenボタン
             const listenButton =
                 document.createElement("button");
 
@@ -255,6 +251,9 @@ document.querySelector(".next").onclick = function() {
 
     else {
 
+        // ★ Lesson完了時に保存
+        saveLessonForReview();
+
         showFinishScreen();
 
     }
@@ -263,7 +262,7 @@ document.querySelector(".next").onclick = function() {
 
 
 // ============================
-// 終了画面
+// Finish画面
 // ============================
 
 function showFinishScreen() {
