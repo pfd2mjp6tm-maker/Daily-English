@@ -6,43 +6,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Review</title>
+<title>Yesterday's Review</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
-
 <body>
 
 <div class="container">
 
-
-<h1>🔄 Review</h1>
-
-
-<div class="card">
-
-<h2>復習問題</h2>
-
-<p>
-ここに過去の英文が表示されます
-</p>
-
-
-</div>
-
-
-<a href="index.html">
-
-<button>
+<a href="index.html" class="back">
 ← Home
-</button>
-
 </a>
 
+<h1>🔄 Yesterday's Review</h1>
+
+<p class="subtitle">
+Let's review what you learned yesterday.
+</p>
+
+<div class="card quiz">
+
+<h2 id="question-number"></h2>
+
+<p class="question" id="question-text"></p>
+
+<div id="choices"></div>
+
+<div id="result"></div>
+
+<button class="next">
+Next ▶
+</button>
 
 </div>
+
+</div>
+
+<script src="review.js"></script>
 
 </body>
 
