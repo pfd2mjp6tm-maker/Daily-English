@@ -4,7 +4,10 @@ let answered = false;
 let score = 0;
 
 
-// 選択肢をシャッフルする関数
+// ============================
+// 選択肢をシャッフル
+// ============================
+
 function shuffleArray(array) {
 
     const newArray = [...array];
@@ -21,75 +24,130 @@ function shuffleArray(array) {
 }
 
 
-// 問題を表示する関数
+// ============================
+// 英語を読み上げる
+// ============================
+
+function speakEnglish(text) {
+
+    if (!("speechSynthesis" in window)) {
+
+        alert("Sorry, your browser does not support audio.");
+
+        return;
+    }
+
+    // 前の音声を止める
+    window.speechSynthesis.cancel();
+
+    const utterance =
+        new SpeechSynthesisUtterance(text);
+
+    // アメリカ英語
+    utterance.lang = "en-US";
+
+    // 少しゆっくり
+    utterance.rate = 0.9;
+
+    // 少し低めの音程
+    utterance.pitch = 1.0;
+
+    window.speechSynthesis.speak(utterance);
+}
+
+
+// ============================
+// 問題を表示
+// ============================
+
 function showQuestion() {
 
     answered = false;
 
     currentQuestion = questions[currentIndex];
 
+
     // 問題番号
     document.getElementById("question-number").textContent =
-        "Q" + (currentIndex + 1) + " / " + questions.length;
+        "Q" + (currentIndex + 1) +
+        " / " +
+        questions.length;
+
 
     // 問題文
     document.getElementById("question-text").textContent =
         currentQuestion.japanese;
 
+
     // 結果表示をリセット
     document.getElementById("result").textContent = "";
 
-    // Nextボタンを無効にする
-    const nextButton = document.querySelector(".next");
 
-    nextButton.disabled = true;
-
-    // 選択肢を一度消す
-    const choicesDiv = document.getElementById("choices");
+    // 選択肢
+    const choicesDiv =
+        document.getElementById("choices");
 
     choicesDiv.innerHTML = "";
 
+
+    // Nextを無効にする
+    const nextButton =
+        document.querySelector(".next");
+
+    nextButton.disabled = true;
+
+
     // 正解
     const correctAnswer =
-        currentQuestion.choices[currentQuestion.answer];
+        currentQuestion.choices[
+            currentQuestion.answer
+        ];
+
 
     // 選択肢をシャッフル
     const shuffledChoices =
         shuffleArray(currentQuestion.choices);
 
 
+    // ============================
     // 選択肢を表示
+    // ============================
+
     shuffledChoices.forEach(function(choice) {
 
-        const button = document.createElement("button");
+        const button =
+            document.createElement("button");
 
         button.className = "answer";
 
         button.textContent = choice;
 
 
-        // 選択肢をタップしたとき
+        // 回答
         button.onclick = function() {
 
-            // すでに回答済みなら何もしない
+            // 回答済みなら何もしない
             if (answered) return;
 
             answered = true;
+
 
             // Nextを有効にする
             nextButton.disabled = false;
 
 
-            // すべての選択肢を取得
+            // 全ボタンを取得
             const buttons =
                 document.querySelectorAll(".answer");
 
 
-            // 正解の選択肢を緑にする
+            // 全ボタンを無効化
             buttons.forEach(function(btn) {
 
                 btn.disabled = true;
 
+
+                // 正解を緑にする
                 if (btn.textContent === correctAnswer) {
 
                     btn.classList.add("correct");
@@ -103,18 +161,26 @@ function showQuestion() {
                 document.getElementById("result");
 
 
+            // ============================
             // 正解
+            // ============================
+
             if (choice === correctAnswer) {
 
                 score++;
 
                 button.classList.add("correct");
 
-                result.textContent = "⭕ Correct!";
+                result.textContent =
+                    "⭕ Correct!";
 
             }
 
+
+            // ============================
             // 不正解
+            // ============================
+
             else {
 
                 button.classList.add("wrong");
@@ -123,9 +189,41 @@ function showQuestion() {
                     "❌ Incorrect!<br><br>" +
                     "Correct answer:<br>" +
                     correctAnswer;
+
             }
 
+
+            // ============================
+            // 🔊 Listenボタン
+            // ============================
+
+            const listenButton =
+                document.createElement("button");
+
+            listenButton.textContent =
+                "🔊 Listen";
+
+            listenButton.style.marginTop =
+                "15px";
+
+            listenButton.style.background =
+                "#6FCF97";
+
+            listenButton.style.fontSize =
+                "16px";
+
+
+            listenButton.onclick = function() {
+
+                speakEnglish(correctAnswer);
+
+            };
+
+
+            result.appendChild(listenButton);
+
         };
+
 
         choicesDiv.appendChild(button);
 
@@ -134,16 +232,21 @@ function showQuestion() {
 }
 
 
-// 最初の問題を表示
+// ============================
+// 最初の問題
+// ============================
+
 showQuestion();
 
 
+// ============================
 // Nextボタン
+// ============================
+
 document.querySelector(".next").onclick = function() {
 
     if (currentIndex < questions.length - 1) {
 
-        // 次の問題へ
         currentIndex++;
 
         showQuestion();
@@ -152,7 +255,6 @@ document.querySelector(".next").onclick = function() {
 
     else {
 
-        // 全問終了
         showFinishScreen();
 
     }
@@ -160,10 +262,15 @@ document.querySelector(".next").onclick = function() {
 };
 
 
+// ============================
 // 終了画面
+// ============================
+
 function showFinishScreen() {
 
-    const card = document.querySelector(".quiz");
+    const card =
+        document.querySelector(".quiz");
+
 
     card.innerHTML = `
 
