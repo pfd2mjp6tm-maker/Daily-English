@@ -5,6 +5,22 @@ let score = 0;
 
 
 // ============================
+// 今日の日付を取得
+// ============================
+
+function getToday() {
+
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+}
+
+
+// ============================
 // 選択肢をシャッフル
 // ============================
 
@@ -56,17 +72,35 @@ function speakEnglish(text) {
 
 function saveLessonForReview() {
 
+    const today = getToday();
+
     const reviewData = {
 
-        date: new Date().toISOString(),
+        date: today,
 
         questions: questions
 
     };
 
+
+    // 昨日のReview用データとして保存
     localStorage.setItem(
         "dailyEnglishLastLesson",
         JSON.stringify(reviewData)
+    );
+
+
+    // 今日Lessonを完了したことを保存
+    localStorage.setItem(
+        "dailyEnglishCompletedDate",
+        today
+    );
+
+
+    // 今日のスコアも保存
+    localStorage.setItem(
+        "dailyEnglishLastScore",
+        score
     );
 
 }
@@ -136,6 +170,7 @@ function showQuestion() {
         button.textContent = choice;
 
 
+        // 回答
         button.onclick = function() {
 
             if (answered) return;
@@ -145,6 +180,7 @@ function showQuestion() {
             nextButton.disabled = false;
 
 
+            // 全選択肢
             const buttons =
                 document.querySelectorAll(".answer");
 
@@ -153,6 +189,8 @@ function showQuestion() {
 
                 btn.disabled = true;
 
+
+                // 正解を緑にする
                 if (btn.textContent === correctAnswer) {
 
                     btn.classList.add("correct");
@@ -166,7 +204,10 @@ function showQuestion() {
                 document.getElementById("result");
 
 
+            // ============================
             // 正解
+            // ============================
+
             if (choice === correctAnswer) {
 
                 score++;
@@ -179,7 +220,10 @@ function showQuestion() {
             }
 
 
+            // ============================
             // 不正解
+            // ============================
+
             else {
 
                 button.classList.add("wrong");
@@ -192,7 +236,10 @@ function showQuestion() {
             }
 
 
+            // ============================
             // Listenボタン
+            // ============================
+
             const listenButton =
                 document.createElement("button");
 
@@ -251,7 +298,7 @@ document.querySelector(".next").onclick = function() {
 
     else {
 
-        // ★ Lesson完了時に保存
+        // Lesson完了時に保存
         saveLessonForReview();
 
         showFinishScreen();
