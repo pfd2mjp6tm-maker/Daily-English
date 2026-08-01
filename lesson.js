@@ -1,384 +1,271 @@
 let currentIndex = 0;
-let currentQuestion = questions[currentIndex];
-let answered = false;
 let score = 0;
+let answered = false;
 
 
-// ============================
-// 今日の日付を取得
-// ============================
-
-function getToday() {
-
-    const today = new Date();
-
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const day = String(today.getDate()).padStart(2, "0");
-
-    return `${year}-${month}-${day}`;
-}
+// 今日の問題
+const questions = questionBank.slice(0, 5);
 
 
-// ============================
-// 選択肢をシャッフル
-// ============================
-
-function shuffleArray(array) {
-
-    const newArray = [...array];
-
-    for (let i = newArray.length - 1; i > 0; i--) {
-
-        const j = Math.floor(Math.random() * (i + 1));
-
-        [newArray[i], newArray[j]] =
-            [newArray[j], newArray[i]];
-    }
-
-    return newArray;
-}
-
-
-// ============================
-// 英語を読み上げる
-// ============================
-
-function speakEnglish(text) {
-
-    if (!("speechSynthesis" in window)) {
-
-        alert("Sorry, your browser does not support audio.");
-
-        return;
-    }
-
-    window.speechSynthesis.cancel();
-
-    const utterance =
-        new SpeechSynthesisUtterance(text);
-
-    utterance.lang = "en-US";
-    utterance.rate = 0.9;
-    utterance.pitch = 1.0;
-
-    window.speechSynthesis.speak(utterance);
-}
-
-
-// ============================
-// LessonをReview用に保存
-// ============================
-
-function saveLessonForReview() {
-
-    const today = getToday();
-
-    const reviewData = {
-
-        date: today,
-
-        questions: questions
-
-    };
-
-
-    // 昨日のReview用データとして保存
-    localStorage.setItem(
-        "dailyEnglishLastLesson",
-        JSON.stringify(reviewData)
-    );
-
-
-    // 今日Lessonを完了したことを保存
-    localStorage.setItem(
-        "dailyEnglishCompletedDate",
-        today
-    );
-
-
-    // 今日のスコアも保存
-    localStorage.setItem(
-        "dailyEnglishLastScore",
-        score
-    );
-
-}
-
-
-// ============================
-// 問題を表示
-// ============================
-
+// 問題表示
 function showQuestion() {
 
     answered = false;
 
-    currentQuestion = questions[currentIndex];
+    const currentQuestion = questions[currentIndex];
 
 
-    // 問題番号
     document.getElementById("question-number").textContent =
-        "Q" +
-        (currentIndex + 1) +
-        " / " +
-        questions.length;
+        "Q" + (currentIndex + 1) + " / " + questions.length;
 
 
-    // 問題文
     document.getElementById("question-text").textContent =
         currentQuestion.japanese;
 
 
-    // 結果表示をリセット
-    document.getElementById("result").textContent = "";
+    document.getElementById("result").innerHTML = "";
 
 
-    // 選択肢
     const choicesDiv =
         document.getElementById("choices");
 
     choicesDiv.innerHTML = "";
 
 
-    // Nextを無効にする
-    const nextButton =
-        document.querySelector(".next");
-
-    nextButton.disabled = true;
+    document.getElementById("nextButton").disabled = true;
 
 
-    // 正解
-    const correctAnswer =
-        currentQuestion.choices[
-            currentQuestion.answer
-        ];
+
+    // 選択肢をコピーしてシャッフル
+    const choices =
+        [...currentQuestion.choices];
 
 
-    // 選択肢をシャッフル
-    const shuffledChoices =
-        shuffleArray(currentQuestion.choices);
+    choices.sort(() => Math.random() - 0.5);
 
 
-    shuffledChoices.forEach(function(choice) {
+
+    choices.forEach(function(choice){
+
 
         const button =
             document.createElement("button");
+
 
         button.className = "answer";
 
         button.textContent = choice;
 
 
-        // 回答
-        button.onclick = function() {
 
-            if (answered) return;
+        button.onclick = function(){
+
+
+            if(answered) return;
+
 
             answered = true;
 
-            nextButton.disabled = false;
+
+            document.getElementById("nextButton").disabled = false;
 
 
-            // 全選択肢
+
             const buttons =
                 document.querySelectorAll(".answer");
 
 
-            buttons.forEach(function(btn) {
+            buttons.forEach(function(btn){
 
                 btn.disabled = true;
 
-
-                // 正解を緑にする
-                if (btn.textContent === correctAnswer) {
-
-                    btn.classList.add("correct");
-
-                }
-
             });
+
 
 
             const result =
                 document.getElementById("result");
 
 
-            // ============================
-            // 正解
-            // ============================
 
-            if (choice === correctAnswer) {
+            if(choice === currentQuestion.english){
+
 
                 score++;
 
-                button.classList.add("correct");
+                button.textContent =
+                    "⭕ " + choice;
 
-                result.textContent =
-                    "⭕ Correct!";
-
-            }
-
-
-            // ============================
-            // 不正解
-            // ============================
-
-            else {
-
-                button.classList.add("wrong");
 
                 result.innerHTML =
-                    "❌ Incorrect!<br><br>" +
+                    "⭕ Correct!";
+
+
+            } else {
+
+
+                button.textContent =
+                    "❌ " + choice;
+
+
+                result.innerHTML =
+                    "❌ Try again!<br><br>" +
                     "Correct answer:<br>" +
-                    correctAnswer;
+                    currentQuestion.english;
 
             }
 
 
-            // ============================
-            // Listenボタン
-            // ============================
+
+            // 音声ボタン
 
             const listenButton =
                 document.createElement("button");
 
+
             listenButton.textContent =
                 "🔊 Listen";
+
 
             listenButton.style.marginTop =
                 "15px";
 
-            listenButton.style.background =
-                "#6FCF97";
 
-            listenButton.style.fontSize =
-                "16px";
+            listenButton.onclick = function(){
 
-
-            listenButton.onclick = function() {
-
-                speakEnglish(correctAnswer);
+                speak(currentQuestion.english);
 
             };
 
 
             result.appendChild(listenButton);
 
+
         };
 
 
         choicesDiv.appendChild(button);
+
 
     });
 
 }
 
 
-// ============================
-// 最初の問題
-// ============================
 
-showQuestion();
+// 音声
+
+function speak(text){
+
+    const utterance =
+        new SpeechSynthesisUtterance(text);
 
 
-// ============================
-// Nextボタン
-// ============================
+    utterance.lang =
+        "en-US";
 
-document.querySelector(".next").onclick = function() {
 
-    if (currentIndex < questions.length - 1) {
+    utterance.rate =
+        0.9;
+
+
+    speechSynthesis.cancel();
+
+    speechSynthesis.speak(utterance);
+
+}
+
+
+
+// Next
+
+document.getElementById("nextButton").onclick =
+function(){
+
+
+    if(currentIndex < questions.length - 1){
+
 
         currentIndex++;
 
         showQuestion();
 
-    }
 
-    else {
+    } else {
 
-        // Lesson完了時に保存
-        saveLessonForReview();
 
-        showFinishScreen();
+        finishLesson();
+
 
     }
 
 };
 
 
-// ============================
-// Finish画面
-// ============================
 
-function showFinishScreen() {
+// 終了
 
-    const card =
+function finishLesson(){
+
+
+    const quiz =
         document.querySelector(".quiz");
 
 
-    card.innerHTML = `
 
-        <div style="
-            text-align:center;
-            padding:20px 0;
-        ">
+    quiz.innerHTML = `
 
-            <div style="
-                font-size:48px;
-                margin-bottom:15px;
-            ">
-                🎉
-            </div>
+    <div style="text-align:center">
 
-            <h2 style="
-                text-align:center;
-                margin-bottom:10px;
-            ">
-                Great Job!
-            </h2>
+    <h2>🎉 Great Job!</h2>
 
-            <p style="
-                color:#666;
-                margin-bottom:25px;
-            ">
-                Today's Lesson Completed!
-            </p>
+    <p>Today's Lesson Completed!</p>
 
-            <p style="
-                font-size:18px;
-                color:#555;
-                margin-bottom:5px;
-            ">
-                Score
-            </p>
 
-            <p style="
-                font-size:36px;
-                font-weight:bold;
-                color:#3E7D3A;
-                margin-top:5px;
-            ">
-                ${score} / ${questions.length}
-            </p>
+    <h2>
+    Score
+    </h2>
 
-            <a href="index.html"
-               style="
-                   display:block;
-                   margin-top:30px;
-                   padding:15px;
-                   background:#3E7D3A;
-                   color:white;
-                   text-decoration:none;
-                   border-radius:15px;
-                   font-weight:bold;
-               ">
-                🏠 Back to Home
-            </a>
 
-        </div>
+    <p style="
+    font-size:32px;
+    color:#3E7D3A;
+    font-weight:bold;
+    ">
+    ${score} / ${questions.length}
+    </p>
+
+
+    <a href="index.html"
+    style="
+    display:block;
+    margin-top:25px;
+    padding:15px;
+    background:#3E7D3A;
+    color:white;
+    border-radius:15px;
+    text-decoration:none;
+    ">
+    🏠 Home
+    </a>
+
+
+    </div>
 
     `;
 
+
+    // 後でReview用に使う保存
+    localStorage.setItem(
+        "lastLesson",
+        JSON.stringify(questions)
+    );
+
+
 }
+
+
+
+// スタート
+
+showQuestion();
