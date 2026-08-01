@@ -4,8 +4,8 @@ let answered = false;
 
 
 // 今日の問題
-const questions = questionBank;
-
+const QUESTIONS_PER_DAY = 5;
+const questions = questionBank.slice(0, QUESTIONS_PER_DAY);
 
 // 問題表示
 function showQuestion() {
