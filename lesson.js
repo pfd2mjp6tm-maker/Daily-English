@@ -4,7 +4,7 @@ let answered = false;
 
 
 // 今日の問題
-const questions = questionBank.slice(0, 5);
+const questions = questionBank;
 
 
 // 問題表示
