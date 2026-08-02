@@ -11,8 +11,7 @@ let answered = false;
 // Day管理
 // ====================
 
-let TODAY = Number(localStorage.getItem("today")) || 1;
-
+let TODAY = 5;
 
 let questions = questionBank.filter(function(question){
 
