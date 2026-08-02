@@ -3,15 +3,14 @@ let score = 0;
 let answered = false;
 
 
-// ---------- 今日のDayを取得 ----------
-let TODAY = Number(localStorage.getItem("today")) || 1;
+// 一時的にDay1固定
+const TODAY = 1;
 
 
-// 今日の問題を取得
+// Day1の問題だけ取得
 let questions = questionBank.filter(function(question){
     return question.day === TODAY;
 });
-
 
 // もし該当Dayが無ければDay1に戻す
 if (questions.length === 0) {
