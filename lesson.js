@@ -4,8 +4,11 @@ let answered = false;
 
 
 // ---------- 今日のDayを取得 ----------
-let TODAY = Number(localStorage.getItem("today")) || 1;
+const TODAY = 1;
 
+const questions = questionBank.filter(function(question){
+    return question.day === TODAY;
+});
 
 // 今日の問題を取得
 let questions = questionBank.filter(function(question){
