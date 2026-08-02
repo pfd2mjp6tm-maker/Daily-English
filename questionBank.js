@@ -264,4 +264,139 @@ const questionBank = [
     level: 1
 },
 
+{
+    id: 11,
+    day: 3,
+
+    japanese: "最近どうですか？",
+
+    english: "How have you been lately?",
+
+    choices: [
+        "How have you been lately?",
+        "How are you doing yesterday?",
+        "What are you doing lately?",
+        "Where have you been yesterday?"
+    ],
+
+    answer: 0,
+
+    tip: "How have you been? = 「最近どうしてた？」（久しぶりの相手によく使う）",
+
+    extra: "I've been doing well.",
+    
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 12,
+    day: 3,
+
+    japanese: "最近、英語を勉強しています。",
+
+    english: "I've been studying English recently.",
+
+    choices: [
+        "I've been studying English recently.",
+        "I studied English yesterday.",
+        "I will study English tomorrow.",
+        "I can study English."
+    ],
+
+    answer: 0,
+
+    tip: "I've been ~ing = 最近ずっと〜しています",
+
+    extra: "I've been working hard recently.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 13,
+    day: 3,
+
+    japanese: "それは楽しそうですね！",
+
+    english: "That sounds fun!",
+
+    choices: [
+        "That sounds fun!",
+        "That looks difficult.",
+        "That is expensive.",
+        "That sounds terrible."
+    ],
+
+    answer: 0,
+
+    tip: "That sounds ~ = 「それ〜そうだね」",
+
+    extra: "That sounds interesting.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 14,
+    day: 3,
+
+    japanese: "少し緊張しています。",
+
+    english: "I'm a little nervous.",
+
+    choices: [
+        "I'm a little nervous.",
+        "I'm very excited.",
+        "I'm a little hungry.",
+        "I'm feeling sleepy."
+    ],
+
+    answer: 0,
+
+    tip: "nervous = 緊張している",
+
+    extra: "I was nervous before my presentation.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 15,
+    day: 3,
+
+    japanese: "自分の考えを英語で伝えたいです。",
+
+    english: "I want to express my thoughts in English.",
+
+    choices: [
+        "I want to express my thoughts in English.",
+        "I want to learn English grammar.",
+        "I want to speak English faster.",
+        "I want to write English books."
+    ],
+
+    answer: 0,
+
+    tip: "express my thoughts = 自分の考えを伝える",
+
+    extra: "I want to share my ideas with others.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
 ];
