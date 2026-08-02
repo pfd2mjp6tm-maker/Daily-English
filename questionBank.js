@@ -132,7 +132,7 @@ const questionBank = [
     category: "Daily",
 
     level: 1
-}
+},
 
 {
     id: 6,
