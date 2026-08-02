@@ -532,6 +532,138 @@ const questionBank = [
     level: 1
 },
 
+{
+    id: 21,
+    day: 5,
 
+    japanese: "もう一度言っていただけますか？",
+
+    english: "Could you say that again?",
+
+    choices: [
+        "Could you say that again?",
+        "Could you write that tomorrow?",
+        "Can you speak louder yesterday?",
+        "Would you say that before?"
+    ],
+
+    answer: 0,
+
+    tip: "Could you ~ ? = 丁寧なお願い「〜していただけますか？」",
+
+    extra: "Could you speak more slowly?",
+
+    category: "Travel",
+
+    level: 1
+},
+
+
+{
+    id: 22,
+    day: 5,
+
+    japanese: "おすすめはありますか？",
+
+    english: "Do you have any recommendations?",
+
+    choices: [
+        "Do you have any recommendations?",
+        "Do you have any reservations?",
+        "Do you like recommendations?",
+        "Do you need any restaurants?"
+    ],
+
+    answer: 0,
+
+    tip: "recommendation = おすすめ",
+
+    extra: "Do you have any recommendations for restaurants?",
+
+    category: "Travel",
+
+    level: 1
+},
+
+
+{
+    id: 23,
+    day: 5,
+
+    japanese: "これを注文したいです。",
+
+    english: "I'd like to order this.",
+
+    choices: [
+        "I'd like to order this.",
+        "I'd like to buy this yesterday.",
+        "I want to cook this.",
+        "I ordered this before."
+    ],
+
+    answer: 0,
+
+    tip: "I'd like to ~ = 「〜したいです」の丁寧な表現",
+
+    extra: "I'd like to have a coffee.",
+
+    category: "Travel",
+
+    level: 1
+},
+
+
+{
+    id: 24,
+    day: 5,
+
+    japanese: "トイレはどこですか？",
+
+    english: "Where is the restroom?",
+
+    choices: [
+        "Where is the restroom?",
+        "What is the restroom?",
+        "When is the restroom?",
+        "Who is the restroom?"
+    ],
+
+    answer: 0,
+
+    tip: "Where is ~? = 「〜はどこですか？」",
+
+    extra: "Where is the nearest station?",
+
+    category: "Travel",
+
+    level: 1
+},
+
+
+{
+    id: 25,
+    day: 5,
+
+    japanese: "手伝っていただけますか？",
+
+    english: "Could you help me?",
+
+    choices: [
+        "Could you help me?",
+        "Could you call me yesterday?",
+        "Could you wait me tomorrow?",
+        "Could you tell me your job?"
+    ],
+
+    answer: 0,
+
+    tip: "help me = 私を助ける、手伝う",
+
+    extra: "Could you help me find this place?",
+
+    category: "Travel",
+
+    level: 1
+},
 
 ];
