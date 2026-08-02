@@ -308,27 +308,61 @@ document.getElementById("nextButton").onclick = function(){
         );
 
 
-
-        // 次の日へ保存
-
-        TODAY++;
-
-
-        localStorage.setItem(
-            "today",
-            TODAY
-        );
+// ============================
+// Review用に今回のLessonを保存
+// ============================
 
 
+let reviewHistory =
+    JSON.parse(
+        localStorage.getItem("reviewHistory")
+    )
+    || [];
 
-        currentIndex = 0;
 
-        score = 0;
-        
-        
-       // Today's Lessonへ戻る場合
+// 今回のLessonを追加
 
-        location.reload();
+reviewHistory.push({
+
+    day: TODAY,
+
+    questions: questions,
+
+    score: score
+
+});
+
+
+// 保存
+
+localStorage.setItem(
+    "reviewHistory",
+    JSON.stringify(reviewHistory)
+);
+
+
+
+// ============================
+// 次の日へ保存
+// ============================
+
+TODAY++;
+
+
+localStorage.setItem(
+    "today",
+    TODAY
+);
+
+
+
+currentIndex = 0;
+
+score = 0;
+
+
+location.reload();
+
 
 
     }
