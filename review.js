@@ -1,32 +1,41 @@
 // ============================
-// 前回のLessonを読み込む
+// Review History読み込み
 // ============================
 
-const savedLesson =
-    localStorage.getItem("dailyEnglishLastLesson");
+const reviewHistory =
+    JSON.parse(
+        localStorage.getItem("reviewHistory")
+    )
+    || [];
 
 
-// Reviewする問題
+// ============================
+// Reviewする問題取得
+// 最新Lessonのみ
+// ============================
+
 let reviewQuestions = [];
 
 
-// 保存されたLessonがある場合
-if (savedLesson) {
+if(reviewHistory.length > 0){
 
-    const reviewData =
-        JSON.parse(savedLesson);
+    const latestLesson =
+        reviewHistory[
+            reviewHistory.length - 1
+        ];
 
     reviewQuestions =
-        reviewData.questions;
+        latestLesson.questions;
 
 }
 
 
 // ============================
-// 問題がない場合
+// 問題なし
 // ============================
 
-if (reviewQuestions.length === 0) {
+if(reviewQuestions.length === 0){
+
 
     document.querySelector(".quiz").innerHTML = `
 
@@ -42,9 +51,11 @@ if (reviewQuestions.length === 0) {
                 🌱
             </div>
 
+
             <h2>
                 No Review Yet
             </h2>
+
 
             <p style="
                 color:#666;
@@ -52,6 +63,7 @@ if (reviewQuestions.length === 0) {
             ">
                 Complete Today's Lesson first!
             </p>
+
 
             <a href="index.html"
                style="
@@ -67,398 +79,393 @@ if (reviewQuestions.length === 0) {
                 🏠 Back to Home
             </a>
 
+
         </div>
 
     `;
 
+
+}else{
+
+
+// ============================
+// 基本設定
+// ============================
+
+let currentIndex = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+
+// ============================
+// シャッフル
+// ============================
+
+function shuffleArray(array){
+
+    const newArray =
+        [...array];
+
+
+    return newArray.sort(
+        () => Math.random() - 0.5
+    );
+
 }
 
 
+
 // ============================
-// Review開始
+// 音声
 // ============================
 
-else {
+function speakEnglish(text){
 
-    let currentIndex = 0;
 
-    let currentQuestion =
-        reviewQuestions[currentIndex];
-
-    let answered = false;
-
-    let score = 0;
-
-
-    // ============================
-    // シャッフル
-    // ============================
-
-    function shuffleArray(array) {
-
-        const newArray = [...array];
-
-        for (
-            let i = newArray.length - 1;
-            i > 0;
-            i--
-        ) {
-
-            const j =
-                Math.floor(
-                    Math.random() * (i + 1)
-                );
-
-            [newArray[i], newArray[j]] =
-                [newArray[j], newArray[i]];
-
-        }
-
-        return newArray;
-
-    }
-
-
-    // ============================
-    // 音声
-    // ============================
-
-    function speakEnglish(text) {
-
-        if (!("speechSynthesis" in window)) {
-
-            alert(
-                "Sorry, your browser does not support audio."
-            );
-
-            return;
-        }
-
-        window.speechSynthesis.cancel();
-
-        const utterance =
-            new SpeechSynthesisUtterance(text);
-
-        utterance.lang = "en-US";
-
-        utterance.rate = 0.9;
-
-        utterance.pitch = 1.0;
-
-        window.speechSynthesis.speak(utterance);
-
-    }
-
-
-    // ============================
-    // 問題表示
-    // ============================
-
-    function showQuestion() {
-
-        answered = false;
-
-        currentQuestion =
-            reviewQuestions[currentIndex];
-
-
-        document.getElementById(
-            "question-number"
-        ).textContent =
-            "Q" +
-            (currentIndex + 1) +
-            " / " +
-            reviewQuestions.length;
-
-
-        document.getElementById(
-            "question-text"
-        ).textContent =
-            currentQuestion.japanese;
-
-
-        document.getElementById(
-            "result"
-        ).textContent = "";
-
-
-        const choicesDiv =
-            document.getElementById("choices");
-
-        choicesDiv.innerHTML = "";
-
-
-        const nextButton =
-            document.querySelector(".next");
-
-        nextButton.disabled = true;
-
-
-        const correctAnswer =
-            currentQuestion.choices[
-                currentQuestion.answer
-            ];
-
-
-        const shuffledChoices =
-            shuffleArray(
-                currentQuestion.choices
-            );
-
-
-        shuffledChoices.forEach(
-            function(choice) {
-
-                const button =
-                    document.createElement(
-                        "button"
-                    );
-
-
-                button.className =
-                    "answer";
-
-
-                button.textContent =
-                    choice;
-
-
-                button.onclick =
-                    function() {
-
-                        if (answered) return;
-
-                        answered = true;
-
-                        nextButton.disabled =
-                            false;
-
-
-                        const buttons =
-                            document.querySelectorAll(
-                                ".answer"
-                            );
-
-
-                        buttons.forEach(
-                            function(btn) {
-
-                                btn.disabled =
-                                    true;
-
-
-                                if (
-                                    btn.textContent ===
-                                    correctAnswer
-                                ) {
-
-                                    btn.classList.add(
-                                        "correct"
-                                    );
-
-                                }
-
-                            }
-                        );
-
-
-                        const result =
-                            document.getElementById(
-                                "result"
-                            );
-
-
-                        if (
-                            choice ===
-                            correctAnswer
-                        ) {
-
-                            score++;
-
-                            button.classList.add(
-                                "correct"
-                            );
-
-                            result.textContent =
-                                "⭕ Correct!";
-
-                        }
-
-                        else {
-
-                            button.classList.add(
-                                "wrong"
-                            );
-
-                            result.innerHTML =
-                                "❌ Incorrect!<br><br>" +
-                                "Correct answer:<br>" +
-                                correctAnswer;
-
-                        }
-
-
-                        // Listen
-                        const listenButton =
-                            document.createElement(
-                                "button"
-                            );
-
-
-                        listenButton.textContent =
-                            "🔊 Listen";
-
-
-                        listenButton.style.marginTop =
-                            "15px";
-
-
-                        listenButton.style.background =
-                            "#6FCF97";
-
-
-                        listenButton.style.fontSize =
-                            "16px";
-
-
-                        listenButton.onclick =
-                            function() {
-
-                                speakEnglish(
-                                    correctAnswer
-                                );
-
-                            };
-
-
-                        result.appendChild(
-                            listenButton
-                        );
-
-                    };
-
-
-                choicesDiv.appendChild(
-                    button
-                );
-
-            }
+    const speech =
+        new SpeechSynthesisUtterance(
+            text
         );
 
-    }
+
+    speech.lang =
+        "en-US";
 
 
-    // ============================
-    // 最初の問題
-    // ============================
-
-    showQuestion();
+    speech.rate =
+        0.8;
 
 
-    // ============================
-    // Next
-    // ============================
-
-    document.querySelector(
-        ".next"
-    ).onclick = function() {
+    speechSynthesis.speak(
+        speech
+    );
 
 
-        if (
-            currentIndex <
-            reviewQuestions.length - 1
-        ) {
-
-            currentIndex++;
-
-            showQuestion();
-
-        }
-
-        else {
-
-            showFinishScreen();
-
-        }
-
-    };
+}
 
 
-    // ============================
-    // 完了画面
-    // ============================
 
-    function showFinishScreen() {
+// ============================
+// 問題表示
+// ============================
 
-        const card =
-            document.querySelector(
-                ".quiz"
+function showQuestion(){
+
+
+    answered = false;
+
+
+    const currentQuestion =
+        reviewQuestions[currentIndex];
+
+
+
+    document.getElementById(
+        "question-number"
+    ).textContent =
+
+        "Q"
+        +
+        (currentIndex + 1)
+        +
+        " / "
+        +
+        reviewQuestions.length;
+
+
+
+    document.getElementById(
+        "question-text"
+    ).textContent =
+
+        currentQuestion.japanese;
+
+
+
+    document.getElementById(
+        "result"
+    ).innerHTML = "";
+
+
+
+    const choicesDiv =
+        document.getElementById(
+            "choices"
+        );
+
+
+    choicesDiv.innerHTML = "";
+
+
+
+    const nextButton =
+        document.querySelector(
+            ".next"
+        );
+
+
+    nextButton.disabled =
+        true;
+
+
+
+    const correctAnswer =
+        currentQuestion.english;
+
+
+
+    const choices =
+        shuffleArray(
+            currentQuestion.choices
+        );
+
+
+
+    choices.forEach(function(choice){
+
+
+        const button =
+            document.createElement(
+                "button"
             );
 
 
-        card.innerHTML = `
+        button.className =
+            "answer";
 
-            <div style="
-                text-align:center;
-                padding:20px 0;
-            ">
 
-                <div style="
-                    font-size:48px;
-                    margin-bottom:15px;
-                ">
-                    🎉
-                </div>
+        button.textContent =
+            choice;
 
-                <h2 style="
-                    text-align:center;
-                    margin-bottom:10px;
-                ">
-                    Review Completed!
-                </h2>
 
-                <p style="
-                    color:#666;
-                    margin-bottom:25px;
-                ">
-                    Great job reviewing!
-                </p>
 
-                <p style="
-                    font-size:18px;
-                    color:#555;
-                    margin-bottom:5px;
-                ">
-                    Score
-                </p>
+        button.onclick =
+        function(){
 
-                <p style="
-                    font-size:36px;
-                    font-weight:bold;
-                    color:#3E7D3A;
-                    margin-top:5px;
-                ">
-                    ${score} / ${reviewQuestions.length}
-                </p>
 
-                <a href="index.html"
-                   style="
-                       display:block;
-                       margin-top:30px;
-                       padding:15px;
-                       background:#3E7D3A;
-                       color:white;
-                       text-decoration:none;
-                       border-radius:15px;
-                       font-weight:bold;
-                   ">
-                    🏠 Back to Home
-                </a>
+            if(answered)
+                return;
 
-            </div>
 
-        `;
+            answered = true;
+
+
+            const buttons =
+                document.querySelectorAll(
+                    ".answer"
+                );
+
+
+            buttons.forEach(
+                function(btn){
+
+                    btn.disabled =
+                        true;
+
+                }
+            );
+
+
+
+            const result =
+                document.getElementById(
+                    "result"
+                );
+
+
+
+            if(choice === correctAnswer){
+
+
+                score++;
+
+
+                button.style.border =
+                    "3px solid #3E7D3A";
+
+
+                result.textContent =
+                    "⭕ Correct!";
+
+
+            }else{
+
+
+                button.style.border =
+                    "3px solid #d9534f";
+
+
+                result.innerHTML =
+
+                    "❌ Incorrect!<br><br>"
+                    +
+                    "Correct answer:<br>"
+                    +
+                    correctAnswer;
+
+
+            }
+
+
+
+            const listenButton =
+                document.createElement(
+                    "button"
+                );
+
+
+            listenButton.textContent =
+                "🔊 Listen";
+
+
+            listenButton.onclick =
+            function(){
+
+                speakEnglish(
+                    correctAnswer
+                );
+
+            };
+
+
+            result.appendChild(
+                listenButton
+            );
+
+
+
+            nextButton.disabled =
+                false;
+
+
+        };
+
+
+
+        choicesDiv.appendChild(
+            button
+        );
+
+
+    });
+
+
+}
+
+
+
+// ============================
+// Next
+// ============================
+
+document.querySelector(
+    ".next"
+).onclick =
+function(){
+
+
+    if(
+        currentIndex <
+        reviewQuestions.length - 1
+    ){
+
+
+        currentIndex++;
+
+
+        showQuestion();
+
+
+    }else{
+
+
+        showFinishScreen();
+
 
     }
+
+
+};
+
+
+
+// ============================
+// 完了画面
+// ============================
+
+function showFinishScreen(){
+
+
+    document.querySelector(
+        ".quiz"
+    ).innerHTML = `
+
+
+    <div style="
+        text-align:center;
+        padding:20px 0;
+    ">
+
+
+    <div style="
+        font-size:48px;
+    ">
+    🎉
+    </div>
+
+
+    <h2>
+    Review Completed!
+    </h2>
+
+
+    <p>
+    Score
+    </p>
+
+
+    <p style="
+        font-size:36px;
+        font-weight:bold;
+        color:#3E7D3A;
+    ">
+    ${score} / ${reviewQuestions.length}
+    </p>
+
+
+
+    <a href="index.html"
+       style="
+       display:block;
+       margin-top:30px;
+       padding:15px;
+       background:#3E7D3A;
+       color:white;
+       text-decoration:none;
+       border-radius:15px;
+       ">
+       🏠 Back to Home
+    </a>
+
+
+    </div>
+
+
+    `;
+
+
+}
+
+
+
+// ============================
+// Start
+// ============================
+
+showQuestion();
+
 
 }
