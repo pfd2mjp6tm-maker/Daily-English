@@ -666,4 +666,138 @@ const questionBank = [
     level: 1
 },
 
+{
+    id: 26,
+    day: 6,
+
+    japanese: "とても楽しかったです。",
+
+    english: "I had a great time.",
+
+    choices: [
+        "I had a great time.",
+        "I made a great time.",
+        "I took a great time.",
+        "I did a great time."
+    ],
+
+    answer: 0,
+
+    tip: "have a great time = 楽しい時間を過ごす",
+
+    extra: "I had a great time with my friends.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 27,
+    day: 6,
+
+    japanese: "それは面白そうですね。",
+
+    english: "That sounds interesting.",
+
+    choices: [
+        "That sounds interesting.",
+        "That looks interestingly.",
+        "That hears interesting.",
+        "That says interesting."
+    ],
+
+    answer: 0,
+
+    tip: "That sounds ~ = 「それ〜そうだね」",
+
+    extra: "That sounds amazing.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 28,
+    day: 6,
+
+    japanese: "楽しみにしています。",
+
+    english: "I'm looking forward to it.",
+
+    choices: [
+        "I'm looking forward to it.",
+        "I'm looking for it.",
+        "I'm waiting forward it.",
+        "I'm watching forward it."
+    ],
+
+    answer: 0,
+
+    tip: "look forward to ~ = ～を楽しみにする",
+
+    extra: "I'm looking forward to seeing you again.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 29,
+    day: 6,
+
+    japanese: "それは残念ですね。",
+
+    english: "That's too bad.",
+
+    choices: [
+        "That's too bad.",
+        "That's too good.",
+        "That's very worse.",
+        "That's not problem."
+    ],
+
+    answer: 0,
+
+    tip: "That's too bad. = 残念だね（ネイティブがよく使う）",
+
+    extra: "I'm sorry to hear that.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 30,
+    day: 6,
+
+    japanese: "私も同じように感じます。",
+
+    english: "I feel the same way.",
+
+    choices: [
+        "I feel the same way.",
+        "I think the same road.",
+        "I have the same feeling way.",
+        "I make the same way."
+    ],
+
+    answer: 0,
+
+    tip: "I feel the same way. = 私も同じ気持ちです",
+
+    extra: "I totally agree with you.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
 ];
