@@ -398,5 +398,140 @@ const questionBank = [
     level: 1
 },
 
+{
+    id: 16,
+    day: 4,
+
+    japanese: "私は研究開発の仕事をしています。",
+
+    english: "I work in research and development.",
+
+    choices: [
+        "I work in research and development.",
+        "I study research and development.",
+        "I make research every day.",
+        "I am working at a hospital."
+    ],
+
+    answer: 0,
+
+    tip: "research and development (R&D) = 研究開発",
+
+    extra: "I work on new products.",
+
+    category: "Work",
+
+    level: 1
+},
+
+
+{
+    id: 17,
+    day: 4,
+
+    japanese: "最近、新しい製品を開発しています。",
+
+    english: "I've been developing a new product recently.",
+
+    choices: [
+        "I've been developing a new product recently.",
+        "I developed a new product yesterday.",
+        "I will buy a new product soon.",
+        "I use a new product every day."
+    ],
+
+    answer: 0,
+
+    tip: "I've been ~ing = 最近ずっと〜しています",
+
+    extra: "I've been working on a new project.",
+
+    category: "Work",
+
+    level: 1
+},
+
+
+{
+    id: 18,
+    day: 4,
+
+    japanese: "それは難しいですが、楽しいです。",
+
+    english: "It's challenging, but fun.",
+
+    choices: [
+        "It's challenging, but fun.",
+        "It's easy, but boring.",
+        "It's difficult and impossible.",
+        "It's interesting and expensive."
+    ],
+
+    answer: 0,
+
+    tip: "challenging = 難しいけどやりがいがある",
+
+    extra: "My job is challenging but rewarding.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 19,
+    day: 4,
+
+    japanese: "健康に関わる仕事に興味があります。",
+
+    english: "I'm interested in healthcare.",
+
+    choices: [
+        "I'm interested in healthcare.",
+        "I'm interested in healthy food only.",
+        "I'm working at a health store.",
+        "I'm studying medical English."
+    ],
+
+    answer: 0,
+
+    tip: "be interested in ~ = ～に興味がある",
+
+    extra: "I'm interested in helping people.",
+
+    category: "Work",
+
+    level: 1
+},
+
+
+{
+    id: 20,
+    day: 4,
+
+    japanese: "人々の健康に役立つ仕事がしたいです。",
+
+    english: "I want to do work that helps people's health.",
+
+    choices: [
+        "I want to do work that helps people's health.",
+        "I want to work for healthy people.",
+        "I want to make people work harder.",
+        "I want to learn about people's jobs."
+    ],
+
+    answer: 0,
+
+    tip: "help people's health = 人々の健康に役立つ",
+
+    extra: "I want to make a difference in people's lives.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
 
 ];
