@@ -134,4 +134,134 @@ const questionBank = [
     level: 1
 }
 
+{
+    id: 6,
+    day: 2,
+
+    japanese: "今日は忙しいです。",
+
+    english: "I'm busy today.",
+
+    choices: [
+        "I'm busy today.",
+        "I'm sleepy today.",
+        "I'm free today.",
+        "I'm excited today."
+    ],
+
+    answer: 0,
+
+    tip: "busy = 忙しい",
+
+    extra: "I'm busy this week.",
+
+    category: "Daily",
+
+    level: 1
+},
+
+{
+    id: 7,
+    day: 2,
+
+    japanese: "今日は雨が降っています。",
+
+    english: "It's raining today.",
+
+    choices: [
+        "It's raining today.",
+        "It's sunny today.",
+        "It's windy today.",
+        "It's snowing today."
+    ],
+
+    answer: 0,
+
+    tip: "It's raining = 雨が降っている",
+
+    extra: "It's raining outside.",
+
+    category: "Daily",
+
+    level: 1
+},
+
+{
+    id: 8,
+    day: 2,
+
+    japanese: "コーヒーを一杯ください。",
+
+    english: "Can I have a cup of coffee?",
+
+    choices: [
+        "Can I have a cup of coffee?",
+        "Can I have some water?",
+        "I'd like some tea.",
+        "I don't drink coffee."
+    ],
+
+    answer: 0,
+
+    tip: "Can I have... ? = ～をください",
+
+    extra: "Can I have a glass of water?",
+
+    category: "Daily",
+
+    level: 1
+},
+
+{
+    id: 9,
+    day: 2,
+
+    japanese: "仕事が終わりました。",
+
+    english: "I finished work.",
+
+    choices: [
+        "I finished work.",
+        "I started work.",
+        "I'm working now.",
+        "I'm going to work."
+    ],
+
+    answer: 0,
+
+    tip: "finish work = 仕事が終わる",
+
+    extra: "I finished my homework.",
+
+    category: "Daily",
+
+    level: 1
+},
+
+{
+    id: 10,
+    day: 2,
+
+    japanese: "明日は休みです。",
+
+    english: "I'm off tomorrow.",
+
+    choices: [
+        "I'm off tomorrow.",
+        "I'm busy tomorrow.",
+        "I worked yesterday.",
+        "I'm home now."
+    ],
+
+    answer: 0,
+
+    tip: "I'm off = 休みです",
+
+    extra: "I'm off on Friday.",
+
+    category: "Daily",
+
+    level: 1
+},
+
 ];
