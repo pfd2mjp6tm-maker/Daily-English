@@ -324,7 +324,11 @@ document.getElementById("nextButton").onclick = function(){
         currentIndex = 0;
 
         score = 0;
+        
+        
+       // Today's Lessonへ戻る場合
 
+        location.reload();
 
 
     }
