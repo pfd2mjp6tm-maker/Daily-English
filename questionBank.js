@@ -800,4 +800,138 @@ const questionBank = [
     level: 1
 },
 
+{
+    id: 31,
+    day: 7,
+
+    japanese: "久しぶりです！",
+
+    english: "It's been a long time!",
+
+    choices: [
+        "It's been a long time!",
+        "It's a long time ago!",
+        "It was a long time!",
+        "It takes a long time!"
+    ],
+
+    answer: 0,
+
+    tip: "It's been a long time! = 久しぶり！（再会時によく使う）",
+
+    extra: "It's been a while since we met.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 32,
+    day: 7,
+
+    japanese: "また会えて嬉しいです。",
+
+    english: "I'm happy to see you again.",
+
+    choices: [
+        "I'm happy to see you again.",
+        "I'm happy to see you yesterday.",
+        "I'm happiness to meet you again.",
+        "I'm glad seeing you before."
+    ],
+
+    answer: 0,
+
+    tip: "be happy to ~ = ～できて嬉しい",
+
+    extra: "I'm so glad to see you again.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 33,
+    day: 7,
+
+    japanese: "日本に帰ってから、研究の仕事をしています。",
+
+    english: "I've been working in research since I came back to Japan.",
+
+    choices: [
+        "I've been working in research since I came back to Japan.",
+        "I worked research when I return Japan.",
+        "I've worked Japan before I came back.",
+        "I am research since Japan."
+    ],
+
+    answer: 0,
+
+    tip: "since = ～以来、～してから",
+
+    extra: "I've been working on new projects.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 34,
+    day: 7,
+
+    japanese: "高校生の時の思い出は今でも大切です。",
+
+    english: "My memories from high school are still important to me.",
+
+    choices: [
+        "My memories from high school are still important to me.",
+        "My memory is high school important.",
+        "My memories are important yesterday.",
+        "My high school was remembered me."
+    ],
+
+    answer: 0,
+
+    tip: "memory = 思い出、記憶",
+
+    extra: "I still remember my time with your family.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
+
+{
+    id: 35,
+    day: 7,
+
+    japanese: "いつか海外で仕事をしてみたいです。",
+
+    english: "I want to work abroad someday.",
+
+    choices: [
+        "I want to work abroad someday.",
+        "I want to go abroad yesterday.",
+        "I work abroad every day.",
+        "I want abroad my work."
+    ],
+
+    answer: 0,
+
+    tip: "abroad = 海外で、海外へ",
+
+    extra: "I'd like to work with people from different countries.",
+
+    category: "Conversation",
+
+    level: 1
+},
+
 ];
