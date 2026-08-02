@@ -3,28 +3,45 @@ let score = 0;
 let answered = false;
 
 
-// 一時的にDay1固定
-const TODAY = 1;
+// --------------------
+// 今日のDayを取得
+// --------------------
 
+let TODAY = Number(localStorage.getItem("today"));
 
-// Day1の問題だけ取得
-let questions = questionBank.filter(function(question){
-    return question.day === TODAY;
-});
-
-// もし該当Dayが無ければDay1に戻す
-if (questions.length === 0) {
+if (!TODAY || TODAY < 1) {
     TODAY = 1;
-    localStorage.setItem("today", 1);
-
-    questions = questionBank.filter(function(question){
-        return question.day === 1;
-    });
 }
 
 
-// ---------- 問題表示 ----------
-function showQuestion(){
+// --------------------
+// 今日の問題を取得
+// --------------------
+
+let questions = questionBank.filter(function(question) {
+    return question.day === TODAY;
+});
+
+
+// Dayが存在しないならDay1へ戻す
+if (questions.length === 0) {
+
+    TODAY = 1;
+
+    localStorage.setItem("today", TODAY);
+
+    questions = questionBank.filter(function(question) {
+        return question.day === TODAY;
+    });
+
+}
+
+
+// --------------------
+// 問題表示
+// --------------------
+
+function showQuestion() {
 
     answered = false;
 
@@ -39,45 +56,46 @@ function showQuestion(){
     document.getElementById("result").innerHTML = "";
 
     const choicesDiv = document.getElementById("choices");
+
     choicesDiv.innerHTML = "";
 
     document.getElementById("nextButton").disabled = true;
 
     const shuffledChoices = [...currentQuestion.choices];
+
     shuffledChoices.sort(() => Math.random() - 0.5);
 
-    shuffledChoices.forEach(function(choice){
+    shuffledChoices.forEach(function(choice) {
 
         const button = document.createElement("button");
 
         button.className = "answer";
+
         button.textContent = choice;
 
-        button.onclick = function(){
+        button.onclick = function() {
 
-            if(answered) return;
+            if (answered) return;
 
             answered = true;
 
             document.getElementById("nextButton").disabled = false;
 
-            const buttons =
-                document.querySelectorAll(".answer");
+            const buttons = document.querySelectorAll(".answer");
 
-            buttons.forEach(function(btn){
+            buttons.forEach(function(btn) {
                 btn.disabled = true;
             });
 
-            const result =
-                document.getElementById("result");
+            const result = document.getElementById("result");
 
-            if(choice === currentQuestion.english){
+            if (choice === currentQuestion.english) {
 
                 score++;
 
                 result.textContent = "⭕ Correct!";
 
-            }else{
+            } else {
 
                 result.innerHTML =
                     "❌ Try again!<br><br>" +
@@ -95,25 +113,30 @@ function showQuestion(){
 }
 
 
-// ---------- Next ----------
-document.getElementById("nextButton").onclick = function(){
+// --------------------
+// Nextボタン
+// --------------------
 
-    if(currentIndex < questions.length - 1){
+document.getElementById("nextButton").onclick = function() {
+
+    if (currentIndex < questions.length - 1) {
 
         currentIndex++;
+
         showQuestion();
 
-    }else{
+    } else {
 
         alert(
-            "🎉 Today's Lesson Completed!\n\nScore : "
-            + score
-            + " / "
-            + questions.length
+            "🎉 Today's Lesson Completed!\n\nScore : " +
+            score +
+            " / " +
+            questions.length
         );
 
-        // 次の日へ
+        // 次の日へ進める
         TODAY++;
+
         localStorage.setItem("today", TODAY);
 
         // リセット
@@ -125,5 +148,8 @@ document.getElementById("nextButton").onclick = function(){
 };
 
 
-// ---------- スタート ----------
+// --------------------
+// 最初の表示
+// --------------------
+
 showQuestion();
