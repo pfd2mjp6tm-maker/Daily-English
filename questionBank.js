@@ -2,6 +2,7 @@ const questionBank = [
 
 {
     id: 1,
+    day: 1,
 
     japanese: "昨日は何をしましたか？",
 
@@ -25,8 +26,10 @@ const questionBank = [
     level: 1
 },
 
+
 {
     id: 2,
+    day: 1,
 
     japanese: "今日は少し眠いです。",
 
@@ -50,8 +53,10 @@ const questionBank = [
     level: 1
 },
 
+
 {
     id: 3,
+    day: 1,
 
     japanese: "私は毎朝電車で英語を勉強します。",
 
@@ -66,7 +71,7 @@ const questionBank = [
 
     answer: 0,
 
-    tip: "on the train = 電車の中で",
+    tip: "on the train = 電車で",
 
     extra: "I study English on the bus.",
 
@@ -75,8 +80,10 @@ const questionBank = [
     level: 1
 },
 
+
 {
     id: 4,
+    day: 1,
 
     japanese: "エアコンを消したかな？",
 
@@ -91,7 +98,7 @@ const questionBank = [
 
     answer: 0,
 
-    tip: "Did I ... ? = 〜したっけ？",
+    tip: "Did I ... ? = 「〜したっけ？」",
 
     extra: "Did I bring my wallet?",
 
@@ -100,8 +107,10 @@ const questionBank = [
     level: 1
 },
 
+
 {
     id: 5,
+    day: 1,
 
     japanese: "今日は先輩に資料を確認してもらいます。",
 
