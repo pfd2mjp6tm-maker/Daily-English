@@ -12,6 +12,7 @@ const reviewHistory =
     || [];
 
 
+
 // ============================
 // Learned Sentences
 // ============================
@@ -31,9 +32,6 @@ reviewHistory.forEach(function(lesson){
 // Streak計算
 // ============================
 
-
-// Lesson完了日を取得
-
 const studyDates =
     JSON.parse(
         localStorage.getItem("studyDates")
@@ -44,11 +42,25 @@ const studyDates =
 
 function calculateStreak(){
 
+
     if(studyDates.length === 0){
 
         return 0;
 
     }
+
+
+
+    // 日付を新しい順に整理
+
+    const dates =
+        [...new Set(studyDates)]
+        .sort(function(a,b){
+
+            return new Date(b) - new Date(a);
+
+        });
+
 
 
     let streak = 0;
@@ -62,14 +74,11 @@ function calculateStreak(){
 
 
 
-    for(
-        let i = 0;
-        i < studyDates.length;
-        i++
-    ){
+    for(let i = 0; i < dates.length; i++){
+
 
         const date =
-            new Date(studyDates[i]);
+            new Date(dates[i]);
 
 
         date.setHours(0,0,0,0);
@@ -110,7 +119,6 @@ const streak =
 // ============================
 // 表示
 // ============================
-
 
 document.getElementById("streak").textContent =
     streak;
