@@ -12,19 +12,32 @@ const reviewHistory =
     || [];
 
 
-
 // ============================
 // Learned Sentences
+// 重複なし
 // ============================
 
-let learned = 0;
+const learnedIds = [];
 
 
 reviewHistory.forEach(function(lesson){
 
-    learned += lesson.questions.length;
+    lesson.questions.forEach(function(question){
+
+        if(!learnedIds.includes(question.id)){
+
+            learnedIds.push(question.id);
+
+        }
+
+    });
 
 });
+
+
+const learned =
+    learnedIds.length;
+
 
 
 
