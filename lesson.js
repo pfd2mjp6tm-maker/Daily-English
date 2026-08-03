@@ -72,7 +72,7 @@ function showQuestion(){
 
     document.getElementById("extra").textContent = "";
 
-
+    document.getElementById("pattern").textContent = "";
 
     document.getElementById("nextButton").disabled = true;
 
