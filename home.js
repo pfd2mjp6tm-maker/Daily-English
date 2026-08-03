@@ -141,5 +141,4 @@ document.getElementById("learned").textContent =
     learned;
     
     
-console.log(reviewHistory);
-console.log(learnedIds);
+alert(JSON.stringify(reviewHistory[0].questions[0]));
