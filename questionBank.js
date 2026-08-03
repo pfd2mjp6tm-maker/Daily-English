@@ -934,4 +934,165 @@ const questionBank = [
     level: 1
 },
 
+,
+{
+    id: 36,
+    day: 8,
+
+    japanese: "作ってみます。",
+
+    english: "I'll try to make it.",
+
+    choices: [
+        "I'll try to make it.",
+        "I'll buy it.",
+        "I'll eat it.",
+        "I made it yesterday."
+    ],
+
+    answer: 0,
+
+    tip: "try to + 動詞 = ～してみる",
+
+    extra: "I'll try to cook it.",
+
+    pattern: `I'll try to + 動詞
+
+• I'll try to cook it.
+• I'll try to help you.
+• I'll try to speak English.`,
+
+    category: "Conversation",
+
+    level: 1
+},
+
+{
+    id: 37,
+    day: 8,
+
+    japanese: "挑戦してみます。",
+
+    english: "I'll give it a try.",
+
+    choices: [
+        "I'll give it a try.",
+        "I'll give it to you.",
+        "I'll take it home.",
+        "I'll buy one."
+    ],
+
+    answer: 0,
+
+    tip: "give it a try = やってみる・挑戦してみる",
+
+    extra: "I'll give it another try.",
+
+    pattern: `I'll give it a try.
+
+• I'll give it another try.
+• Just give it a try.
+• Why don't you give it a try?`,
+
+    category: "Conversation",
+
+    level: 1
+},
+
+{
+    id: 38,
+    day: 8,
+
+    japanese: "もっと英語が話せるように、一生懸命勉強します。",
+
+    english: "I'll study hard so I can speak English better.",
+
+    choices: [
+        "I'll study hard so I can speak English better.",
+        "I'll study tomorrow.",
+        "I can speak Japanese.",
+        "I like studying English."
+    ],
+
+    answer: 0,
+
+    tip: "so I can = ～できるように",
+
+    extra: "I'll practice every day so I can improve.",
+
+    pattern: `so I can + 動詞
+
+• I'll practice a lot so I can improve.
+• I'll save money so I can travel abroad.
+• I'll exercise more so I can stay healthy.`,
+
+    category: "Conversation",
+
+    level: 1
+},
+
+{
+    id: 39,
+    day: 8,
+
+    japanese: "何の日本食を食べてみたいですか？",
+
+    english: "What Japanese food would you like to try?",
+
+    choices: [
+        "What Japanese food would you like to try?",
+        "Do you like Japanese food?",
+        "What do you eat every day?",
+        "Where do you usually eat?"
+    ],
+
+    answer: 0,
+
+    tip: "What + 名詞 + would you like to + 動詞? = 「何の～を…したいですか？」",
+
+    extra: "What dessert would you like to try?",
+
+    pattern: `What + 名詞 + would you like to + 動詞?
+
+• What movie would you like to watch?
+• What country would you like to visit?
+• What dessert would you like to try?`,
+
+    category: "Conversation",
+
+    level: 1
+},
+
+{
+    id: 40,
+    day: 8,
+
+    japanese: "上手に作れるように、たくさん練習します。",
+
+    english: "I'll practice a lot so I can make it well.",
+
+    choices: [
+        "I'll practice a lot so I can make it well.",
+        "I'll cook dinner tonight.",
+        "I'll practice tomorrow.",
+        "I can make coffee."
+    ],
+
+    answer: 0,
+
+    tip: "practice a lot = たくさん練習する",
+
+    extra: "I'll practice every day so I can sing better.",
+
+    pattern: `practice a lot
+
+• I'll practice a lot.
+• I'll practice every day.
+• Practice makes perfect.`,
+
+    category: "Conversation",
+
+    level: 1
+},
+
 ];
