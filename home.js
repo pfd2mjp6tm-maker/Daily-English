@@ -139,3 +139,7 @@ document.getElementById("streak").textContent =
 
 document.getElementById("learned").textContent =
     learned;
+    
+    
+console.log(reviewHistory);
+console.log(learnedIds);
