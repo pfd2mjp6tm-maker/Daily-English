@@ -223,6 +223,11 @@ document.getElementById("checkButton").onclick = function(){
 
     document.getElementById("extra").textContent =
         "✨ " + currentQuestion.extra;
+        
+    document.getElementById("pattern").textContent =
+    currentQuestion.pattern
+        ? "🧩 Phrase Pattern\n\n" + currentQuestion.pattern
+        : "";
 
 
 
