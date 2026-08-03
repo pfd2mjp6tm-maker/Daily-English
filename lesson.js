@@ -359,6 +359,35 @@ localStorage.setItem(
     TODAY
 );
 
+// ============================
+// Streak用 学習日保存
+// ============================
+
+let studyDates =
+    JSON.parse(
+        localStorage.getItem("studyDates")
+    )
+    || [];
+
+
+const today =
+    new Date()
+    .toISOString()
+    .split("T")[0];
+
+
+if(!studyDates.includes(today)){
+
+    studyDates.push(today);
+
+}
+
+
+localStorage.setItem(
+    "studyDates",
+    JSON.stringify(studyDates)
+);
+
 
 
 currentIndex = 0;
