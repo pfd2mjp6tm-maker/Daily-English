@@ -1095,4 +1095,424 @@ const questionBank = [
     level: 1
 },
 
+{
+    id: 41,
+    day: 9,
+
+    japanese: "ちょっと考えさせてください。",
+
+    english: "Let me think about it.",
+
+    choices: [
+        "Let me think about it.",
+        "I don't know anything.",
+        "Please tell me now.",
+        "I forgot about it."
+    ],
+
+    answer: 0,
+
+    tip: "Let me... = ～させて",
+
+    extra: "Let me check.",
+
+    pattern: "Let me + 動詞",
+
+    category: "Daily",
+
+    level: 2
+},
+
+{
+    id: 42,
+    day: 9,
+
+    japanese: "もう一度言ってもらえますか？",
+
+    english: "Could you say that again?",
+
+    choices: [
+        "Could you say that again?",
+        "Could you write this?",
+        "Could you help me?",
+        "Could you wait here?"
+    ],
+
+    answer: 0,
+
+    tip: "say that again = もう一度言う",
+
+    extra: "Could you speak more slowly?",
+
+    pattern: "Could you + 動詞",
+
+    category: "Travel",
+
+    level: 2
+},
+
+{
+    id: 43,
+    day: 9,
+
+    japanese: "それはいい考えですね。",
+
+    english: "That's a good idea.",
+
+    choices: [
+        "That's a good idea.",
+        "That's too expensive.",
+        "That's impossible.",
+        "That's my bag."
+    ],
+
+    answer: 0,
+
+    tip: "good idea = いい考え",
+
+    extra: "That's a great idea!",
+
+    pattern: "That's + 名詞",
+
+    category: "Daily",
+
+    level: 1
+},
+
+{
+    id: 44,
+    day: 9,
+
+    japanese: "楽しみにしています。",
+
+    english: "I'm looking forward to it.",
+
+    choices: [
+        "I'm looking forward to it.",
+        "I'm tired of it.",
+        "I'm worried about it.",
+        "I'm thinking about it."
+    ],
+
+    answer: 0,
+
+    tip: "look forward to = 楽しみにする",
+
+    extra: "I'm looking forward to seeing you.",
+
+    pattern: "look forward to + 名詞 / 動名詞",
+
+    category: "Daily",
+
+    level: 2
+},
+
+{
+    id: 45,
+    day: 9,
+
+    japanese: "今日は本当に楽しかったです。",
+
+    english: "I had a great time today.",
+
+    choices: [
+        "I had a great time today.",
+        "I had a bad day today.",
+        "I stayed home today.",
+        "I worked all day."
+    ],
+
+    answer: 0,
+
+    tip: "have a great time = 楽しい時間を過ごす",
+
+    extra: "We had a great time together.",
+
+    pattern: "have a great time",
+
+    category: "Daily",
+
+    level: 1
+},
+
+{
+    id: 46,
+    day: 10,
+
+    japanese: "ちょっとやってみます。",
+
+    english: "I'll give it a try.",
+
+    choices: [
+        "I'll give it a try.",
+        "I'll stop here.",
+        "I'll never do it.",
+        "I'll forget it."
+    ],
+
+    answer: 0,
+
+    tip: "give it a try = やってみる",
+
+    extra: "Why don't you give it a try?",
+
+    pattern: "give it a try",
+
+    category: "Daily",
+
+    level: 2
+},
+
+{
+    id: 47,
+    day: 10,
+
+    japanese: "もっと英語が話せるように勉強します。",
+
+    english: "I'll study hard so I can speak English better.",
+
+    choices: [
+        "I'll study hard so I can speak English better.",
+        "I'll study tomorrow.",
+        "I'll speak only Japanese.",
+        "I'll stop studying."
+    ],
+
+    answer: 0,
+
+    tip: "so I can = ～できるように",
+
+    extra: "I'll practice every day so I can improve.",
+
+    pattern: "so I can + 動詞",
+
+    category: "Daily",
+
+    level: 2
+},
+
+{
+    id: 48,
+    day: 10,
+
+    japanese: "どんな映画を見たいですか？",
+
+    english: "What movie would you like to watch?",
+
+    choices: [
+        "What movie would you like to watch?",
+        "What book are you reading?",
+        "What did you watch yesterday?",
+        "What time is it?"
+    ],
+
+    answer: 0,
+
+    tip: "What ... would you like to ...? = 何を～したいですか？",
+
+    extra: "What dessert would you like to try?",
+
+    pattern: "What + 名詞 + would you like to + 動詞",
+
+    category: "Travel",
+
+    level: 2
+},
+
+{
+    id: 49,
+    day: 10,
+
+    japanese: "どんな日本食を食べてみたいですか？",
+
+    english: "What Japanese food would you like to try?",
+
+    choices: [
+        "What Japanese food would you like to try?",
+        "What Japanese food do you cook?",
+        "What food did you buy?",
+        "What is your favorite drink?"
+    ],
+
+    answer: 0,
+
+    tip: "would you like to try = 食べてみたい・試してみたい",
+
+    extra: "What country would you like to visit?",
+
+    pattern: "What + 名詞 + would you like to + 動詞",
+
+    category: "Travel",
+
+    level: 2
+},
+
+{
+    id: 50,
+    day: 10,
+
+    japanese: "作ってみます。",
+
+    english: "I'll try to make it.",
+
+    choices: [
+        "I'll try to make it.",
+        "I'll buy it.",
+        "I'll throw it away.",
+        "I'll eat it now."
+    ],
+
+    answer: 0,
+
+    tip: "try to = ～してみる",
+
+    extra: "I'll try to cook it tomorrow.",
+
+    pattern: "try to + 動詞",
+
+    category: "Daily",
+
+    level: 2
+},
+
+{
+    id: 51,
+    day: 11,
+
+    japanese: "毎日こんな天気だったらいいのにな。",
+
+    english: "I wish every day were like this.",
+
+    choices: [
+        "I wish every day were like this.",
+        "Every day is like this.",
+        "I hope it rains every day.",
+        "The weather is bad today."
+    ],
+
+    answer: 0,
+
+    tip: "I wish ... = ～だったらいいのにな",
+
+    extra: "I wish I could speak English fluently.",
+
+    pattern: "I wish + 主語 + 動詞（過去形）",
+
+    category: "Daily",
+
+    level: 2
+},
+
+{
+    id: 52,
+    day: 11,
+
+    japanese: "今日はいい進捗がありました。",
+
+    english: "We made good progress today.",
+
+    choices: [
+        "We made good progress today.",
+        "We had good weather today.",
+        "We made a mistake today.",
+        "We finished yesterday."
+    ],
+
+    answer: 0,
+
+    tip: "make progress = 進歩する・進捗がある",
+
+    extra: "I'm making good progress in English.",
+
+    pattern: "make progress",
+
+    category: "Work",
+
+    level: 2
+},
+
+{
+    id: 53,
+    day: 11,
+
+    japanese: "すべて順調に進みました。",
+
+    english: "Everything went smoothly.",
+
+    choices: [
+        "Everything went smoothly.",
+        "Everything was difficult.",
+        "Everything stopped.",
+        "Everything is broken."
+    ],
+
+    answer: 0,
+
+    tip: "smoothly = 順調に",
+
+    extra: "The meeting went smoothly.",
+
+    pattern: "Everything went + 副詞",
+
+    category: "Daily",
+
+    level: 2
+},
+
+{
+    id: 54,
+    day: 11,
+
+    japanese: "おかわりをいただけますか？",
+
+    english: "I'd like another serving.",
+
+    choices: [
+        "I'd like another serving.",
+        "I'd like the bill.",
+        "I'd like some water.",
+        "I'd like to leave."
+    ],
+
+    answer: 0,
+
+    tip: "another serving = おかわり",
+
+    extra: "Could I have another serving?",
+
+    pattern: "I'd like + 名詞",
+
+    category: "Travel",
+
+    level: 2
+},
+
+{
+    id: 55,
+    day: 11,
+
+    japanese: "このレシピを忘れたくない。",
+
+    english: "I don't want to forget this recipe.",
+
+    choices: [
+        "I don't want to forget this recipe.",
+        "I don't know this recipe.",
+        "I don't like this recipe.",
+        "I forgot my recipe."
+    ],
+
+    answer: 0,
+
+    tip: "don't want to = ～したくない",
+
+    extra: "I don't want to forget your name.",
+
+    pattern: "don't want to + 動詞",
+
+    category: "Daily",
+
+    level: 2
+},
+
 ];
