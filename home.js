@@ -141,3 +141,18 @@ document.getElementById("learned").textContent =
     learned;
     
     
+// ============================
+// Current Day
+// ============================
+
+const currentDay =
+    Number(
+        localStorage.getItem("today")
+    ) || 1;
+
+document.getElementById("currentDay").textContent =
+    "🌿 Day " +
+    currentDay +
+    " / 365";
+    
+    
