@@ -136,10 +136,10 @@ const streak =
 document.getElementById("streak").textContent =
     streak;
 
-
 document.getElementById("learned").textContent =
-    
-    
+    learned;
+
+
 // ============================
 // 365日チャレンジ表示
 // ============================
@@ -149,6 +149,7 @@ const currentDay =
         localStorage.getItem("today")
     ) || 1;
 
+document.getElementById("currentDay").te    "🌱 Day " + currentDay + " / 365";
+    
+    
 
-document.getElementById("currentDay").textContent =
-    "Day " + currentDay;
