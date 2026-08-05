@@ -6,6 +6,16 @@ let selectedAnswer = null;
 
 let answered = false;
 
+// ====================
+// Favorites
+// ====================
+
+let favorites =
+    JSON.parse(
+        localStorage.getItem("favorites")
+    )
+    || [];
+
 
 // ====================
 // Day管理
@@ -243,10 +253,28 @@ function showQuestion(){
 
 
     });
+    
+// ====================
+// Favorite表示更新
+// ====================
+
+const favoriteButton =
+    document.getElementById("favoriteButton");
+
+
+if(favorites.includes(currentQuestion.id)){
+
+    favoriteButton.textContent =
+        "⭐ Favorited";
+
+}else{
+
+    favoriteButton.textContent =
+        "🤍 Add Favorite";
+
 
 
 }
-
 
 
 // ====================
@@ -549,3 +577,53 @@ location.reload();
 // ====================
 
 showQuestion();
+
+// ====================
+// Favoriteボタン
+// ====================
+
+document.getElementById(
+    "favoriteButton"
+).onclick = function(){
+
+    const currentQuestion =
+        questions[currentIndex];
+
+    const index =
+        favorites.indexOf(
+            currentQuestion.id
+        );
+
+    if(index === -1){
+
+        favorites.push(
+            currentQuestion.id
+        );
+
+    }else{
+
+        favorites.splice(
+            index,
+            1
+        );
+
+    }
+
+    localStorage.setItem(
+        "favorites",
+        JSON.stringify(favorites)
+    );
+
+    if(favorites.includes(currentQuestion.id)){
+
+        this.textContent =
+            "⭐ Favorited";
+
+    }else{
+
+        this.textContent =
+            "🤍 Add Favorite";
+
+    }
+
+};
