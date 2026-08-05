@@ -149,7 +149,7 @@ const currentDay =
         localStorage.getItem("today")
     ) || 1;
 
-document.getElementById("currentDay").te    "🌱 Day " + currentDay + " / 365";
+document.getElementById("currentDay").textContent =
+    "🌱 Day " + currentDay + " / 365";
     
-    alert(JSON.stringify(studyDates));
 
