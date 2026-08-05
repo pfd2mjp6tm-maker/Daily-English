@@ -276,6 +276,8 @@ if(favorites.includes(currentQuestion.id)){
 
 }
 
+}
+
 
 // ====================
 // 正誤判定
