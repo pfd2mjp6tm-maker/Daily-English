@@ -125,6 +125,9 @@ function showQuestion(){
 
     const currentQuestion =
         questions[currentIndex];
+        
+    console.log("showQuestion start");
+    console.log(currentQuestion);
 
 
 
