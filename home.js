@@ -198,7 +198,7 @@ document.getElementById("learned").textContent =
 
 
 document.getElementById("currentDay").textContent =
-    "Day "
+    "🌱 Day "
     +
     currentDay
     +
