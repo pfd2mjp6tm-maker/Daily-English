@@ -261,20 +261,19 @@ function showQuestion(){
 const favoriteButton =
     document.getElementById("favoriteButton");
 
+if(favoriteButton){
 
-if(favorites.includes(currentQuestion.id)){
+    if(favorites.includes(currentQuestion.id)){
 
-    favoriteButton.textContent =
-        "⭐ Favorited";
+        favoriteButton.textContent =
+            "⭐ Favorited";
 
-}else{
+    }else{
 
-    favoriteButton.textContent =
-        "🤍 Add Favorite";
+        favoriteButton.textContent =
+            "🤍 Add Favorite";
 
-
-
-}
+    }
 
 }
 
@@ -584,30 +583,26 @@ showQuestion();
 // Favoriteボタン
 // ====================
 
-document.getElementById(
-    "favoriteButton"
-).onclick = function(){
+const favoriteButton =
+    document.getElementById("favoriteButton");
+
+if(favoriteButton){
+
+favoriteButton.onclick = function(){
 
     const currentQuestion =
         questions[currentIndex];
 
     const index =
-        favorites.indexOf(
-            currentQuestion.id
-        );
+        favorites.indexOf(currentQuestion.id);
 
     if(index === -1){
 
-        favorites.push(
-            currentQuestion.id
-        );
+        favorites.push(currentQuestion.id);
 
     }else{
 
-        favorites.splice(
-            index,
-            1
-        );
+        favorites.splice(index,1);
 
     }
 
@@ -629,3 +624,5 @@ document.getElementById(
     }
 
 };
+
+}
