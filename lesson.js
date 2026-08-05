@@ -390,9 +390,6 @@ localStorage.setItem(
 
 
 
-// ↓ この2行だけ追加
-alert("Saved!");
-alert(JSON.stringify(studyDates));
 
 
 currentIndex = 0;
