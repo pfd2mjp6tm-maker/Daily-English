@@ -21,7 +21,46 @@ let completedDays =
     || [];
 
 
-// 次にやるDayを決定
+// ============================
+// 旧todayデータ移行
+// ============================
+
+const oldToday =
+    Number(
+        localStorage.getItem("today")
+    );
+
+
+
+if(
+    completedDays.length === 0
+    &&
+    oldToday > 1
+){
+
+    for(
+        let i = 1;
+        i < oldToday;
+        i++
+    ){
+
+        completedDays.push(i);
+
+    }
+
+
+    localStorage.setItem(
+        "completedDays",
+        JSON.stringify(completedDays)
+    );
+
+}
+
+
+
+// ============================
+// 次にやるDay決定
+// ============================
 
 let TODAY = 1;
 
