@@ -151,5 +151,5 @@ const currentDay =
 
 document.getElementById("currentDay").te    "🌱 Day " + currentDay + " / 365";
     
-    
+    alert(JSON.stringify(studyDates));
 
