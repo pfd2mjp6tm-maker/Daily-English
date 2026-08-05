@@ -934,7 +934,7 @@ const questionBank = [
     level: 1
 },
 
-,
+
 {
     id: 36,
     day: 8,
@@ -1511,6 +1511,146 @@ const questionBank = [
     pattern: "don't want to + 動詞",
 
     category: "Daily",
+
+    level: 2
+},
+
+{
+    id: 56,
+    day: 12,
+
+    japanese: "少し考えさせてください。",
+
+    english: "Let me think for a moment.",
+
+    choices: [
+        "Let me think for a moment.",
+        "Let me sleep for a moment.",
+        "Give me your answer.",
+        "I know the answer."
+    ],
+
+    answer: 0,
+
+    tip: "for a moment = 少しの間",
+
+    extra: "Let me think about it.",
+
+    pattern: "Let me + 動詞",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+{
+    id: 57,
+    day: 12,
+
+    japanese: "できるだけ早く終わらせます。",
+
+    english: "I'll finish it as soon as possible.",
+
+    choices: [
+        "I'll finish it as soon as possible.",
+        "I'll finish it tomorrow.",
+        "I'll never finish it.",
+        "I finished it yesterday."
+    ],
+
+    answer: 0,
+
+    tip: "as soon as possible = できるだけ早く",
+
+    extra: "Please come as soon as possible.",
+
+    pattern: "as soon as possible",
+
+    category: "Work",
+
+    level: 2
+},
+
+{
+    id: 58,
+    day: 12,
+
+    japanese: "その考えは気に入りました。",
+
+    english: "I like that idea.",
+
+    choices: [
+        "I like that idea.",
+        "I forgot that idea.",
+        "I don't have any ideas.",
+        "I made that yesterday."
+    ],
+
+    answer: 0,
+
+    tip: "I like that idea. = その考えいいね",
+
+    extra: "That's a great idea.",
+
+    pattern: "I like + 名詞",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+{
+    id: 59,
+    day: 12,
+
+    japanese: "少しずつ上達しています。",
+
+    english: "I'm improving little by little.",
+
+    choices: [
+        "I'm improving little by little.",
+        "I'm studying yesterday.",
+        "I'm getting worse.",
+        "I'm already perfect."
+    ],
+
+    answer: 0,
+
+    tip: "little by little = 少しずつ",
+
+    extra: "My English is getting better little by little.",
+
+    pattern: "little by little",
+
+    category: "Daily",
+
+    level: 2
+},
+
+{
+    id: 60,
+    day: 12,
+
+    japanese: "続けることが大切です。",
+
+    english: "The important thing is to keep going.",
+
+    choices: [
+        "The important thing is to keep going.",
+        "The important thing is money.",
+        "Everything is impossible.",
+        "I stopped studying."
+    ],
+
+    answer: 0,
+
+    tip: "keep going = 続ける",
+
+    extra: "Just keep going!",
+
+    pattern: "keep + ～ing",
+
+    category: "Motivation",
 
     level: 2
 },
