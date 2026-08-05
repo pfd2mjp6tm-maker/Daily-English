@@ -12,28 +12,51 @@ let answered = false;
 // ====================
 
 
-let TODAY = Number(localStorage.getItem("today")) || 1;
+// 完了済みDay取得
 
-let questions = questionBank.filter(function(question){
-
-    return question.day === TODAY;
-
-});
-
-
-// Dayが存在しない場合はDay1へ戻す
-if(questions.length === 0){
-
-    TODAY = 1;
-
-    localStorage.setItem("today", TODAY);
+let completedDays =
+    JSON.parse(
+        localStorage.getItem("completedDays")
+    )
+    || [];
 
 
-    questions = questionBank.filter(function(question){
+// 次にやるDayを決定
+
+let TODAY = 1;
+
+
+while(
+    completedDays.includes(TODAY)
+){
+
+    TODAY++;
+
+}
+
+
+// 問題取得
+
+let questions =
+    questionBank.filter(function(question){
 
         return question.day === TODAY;
 
     });
+
+
+// 問題がない場合
+
+if(questions.length === 0){
+
+    TODAY = 1;
+
+    questions =
+        questionBank.filter(function(question){
+
+            return question.day === TODAY;
+
+        });
 
 }
 
@@ -51,12 +74,15 @@ function showQuestion(){
     selectedAnswer = null;
 
 
-    const currentQuestion = questions[currentIndex];
+    const currentQuestion =
+        questions[currentIndex];
 
 
 
     document.getElementById("question-number").textContent =
-        "Q" + (currentIndex + 1) + " / " + questions.length;
+        "Q" + (currentIndex + 1)
+        + " / "
+        + questions.length;
 
 
 
@@ -65,16 +91,28 @@ function showQuestion(){
 
 
 
-    document.getElementById("result").innerHTML = "";
+    document.getElementById("result").innerHTML =
+        "";
 
 
-    document.getElementById("tip").textContent = "";
 
-    document.getElementById("extra").textContent = "";
+    document.getElementById("tip").textContent =
+        "";
 
-    document.getElementById("pattern").textContent = "";
 
-    document.getElementById("nextButton").disabled = true;
+
+    document.getElementById("extra").textContent =
+        "";
+
+
+
+    document.getElementById("pattern").textContent =
+        "";
+
+
+
+    document.getElementById("nextButton").disabled =
+        true;
 
 
 
@@ -82,27 +120,28 @@ function showQuestion(){
         document.getElementById("choices");
 
 
-    choicesDiv.innerHTML = "";
+    choicesDiv.innerHTML =
+        "";
 
 
 
-    const checkButton =
-        document.getElementById("checkButton");
-
-
-    checkButton.disabled = true;
+    document.getElementById("checkButton").disabled =
+        true;
 
 
 
-    let choices = [...currentQuestion.choices];
+    let choices =
+        [...currentQuestion.choices];
 
 
-    choices.sort(() => Math.random() - 0.5);
+
+    choices.sort(
+        () => Math.random() - 0.5
+    );
 
 
 
     choices.forEach(function(choice){
-
 
 
         const button =
@@ -110,21 +149,27 @@ function showQuestion(){
 
 
 
-        button.className = "answer";
-
-
-        button.textContent = choice;
-
-
-
-        button.onclick = function(){
-
-
-            if(answered) return;
+        button.className =
+            "answer";
 
 
 
-            selectedAnswer = choice;
+        button.textContent =
+            choice;
+
+
+
+        button.onclick =
+        function(){
+
+
+            if(answered)
+                return;
+
+
+
+            selectedAnswer =
+                choice;
 
 
 
@@ -135,7 +180,8 @@ function showQuestion(){
 
             buttons.forEach(function(btn){
 
-                btn.style.border = "1px solid #ddd";
+                btn.style.border =
+                    "1px solid #ddd";
 
             });
 
@@ -146,7 +192,8 @@ function showQuestion(){
 
 
 
-            checkButton.disabled = false;
+            document.getElementById("checkButton").disabled =
+                false;
 
 
         };
@@ -154,7 +201,6 @@ function showQuestion(){
 
 
         choicesDiv.appendChild(button);
-
 
 
     });
@@ -168,14 +214,17 @@ function showQuestion(){
 // 正誤判定
 // ====================
 
-document.getElementById("checkButton").onclick = function(){
+document.getElementById("checkButton").onclick =
+function(){
 
 
-    if(selectedAnswer === null) return;
+    if(selectedAnswer === null)
+        return;
 
 
 
-    if(answered) return;
+    if(answered)
+        return;
 
 
 
@@ -193,7 +242,9 @@ document.getElementById("checkButton").onclick = function(){
 
 
 
-    if(selectedAnswer === currentQuestion.english){
+    if(
+        selectedAnswer === currentQuestion.english
+    ){
 
 
         score++;
@@ -207,8 +258,10 @@ document.getElementById("checkButton").onclick = function(){
 
 
         result.innerHTML =
-            "❌ Try again!<br><br>" +
-            "Correct answer:<br>" +
+            "❌ Try again!<br><br>"
+            +
+            "Correct answer:<br>"
+            +
             currentQuestion.english;
 
 
@@ -217,31 +270,40 @@ document.getElementById("checkButton").onclick = function(){
 
 
     document.getElementById("tip").textContent =
-        "💡 " + currentQuestion.tip;
+        "💡 "
+        +
+        currentQuestion.tip;
 
 
 
     document.getElementById("extra").textContent =
-        "✨ " + currentQuestion.extra;
-        
+        "✨ "
+        +
+        currentQuestion.extra;
+
+
+
     document.getElementById("pattern").textContent =
-    currentQuestion.pattern
-        ? "🧩 " + currentQuestion.pattern
-        : "";
+        currentQuestion.pattern
+        ?
+        "🧩 "
+        +
+        currentQuestion.pattern
+        :
+        "";
 
 
 
-    document.getElementById("nextButton").disabled = false;
+    document.getElementById("nextButton").disabled =
+        false;
 
 
 
-    const buttons =
-        document.querySelectorAll(".answer");
+    document.querySelectorAll(".answer")
+    .forEach(function(btn){
 
-
-    buttons.forEach(function(btn){
-
-        btn.disabled = true;
+        btn.disabled =
+            true;
 
     });
 
@@ -255,11 +317,13 @@ document.getElementById("checkButton").onclick = function(){
 // 音声
 // ====================
 
-document.getElementById("soundButton").onclick = function(){
+document.getElementById("soundButton").onclick =
+function(){
 
 
     const currentQuestion =
         questions[currentIndex];
+
 
 
     const speech =
@@ -268,13 +332,19 @@ document.getElementById("soundButton").onclick = function(){
         );
 
 
-    speech.lang = "en-US";
+
+    speech.lang =
+        "en-US";
 
 
-    speech.rate = 0.8;
+    speech.rate =
+        0.8;
 
 
-    speechSynthesis.speak(speech);
+
+    speechSynthesis.speak(
+        speech
+    );
 
 
 };
@@ -286,12 +356,13 @@ document.getElementById("soundButton").onclick = function(){
 // NEXT
 // ====================
 
-document.getElementById("nextButton").onclick = function(){
+document.getElementById("nextButton").onclick =
+function(){
 
 
-
-    if(currentIndex < questions.length - 1){
-
+    if(
+        currentIndex < questions.length - 1
+    ){
 
 
         currentIndex++;
@@ -300,21 +371,23 @@ document.getElementById("nextButton").onclick = function(){
         showQuestion();
 
 
-
     }else{
-
 
 
         alert(
             "🎉 Lesson Complete!\n\nScore: "
-            + score
-            + " / "
-            + questions.length
+            +
+            score
+            +
+            " / "
+            +
+            questions.length
         );
 
 
+
 // ============================
-// Review用に今回のLessonを保存
+// Review保存
 // ============================
 
 
@@ -325,7 +398,6 @@ let reviewHistory =
     || [];
 
 
-// 今回のLessonを追加
 
 reviewHistory.push({
 
@@ -338,7 +410,6 @@ reviewHistory.push({
 });
 
 
-// 保存
 
 localStorage.setItem(
     "reviewHistory",
@@ -347,21 +418,42 @@ localStorage.setItem(
 
 
 
+
 // ============================
-// 次の日へ保存
+// 完了Day保存
 // ============================
 
-TODAY++;
+
+let completedDays =
+    JSON.parse(
+        localStorage.getItem("completedDays")
+    )
+    || [];
+
+
+
+if(
+    !completedDays.includes(TODAY)
+){
+
+    completedDays.push(TODAY);
+
+}
+
 
 
 localStorage.setItem(
-    "today",
-    TODAY
+    "completedDays",
+    JSON.stringify(completedDays)
 );
 
+
+
+
 // ============================
-// Streak用 学習日保存
+// Streak保存
 // ============================
+
 
 let studyDates =
     JSON.parse(
@@ -370,17 +462,22 @@ let studyDates =
     || [];
 
 
+
 const today =
     new Date()
     .toISOString()
     .split("T")[0];
 
 
-if(!studyDates.includes(today)){
+
+if(
+    !studyDates.includes(today)
+){
 
     studyDates.push(today);
 
 }
+
 
 
 localStorage.setItem(
@@ -390,11 +487,10 @@ localStorage.setItem(
 
 
 
-
-
 currentIndex = 0;
 
 score = 0;
+
 
 
 location.reload();
@@ -404,9 +500,7 @@ location.reload();
     }
 
 
-
 };
-
 
 
 
