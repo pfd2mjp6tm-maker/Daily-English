@@ -268,13 +268,13 @@ if(favoriteButton){
 
     if(favorites.includes(currentQuestion.id)){
 
-        favoriteButton.textContent =
-            "⭐ Favorited";
+        favoriteButton.textContent = "★";
+        favoriteButton.classList.add("active");
 
     }else{
 
-        favoriteButton.textContent =
-            "🤍 Add Favorite";
+        favoriteButton.textContent = "☆";
+        favoriteButton.classList.remove("active");
 
     }
 
