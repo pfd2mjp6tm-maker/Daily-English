@@ -160,3 +160,33 @@ button:disabled {
     color: #666;
     margin: 0;
 }
+
+.question-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.favorite{
+
+    font-size:28px;
+    cursor:pointer;
+    color:#bbb;
+    user-select:none;
+    transition:0.2s;
+
+}
+
+.favorite:hover{
+
+    transform:scale(1.15);
+
+}
+
+.favorite.active{
+
+    color:#FFD700;
+
+}
