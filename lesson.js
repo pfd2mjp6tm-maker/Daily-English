@@ -126,8 +126,6 @@ function showQuestion(){
     const currentQuestion =
         questions[currentIndex];
         
-    console.log("showQuestion start");
-    console.log(currentQuestion);
 
 
 
@@ -625,10 +623,11 @@ favoriteButton.onclick = function(){
 
     }else{
 
-        this.textContent =
-            "🤍 Add Favorite";
+    favoriteButton.textContent = "☆";
+    favoriteButton.classList.remove("active");
 
-    }
+}
+
 
 };
 
