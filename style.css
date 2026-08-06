@@ -162,31 +162,23 @@ button:disabled {
 }
 
 .question-header{
-
     display:flex;
     justify-content:space-between;
     align-items:center;
-
+    margin-bottom:20px;
 }
 
-.favorite{
-
-    font-size:28px;
+.favorite-icon{
+    width:auto;
+    background:none;
+    border:none;
+    font-size:30px;
+    color:#ccc;
     cursor:pointer;
-    color:#bbb;
-    user-select:none;
-    transition:0.2s;
-
+    padding:0;
 }
 
-.favorite:hover{
-
-    transform:scale(1.15);
-
-}
-
-.favorite.active{
-
+.favorite-icon.active{
     color:#FFD700;
 
 }
