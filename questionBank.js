@@ -1655,4 +1655,144 @@ const questionBank = [
     level: 2
 },
 
+{
+    id: 61,
+    day: 13,
+
+    japanese: "食べる量に気を付けます。",
+
+    english: "I'll be more careful about how much I eat.",
+
+    choices: [
+        "I'll be more careful about how much I eat.",
+        "I'll eat as much as I can.",
+        "I'll skip every meal.",
+        "I don't care what I eat."
+    ],
+
+    answer: 0,
+
+    tip: "be careful about = ～に気を付ける",
+
+    extra: "Be careful about what you say.",
+
+    pattern: "be careful about + 名詞",
+
+    category: "Health",
+
+    level: 2
+},
+
+{
+    id: 62,
+    day: 13,
+
+    japanese: "寝る前に読書することにしています。",
+
+    english: "I make it a habit to read before bed.",
+
+    choices: [
+        "I make it a habit to read before bed.",
+        "I read only once a month.",
+        "I went to bed early yesterday.",
+        "I don't like reading."
+    ],
+
+    answer: 0,
+
+    tip: "make it a habit to = ～することを習慣にする",
+
+    extra: "I make it a habit to stretch every morning.",
+
+    pattern: "make it a habit to + 動詞",
+
+    category: "Daily",
+
+    level: 3
+},
+
+{
+    id: 63,
+    day: 13,
+
+    japanese: "無理しないでね。",
+
+    english: "Don't push yourself too hard.",
+
+    choices: [
+        "Don't push yourself too hard.",
+        "Push the door harder.",
+        "Don't study anymore.",
+        "Work all night."
+    ],
+
+    answer: 0,
+
+    tip: "push yourself too hard = 無理をする",
+
+    extra: "Take a break if you're tired.",
+
+    pattern: "Don't + 動詞",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+{
+    id: 64,
+    day: 13,
+
+    japanese: "最近、もっと運動するようにしています。",
+
+    english: "I've been trying to exercise more lately.",
+
+    choices: [
+        "I've been trying to exercise more lately.",
+        "I exercised only yesterday.",
+        "I never exercise.",
+        "I'll exercise next year."
+    ],
+
+    answer: 0,
+
+    tip: "I've been trying to = 最近～するようにしている",
+
+    extra: "I've been trying to eat healthier.",
+
+    pattern: "I've been trying to + 動詞",
+
+    category: "Health",
+
+    level: 3
+},
+
+{
+    id: 65,
+    day: 13,
+
+    japanese: "健康が一番大切です。",
+
+    english: "Health comes first.",
+
+    choices: [
+        "Health comes first.",
+        "Money comes first.",
+        "Work comes yesterday.",
+        "Everything is expensive."
+    ],
+
+    answer: 0,
+
+    tip: "come first = 最優先である",
+
+    extra: "Safety comes first.",
+
+    pattern: "～ comes first",
+
+    category: "Motivation",
+
+    level: 2
+},
+
 ];
