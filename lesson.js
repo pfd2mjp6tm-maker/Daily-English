@@ -619,8 +619,9 @@ favoriteButton.onclick = function(){
 
     if(favorites.includes(currentQuestion.id)){
 
-        this.textContent =
-            "⭐ Favorited";
+        favoriteButton.textContent = "★";
+        favoriteButton.classList.add("active");
+
 
     }else{
 
