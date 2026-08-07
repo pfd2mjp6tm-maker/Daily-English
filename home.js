@@ -109,7 +109,7 @@ function calculateStreak(){
 
 
         const date =
-            new Date(dates[i]);
+            new Date(dates[i] + "T00:00:00");
 
 
         date.setHours(
@@ -118,10 +118,10 @@ function calculateStreak(){
 
 
 
-        const diff =
-            (today - date)
-            /
-            (1000 * 60 * 60 * 24);
+        const diff = Math.floor(
+            (today - date) /
+            (1000 * 60 * 60 * 24)
+            );
 
 
 
