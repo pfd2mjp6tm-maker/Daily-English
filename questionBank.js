@@ -1379,7 +1379,7 @@ const questionBank = [
     id: 51,
     day: 11,
 
-    japanese: "毎日こんな天気だったらいいのにな。",
+    japanese: "毎日こんな日だったらいいのにな。",
 
     english: "I wish every day were like this.",
 
