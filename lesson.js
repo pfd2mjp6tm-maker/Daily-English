@@ -565,7 +565,7 @@ score = 0;
 
 
 
-location.reload();
+window.location.href = "index.html";
 
 
 
