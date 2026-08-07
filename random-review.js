@@ -43,7 +43,7 @@ function shuffleArray(array){
 // Random5問
 // ============================
 
-const reviewQuestions =
+let reviewQuestions =
     shuffleArray(allQuestions)
         .slice(0,5);
 
@@ -397,13 +397,29 @@ function(){
         showQuestion();
 
 
-    }else{
+}else{
 
+    currentIndex = 0;
+    score = 0;
 
-        showFinishScreen();
+    // 全問題をもう一度シャッフル
+    allQuestions = [];
 
+    reviewHistory.forEach(function(lesson){
 
-    }
+        allQuestions.push(...lesson.questions);
+
+    });
+
+    const newQuestions =
+        shuffleArray(allQuestions).slice(0,5);
+
+    reviewQuestions.length = 0;
+    reviewQuestions.push(...newQuestions);
+
+    showQuestion();
+
+}
 
 
 };
