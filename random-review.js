@@ -10,6 +10,17 @@ const reviewHistory =
 
 
 // ============================
+// Favorites読み込み
+// ============================
+
+let favorites =
+    JSON.parse(
+        localStorage.getItem("favorites")
+    )
+    || [];
+
+
+// ============================
 // 全問題取得
 // ============================
 
@@ -30,7 +41,8 @@ reviewHistory.forEach(function(lesson){
 
 function shuffleArray(array){
 
-    const newArray = [...array];
+    const newArray =
+        [...array];
 
     return newArray.sort(
         () => Math.random() - 0.5
@@ -40,12 +52,12 @@ function shuffleArray(array){
 
 
 // ============================
-// Random5問
+// Random 5問
 // ============================
 
 let reviewQuestions =
     shuffleArray(allQuestions)
-        .slice(0,5);
+        .slice(0, 5);
 
 
 // ============================
@@ -53,7 +65,6 @@ let reviewQuestions =
 // ============================
 
 if(reviewQuestions.length === 0){
-
 
     document.querySelector(".quiz").innerHTML = `
 
@@ -69,11 +80,9 @@ if(reviewQuestions.length === 0){
                 🌱
             </div>
 
-
             <h2>
                 No Review Yet
             </h2>
-
 
             <p style="
                 color:#666;
@@ -81,7 +90,6 @@ if(reviewQuestions.length === 0){
             ">
                 Complete Today's Lesson first!
             </p>
-
 
             <a href="index.html"
                style="
@@ -96,7 +104,6 @@ if(reviewQuestions.length === 0){
                ">
                 🏠 Back to Home
             </a>
-
 
         </div>
 
@@ -117,53 +124,154 @@ let score = 0;
 let answered = false;
 
 
-
-// ============================
-// シャッフル
-// ============================
-
-function shuffleArray(array){
-
-    const newArray =
-        [...array];
-
-
-    return newArray.sort(
-        () => Math.random() - 0.5
-    );
-
-}
-
-
-
 // ============================
 // 音声
 // ============================
 
 function speakEnglish(text){
 
-
     const speech =
         new SpeechSynthesisUtterance(
             text
         );
 
-
     speech.lang =
         "en-US";
 
-
     speech.rate =
         0.8;
-
 
     speechSynthesis.speak(
         speech
     );
 
+}
+
+
+// ============================
+// Favorite表示更新
+// ============================
+
+function updateFavoriteButton(){
+
+    const favoriteButton =
+        document.getElementById(
+            "favoriteButton"
+        );
+
+    if(!favoriteButton)
+        return;
+
+
+    const currentQuestion =
+        reviewQuestions[currentIndex];
+
+
+    if(
+        favorites.includes(
+            currentQuestion.id
+        )
+    ){
+
+        // ============================
+        // お気に入り済み
+        // ============================
+
+        favoriteButton.textContent =
+            "★";
+
+        favoriteButton.classList.add(
+            "active"
+        );
+
+    }else{
+
+        // ============================
+        // 未登録
+        // ============================
+
+        favoriteButton.textContent =
+            "☆";
+
+        favoriteButton.classList.remove(
+            "active"
+        );
+
+    }
 
 }
 
+
+// ============================
+// Favoriteボタン
+// ============================
+
+const favoriteButton =
+    document.getElementById(
+        "favoriteButton"
+    );
+
+
+if(favoriteButton){
+
+    favoriteButton.onclick =
+    function(){
+
+        const currentQuestion =
+            reviewQuestions[currentIndex];
+
+
+        const index =
+            favorites.indexOf(
+                currentQuestion.id
+            );
+
+
+        if(index === -1){
+
+            // ============================
+            // お気に入り登録
+            // ============================
+
+            favorites.push(
+                currentQuestion.id
+            );
+
+        }else{
+
+            // ============================
+            // お気に入り解除
+            // ============================
+
+            favorites.splice(
+                index,
+                1
+            );
+
+        }
+
+
+        // ============================
+        // 保存
+        // ============================
+
+        localStorage.setItem(
+            "favorites",
+            JSON.stringify(
+                favorites
+            )
+        );
+
+
+        // ============================
+        // 星の表示更新
+        // ============================
+
+        updateFavoriteButton();
+
+    };
+
+}
 
 
 // ============================
@@ -172,7 +280,6 @@ function speakEnglish(text){
 
 function showQuestion(){
 
-
     answered = false;
 
 
@@ -180,6 +287,9 @@ function showQuestion(){
         reviewQuestions[currentIndex];
 
 
+    // ============================
+    // 問題番号
+    // ============================
 
     document.getElementById(
         "question-number"
@@ -194,6 +304,9 @@ function showQuestion(){
         reviewQuestions.length;
 
 
+    // ============================
+    // 日本語
+    // ============================
 
     document.getElementById(
         "question-text"
@@ -202,38 +315,58 @@ function showQuestion(){
         currentQuestion.japanese;
 
 
+    // ============================
+    // 結果リセット
+    // ============================
 
     document.getElementById(
         "result"
     ).innerHTML = "";
 
 
+    // ============================
+    // 選択肢リセット
+    // ============================
 
     const choicesDiv =
         document.getElementById(
             "choices"
         );
 
-
     choicesDiv.innerHTML = "";
 
 
+    // ============================
+    // Nextボタン
+    // ============================
 
     const nextButton =
         document.querySelector(
             ".next"
         );
 
-
     nextButton.disabled =
         true;
 
 
+    // ============================
+    // Favorite表示
+    // ============================
+
+    updateFavoriteButton();
+
+
+    // ============================
+    // 正解
+    // ============================
 
     const correctAnswer =
         currentQuestion.english;
 
 
+    // ============================
+    // 選択肢シャッフル
+    // ============================
 
     const choices =
         shuffleArray(
@@ -241,9 +374,11 @@ function showQuestion(){
         );
 
 
+    // ============================
+    // 選択肢作成
+    // ============================
 
     choices.forEach(function(choice){
-
 
         const button =
             document.createElement(
@@ -259,10 +394,8 @@ function showQuestion(){
             choice;
 
 
-
         button.onclick =
         function(){
-
 
             if(answered)
                 return;
@@ -270,6 +403,10 @@ function showQuestion(){
 
             answered = true;
 
+
+            // ============================
+            // 全ボタン無効化
+            // ============================
 
             const buttons =
                 document.querySelectorAll(
@@ -287,16 +424,17 @@ function showQuestion(){
             );
 
 
-
             const result =
                 document.getElementById(
                     "result"
                 );
 
 
+            // ============================
+            // 正誤判定
+            // ============================
 
             if(choice === correctAnswer){
-
 
                 score++;
 
@@ -311,7 +449,6 @@ function showQuestion(){
 
             }else{
 
-
                 button.style.border =
                     "3px solid #d9534f";
 
@@ -324,10 +461,12 @@ function showQuestion(){
                     +
                     correctAnswer;
 
-
             }
 
 
+            // ============================
+            // Listenボタン
+            // ============================
 
             const listenButton =
                 document.createElement(
@@ -354,25 +493,23 @@ function showQuestion(){
             );
 
 
+            // ============================
+            // Next有効化
+            // ============================
 
             nextButton.disabled =
                 false;
 
-
         };
-
 
 
         choicesDiv.appendChild(
             button
         );
 
-
     });
 
-
 }
-
 
 
 // ============================
@@ -384,115 +521,62 @@ document.querySelector(
 ).onclick =
 function(){
 
-
     if(
         currentIndex <
         reviewQuestions.length - 1
     ){
 
-
         currentIndex++;
-
 
         showQuestion();
 
 
-}else{
+    }else{
 
-    currentIndex = 0;
-    score = 0;
+        // ============================
+        // 5問終了したら
+        // 新しい5問を作る
+        // ============================
 
-    // 全問題をもう一度シャッフル
-    allQuestions = [];
+        currentIndex = 0;
 
-    reviewHistory.forEach(function(lesson){
+        score = 0;
 
-        allQuestions.push(...lesson.questions);
 
-    });
+        allQuestions = [];
 
-    const newQuestions =
-        shuffleArray(allQuestions).slice(0,5);
 
-    reviewQuestions.length = 0;
-    reviewQuestions.push(...newQuestions);
+        reviewHistory.forEach(
+            function(lesson){
 
-    showQuestion();
+                allQuestions.push(
+                    ...lesson.questions
+                );
 
-}
+            }
+        );
 
+
+        const newQuestions =
+            shuffleArray(
+                allQuestions
+            ).slice(0, 5);
+
+
+        reviewQuestions.length =
+            0;
+
+
+        reviewQuestions.push(
+            ...newQuestions
+        );
+
+
+        showQuestion();
+
+    }
 
 };
-
-
-
-// ============================
-// 完了画面
-// ============================
-
-function showFinishScreen(){
-
-
-    document.querySelector(
-        ".quiz"
-    ).innerHTML = `
-
-
-    <div style="
-        text-align:center;
-        padding:20px 0;
-    ">
-
-
-    <div style="
-        font-size:48px;
-    ">
-    🎉
-    </div>
-
-
-    <h2>
-    Review Completed!
-    </h2>
-
-
-    <p>
-    Score
-    </p>
-
-
-    <p style="
-        font-size:36px;
-        font-weight:bold;
-        color:#3E7D3A;
-    ">
-    ${score} / ${reviewQuestions.length}
-    </p>
-
-
-
-    <a href="index.html"
-       style="
-       display:block;
-       margin-top:30px;
-       padding:15px;
-       background:#3E7D3A;
-       color:white;
-       text-decoration:none;
-       border-radius:15px;
-       ">
-       🏠 Back to Home
-    </a>
-
-
-    </div>
-
-
-    `;
-
-
-}
-
 
 
 // ============================
