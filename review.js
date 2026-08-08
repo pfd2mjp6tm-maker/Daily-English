@@ -10,6 +10,17 @@ const reviewHistory =
 
 
 // ============================
+// Favorites
+// ============================
+
+let favorites =
+    JSON.parse(
+        localStorage.getItem("favorites")
+    )
+    || [];
+
+
+// ============================
 // Reviewする問題取得
 // 最新Lessonのみ
 // ============================
@@ -212,6 +223,46 @@ function showQuestion(){
 
 
 
+    // ============================
+    // Favorite表示
+    // ============================
+
+    const favoriteButton =
+        document.getElementById(
+            "favoriteButton"
+        );
+
+
+    if(favoriteButton){
+
+        if(
+            favorites.includes(
+                currentQuestion.id
+            )
+        ){
+
+            favoriteButton.textContent =
+                "★";
+
+            favoriteButton.classList.add(
+                "active"
+            );
+
+        }else{
+
+            favoriteButton.textContent =
+                "☆";
+
+            favoriteButton.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+
+
+
     const correctAnswer =
         currentQuestion.english;
 
@@ -352,6 +403,93 @@ function showQuestion(){
 
     });
 
+
+}
+
+
+
+// ============================
+// Favoriteボタン
+// ============================
+
+const favoriteButton =
+    document.getElementById(
+        "favoriteButton"
+    );
+
+
+if(favoriteButton){
+
+    favoriteButton.onclick =
+    function(){
+
+
+        const currentQuestion =
+            reviewQuestions[currentIndex];
+
+
+        const index =
+            favorites.indexOf(
+                currentQuestion.id
+            );
+
+
+        if(index === -1){
+
+            // お気に入り追加
+
+            favorites.push(
+                currentQuestion.id
+            );
+
+
+        }else{
+
+            // お気に入り解除
+
+            favorites.splice(
+                index,
+                1
+            );
+
+        }
+
+
+        localStorage.setItem(
+            "favorites",
+            JSON.stringify(
+                favorites
+            )
+        );
+
+
+        // 表示更新
+
+        if(
+            favorites.includes(
+                currentQuestion.id
+            )
+        ){
+
+            favoriteButton.textContent =
+                "★";
+
+            favoriteButton.classList.add(
+                "active"
+            );
+
+        }else{
+
+            favoriteButton.textContent =
+                "☆";
+
+            favoriteButton.classList.remove(
+                "active"
+            );
+
+        }
+
+    };
 
 }
 
