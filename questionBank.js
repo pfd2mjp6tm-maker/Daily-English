@@ -1795,4 +1795,144 @@ const questionBank = [
     level: 2
 },
 
+{
+    id: 66,
+    day: 13,
+
+    japanese: "また絶対食べたい！",
+
+    english: "I'd definitely eat it again.",
+
+    choices: [
+        "I'd definitely eat it again.",
+        "I don't want to eat it again.",
+        "I ate it for the first time.",
+        "I won't eat it today."
+    ],
+
+    answer: 0,
+
+    tip: "definitely = 絶対に、間違いなく",
+
+    extra: "I'd definitely go there again.",
+
+    pattern: "I'd definitely + 動詞",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+{
+    id: 67,
+    day: 13,
+
+    japanese: "おいしすぎて食べるのをやめられなかった！",
+
+    english: "I couldn't stop eating it!",
+
+    choices: [
+        "I couldn't stop eating it!",
+        "I didn't eat it at all.",
+        "I stopped eating it immediately.",
+        "I don't like eating it."
+    ],
+
+    answer: 0,
+
+    tip: "can't / couldn't stop ~ing = ～するのをやめられない",
+
+    extra: "I couldn't stop laughing.",
+
+    pattern: "can't / couldn't stop + ～ing",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+{
+    id: 68,
+    day: 13,
+
+    japanese: "とてもおいしかったので、後悔していません。",
+
+    english: "It was so delicious that I don't regret it.",
+
+    choices: [
+        "It was so delicious that I don't regret it.",
+        "It was so bad that I couldn't eat it.",
+        "I regret eating it because it was delicious.",
+        "It wasn't delicious at all."
+    ],
+
+    answer: 0,
+
+    tip: "so ... that ~ = とても…なので～",
+
+    extra: "It was so good that I want to eat it again.",
+
+    pattern: "so + 形容詞 + that + 文",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+{
+    id: 69,
+    day: 13,
+
+    japanese: "私に任せて！",
+
+    english: "You can count on me.",
+
+    choices: [
+        "You can count on me.",
+        "You can forget about me.",
+        "You should wait for me.",
+        "You don't need me."
+    ],
+
+    answer: 0,
+
+    tip: "count on someone = 人を頼りにする、任せる",
+
+    extra: "You can count on me to help you.",
+
+    pattern: "You can count on me to + 動詞",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+{
+    id: 70,
+    day: 13,
+
+    japanese: "いっぱい食べるのは私に任せて！",
+
+    english: "You can count on me to eat a lot!",
+
+    choices: [
+        "You can count on me to eat a lot!",
+        "You can count on me to cook dinner.",
+        "You can ask me to eat less.",
+        "You can tell me to stop eating."
+    ],
+
+    answer: 0,
+
+    tip: "count on me to + 動詞 = ～するのは私に任せて",
+
+    extra: "You can count on me to finish it.",
+
+    pattern: "count on me to + 動詞",
+
+    category: "Conversation",
+
+    level: 2
+},
+
 ];
