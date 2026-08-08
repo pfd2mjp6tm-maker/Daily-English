@@ -17,7 +17,7 @@ const favoriteList =
 
 
 // ============================
-// お気に入りがない場合
+// お気に入りなし
 // ============================
 
 if(favorites.length === 0){
@@ -55,24 +55,28 @@ if(favorites.length === 0){
 
 
 // ============================
-// お気に入り問題取得
+// お気に入り表示
 // ============================
 
 else{
 
-    const favoriteQuestions =
-        questionBank.filter(function(question){
+    favorites.forEach(function(favoriteId){
 
-            return favorites.includes(question.id);
+        const question =
+            questionBank.find(function(q){
 
-        });
+                return q.id === favoriteId;
+
+            });
 
 
-    // ============================
-    // 一覧表示
-    // ============================
+        // 問題が見つからない場合
+        if(!question){
 
-    favoriteQuestions.forEach(function(question){
+            return;
+
+        }
+
 
         const card =
             document.createElement("div");
@@ -89,25 +93,22 @@ else{
                 justify-content:space-between;
                 align-items:flex-start;
                 gap:10px;
-                margin-bottom:12px;
             ">
 
-                <div style="
-                    font-size:20px;
-                    font-weight:bold;
+                <h3 style="
+                    margin:0;
                     line-height:1.5;
                 ">
                     ${question.japanese}
-                </div>
+                </h3>
 
                 <button
                     class="remove"
                     style="
                         border:none;
                         background:none;
-                        font-size:28px;
+                        font-size:24px;
                         cursor:pointer;
-                        flex-shrink:0;
                     "
                 >
                     ⭐
@@ -117,10 +118,9 @@ else{
 
 
             <p style="
-                font-size:18px;
                 font-weight:bold;
                 line-height:1.6;
-                margin:10px 0;
+                margin-top:12px;
             ">
                 ${question.english}
             </p>
@@ -129,7 +129,6 @@ else{
             <button
                 class="listen"
                 style="
-                    margin-top:8px;
                     padding:10px 18px;
                     border:none;
                     border-radius:12px;
@@ -138,59 +137,6 @@ else{
             >
                 🔊 Listen
             </button>
-
-
-            ${
-                question.tip
-                ?
-                `
-                <p style="
-                    margin-top:15px;
-                    color:#666;
-                    line-height:1.6;
-                ">
-                    💡 ${question.tip}
-                </p>
-                `
-                :
-                ""
-            }
-
-
-            ${
-                question.extra
-                ?
-                `
-                <p style="
-                    color:#666;
-                    line-height:1.6;
-                ">
-                    ✨ ${question.extra}
-                </p>
-                `
-                :
-                ""
-            }
-
-
-            ${
-                question.pattern
-                ?
-                `
-                <div style="
-                    margin-top:15px;
-                    padding:12px;
-                    background:#f5f5f5;
-                    border-radius:12px;
-                    white-space:pre-line;
-                    line-height:1.6;
-                ">
-                    🧩 ${question.pattern}
-                </div>
-                `
-                :
-                ""
-            }
 
         `;
 
@@ -207,15 +153,11 @@ else{
                     question.english
                 );
 
-            speech.lang =
-                "en-US";
+            speech.lang = "en-US";
 
-            speech.rate =
-                0.8;
+            speech.rate = 0.8;
 
-            speechSynthesis.speak(
-                speech
-            );
+            speechSynthesis.speak(speech);
 
         };
 
@@ -228,7 +170,9 @@ else{
         function(){
 
             const index =
-                favorites.indexOf(question.id);
+                favorites.indexOf(
+                    question.id
+                );
 
 
             if(index !== -1){
@@ -244,7 +188,6 @@ else{
             );
 
 
-            // 画面を更新
             location.reload();
 
         };
