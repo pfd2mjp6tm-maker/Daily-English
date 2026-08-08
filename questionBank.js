@@ -1797,7 +1797,7 @@ const questionBank = [
 
 {
     id: 66,
-    day: 13,
+    day: 14,
 
     japanese: "また絶対食べたい！",
 
@@ -1825,7 +1825,7 @@ const questionBank = [
 
 {
     id: 67,
-    day: 13,
+    day: 14,
 
     japanese: "おいしすぎて食べるのをやめられなかった！",
 
@@ -1853,7 +1853,7 @@ const questionBank = [
 
 {
     id: 68,
-    day: 13,
+    day: 14,
 
     japanese: "とてもおいしかったので、後悔していません。",
 
@@ -1881,7 +1881,7 @@ const questionBank = [
 
 {
     id: 69,
-    day: 13,
+    day: 14,
 
     japanese: "私に任せて！",
 
@@ -1909,7 +1909,7 @@ const questionBank = [
 
 {
     id: 70,
-    day: 13,
+    day: 14,
 
     japanese: "いっぱい食べるのは私に任せて！",
 
