@@ -122,7 +122,7 @@ else{
                     class="favorite-japanese"
                     style="
                         width:100%;
-                        font-size:20px;
+                        font-size:16px;
                         line-height:1.5;
                         margin:0;
                         padding:0;
