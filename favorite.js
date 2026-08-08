@@ -32,6 +32,7 @@ if(favorites.length === 0){
             <div style="
                 font-size:48px;
                 margin-bottom:15px;
+                color:#cfcfcf;
             ">
                 ☆
             </div>
@@ -88,20 +89,30 @@ else{
         const card =
             document.createElement("div");
 
-        card.className = "card";
 
-        card.style.marginBottom = "20px";
+        card.className =
+            "card";
+
+
+        card.style.marginBottom =
+            "20px";
 
 
         card.innerHTML = `
 
-            <div style="
-                display:flex;
-                align-items:flex-start;
-                justify-content:space-between;
-                gap:15px;
-            ">
+            <!-- ==================
+                 日本語 + Favorite
+            =================== -->
 
+            <div
+                class="favorite-question-header"
+                style="
+                    position:relative;
+                    width:100%;
+                    padding-right:45px;
+                    box-sizing:border-box;
+                "
+            >
 
                 <!-- ==================
                      日本語
@@ -110,11 +121,16 @@ else{
                 <div
                     class="favorite-japanese"
                     style="
-                        flex:1;
-                        font-size:22px;
-                        line-height:1.6;
+                        width:100%;
+                        font-size:24px;
+                        line-height:1.5;
                         margin:0;
+                        padding:0;
                         font-weight:normal;
+
+                        word-break:normal;
+                        overflow-wrap:break-word;
+                        white-space:normal;
                     "
                 >
                     ${question.japanese}
@@ -129,15 +145,30 @@ else{
                     class="favorite-star"
                     aria-label="Remove favorite"
                     style="
+                        position:absolute;
+
+                        top:0;
+                        right:0;
+
+                        width:34px;
+                        height:34px;
+
                         border:none;
                         background:none;
+
                         padding:0;
                         margin:0;
-                        font-size:52px;
-                        line-height:1;
+
+                        font-size:32px;
+                        line-height:34px;
+
                         cursor:pointer;
+
                         color:#FFD21C;
-                        flex-shrink:0;
+
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
                     "
                 >
                     ★
@@ -155,9 +186,13 @@ else{
                 style="
                     margin-top:18px;
                     margin-bottom:18px;
-                    font-size:22px;
+
+                    font-size:20px;
                     line-height:1.5;
+
                     font-weight:bold;
+
+                    font-family:Arial, Helvetica, sans-serif;
                 "
             >
                 ${question.english}
@@ -196,11 +231,14 @@ else{
                     question.english
                 );
 
+
             speech.lang =
                 "en-US";
 
+
             speech.rate =
                 0.8;
+
 
             speechSynthesis.speak(
                 speech
@@ -211,7 +249,7 @@ else{
 
         // ============================
         // 英語のフォントを
-        // Listenと完全に合わせる
+        // Listenと合わせる
         // ============================
 
         const englishText =
