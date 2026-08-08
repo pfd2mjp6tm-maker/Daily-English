@@ -92,48 +92,52 @@ else{
                 display:flex;
                 justify-content:space-between;
                 align-items:flex-start;
-                gap:10px;
+                gap:15px;
             ">
+
+
+                <!-- 日本語 -->
 
                 <h3 style="
                     margin:0;
                     line-height:1.5;
+                    font-size:24px;
+                    font-family:inherit;
+                    flex:1;
                 ">
                     ${question.japanese}
                 </h3>
 
+
+                <!-- お気に入り -->
+
                 <button
-                    class="remove"
-                    style="
-                        border:none;
-                        background:none;
-                        font-size:24px;
-                        cursor:pointer;
-                    "
+                    class="remove favorite-icon"
                 >
-                    ⭐
+                    ★
                 </button>
 
             </div>
 
 
+            <!-- 英語 -->
+
             <p style="
-                font-weight:bold;
+                margin-top:15px;
+                margin-bottom:18px;
+                font-size:20px;
                 line-height:1.6;
-                margin-top:12px;
+                font-family:inherit;
+                font-weight:normal;
             ">
                 ${question.english}
             </p>
 
 
+            <!-- Listen -->
+
             <button
                 class="listen"
-                style="
-                    padding:10px 18px;
-                    border:none;
-                    border-radius:12px;
-                    cursor:pointer;
-                "
             >
                 🔊 Listen
             </button>
