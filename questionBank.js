@@ -1935,4 +1935,57 @@ const questionBank = [
     level: 2
 },
 
+{
+    id: 71,
+    day: 15,
+
+    japanese: "いつか海外で仕事をしてみたいです。",
+
+    english: "I want to work abroad someday.",
+
+    choices: [
+        "I want to work abroad someday.",
+        "I want to travel abroad someday.",
+        "I want to work in Japan someday.",
+        "I work abroad every day."
+    ],
+
+    answer: 0,
+
+    tip: "work abroad = 海外で働く",
+
+    extra: "I'd like to work abroad someday.",
+
+    category: "Work",
+
+    level: 2
+},
+
+
+{
+    id: 72,
+    day: 15,
+
+    japanese: "いつか海外で働いてみたいです。",
+
+    english: "I would like to work abroad someday.",
+
+    choices: [
+        "I would like to work abroad someday.",
+        "I want to work in Japan someday.",
+        "I would like to travel abroad tomorrow.",
+        "I work abroad every day."
+    ],
+
+    answer: 0,
+
+    tip: "would like to + 動詞 = ～したいです",
+
+    extra: "I would like to work with people from different countries.",
+
+    category: "Work",
+
+    level: 2
+},
+
 ];
