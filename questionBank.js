@@ -114,10 +114,10 @@ const questionBank = [
 
     japanese: "今日は先輩に資料を確認してもらいます。",
 
-    english: "My senior will check the materials today.",
+    english: "My senior will check the documents today.",
 
     choices: [
-        "My senior will check the materials today.",
+        "My senior will check the documents today.",
         "I will check the materials today.",
         "My boss will call me today.",
         "I will finish the materials today."
@@ -125,7 +125,7 @@ const questionBank = [
 
     answer: 0,
 
-    tip: "check the materials = 資料を確認する",
+    tip: "check the document = 資料を確認する",
 
     extra: "My manager will check my report.",
 
@@ -1127,26 +1127,26 @@ const questionBank = [
     id: 42,
     day: 9,
 
-    japanese: "もう一度言ってもらえますか？",
+    japanese: "夏休みは何する予定？",
 
-    english: "Could you say that again?",
+    english: "What are you going to do during your summer vacation?",
 
     choices: [
-        "Could you say that again?",
-        "Could you write this?",
-        "Could you help me?",
-        "Could you wait here?"
+        "What are you going to do during your summer vacation?",
+        "What did you do last summer?",
+        "Where are you going tomorrow?",
+        "Do you like summer?"
     ],
 
     answer: 0,
 
-    tip: "say that again = もう一度言う",
+    tip: "be going to + 動詞 = ～する予定です",
 
-    extra: "Could you speak more slowly?",
+    extra: "What are you going to do this weekend?",
 
-    pattern: "Could you + 動詞",
+    pattern: "What are you going to + 動詞?",
 
-    category: "Travel",
+    category: "Daily",
 
     level: 2
 },
@@ -1239,26 +1239,26 @@ const questionBank = [
     id: 46,
     day: 10,
 
-    japanese: "ちょっとやってみます。",
+    japanese: "今週末、一緒に遊ばない？",
 
-    english: "I'll give it a try.",
+    english: "Do you want to hang out this weekend?",
 
     choices: [
-        "I'll give it a try.",
-        "I'll stop here.",
-        "I'll never do it.",
-        "I'll forget it."
+        "Do you want to hang out this weekend?",
+        "Are you working this weekend?",
+        "Did you go out last weekend?",
+        "Do you like this weekend?"
     ],
 
     answer: 0,
 
-    tip: "give it a try = やってみる",
+    tip: "hang out = 一緒に遊ぶ・ぶらぶらする",
 
-    extra: "Why don't you give it a try?",
+    extra: "Do you want to hang out sometime?",
 
-    pattern: "give it a try",
+    pattern: "Do you want to + 動詞?",
 
-    category: "Daily",
+    category: "Conversation",
 
     level: 2
 },
@@ -1295,26 +1295,26 @@ const questionBank = [
     id: 48,
     day: 10,
 
-    japanese: "どんな映画を見たいですか？",
+    japanese: "今度一緒にご飯行かない？",
 
-    english: "What movie would you like to watch?",
+    english: "Do you want to grab dinner sometime?",
 
     choices: [
-        "What movie would you like to watch?",
-        "What book are you reading?",
-        "What did you watch yesterday?",
-        "What time is it?"
+        "Do you want to grab dinner sometime?",
+        "Did you have dinner yesterday?",
+        "Are you cooking dinner tonight?",
+        "Do you usually eat dinner alone?"
     ],
 
     answer: 0,
 
-    tip: "What ... would you like to ...? = 何を～したいですか？",
+    tip: "grab dinner = 軽くご飯を食べに行く",
 
-    extra: "What dessert would you like to try?",
+    extra: "Do you want to grab lunch sometime?",
 
-    pattern: "What + 名詞 + would you like to + 動詞",
+    pattern: "Do you want to + 動詞?",
 
-    category: "Travel",
+    category: "Conversation",
 
     level: 2
 },
@@ -1323,26 +1323,26 @@ const questionBank = [
     id: 49,
     day: 10,
 
-    japanese: "どんな日本食を食べてみたいですか？",
+    japanese: "それ、どこで買ったの？",
 
-    english: "What Japanese food would you like to try?",
+    english: "Where did you get that?",
 
     choices: [
-        "What Japanese food would you like to try?",
-        "What Japanese food do you cook?",
-        "What food did you buy?",
-        "What is your favorite drink?"
+        "Where did you get that?",
+        "Where are you going?",
+        "What did you buy?",
+        "When did you see that?"
     ],
 
     answer: 0,
 
-    tip: "would you like to try = 食べてみたい・試してみたい",
+    tip: "Where did you get that? = それ、どこで買ったの？",
 
-    extra: "What country would you like to visit?",
+    extra: "Where did you get that bag?",
 
-    pattern: "What + 名詞 + would you like to + 動詞",
+    pattern: "Where did you + 動詞?",
 
-    category: "Travel",
+    category: "Conversation",
 
     level: 2
 },
@@ -1351,26 +1351,26 @@ const questionBank = [
     id: 50,
     day: 10,
 
-    japanese: "作ってみます。",
+    japanese: "最近何か面白いことあった？",
 
-    english: "I'll try to make it.",
+    english: "Has anything interesting happened lately?",
 
     choices: [
-        "I'll try to make it.",
-        "I'll buy it.",
-        "I'll throw it away.",
-        "I'll eat it now."
+        "Has anything interesting happened lately?",
+        "Did you do anything interesting yesterday?",
+        "Are you interested in anything?",
+        "What are you interested in?"
     ],
 
     answer: 0,
 
-    tip: "try to = ～してみる",
+    tip: "Has anything ... happened? = 何か～なことあった？",
 
-    extra: "I'll try to cook it tomorrow.",
+    extra: "Has anything exciting happened recently?",
 
-    pattern: "try to + 動詞",
+    pattern: "Has anything + 過去分詞 + lately?",
 
-    category: "Daily",
+    category: "Conversation",
 
     level: 2
 },
@@ -1407,24 +1407,24 @@ const questionBank = [
     id: 52,
     day: 11,
 
-    japanese: "今日はいい進捗がありました。",
+    japanese: "今日は13時から会議があります。",
 
-    english: "We made good progress today.",
+    english: "I have a meeting at 1 p.m. today.",
 
     choices: [
-        "We made good progress today.",
-        "We had good weather today.",
-        "We made a mistake today.",
-        "We finished yesterday."
+        "I have a meeting at 1 p.m. today.",
+        "I had a meeting yesterday.",
+        "I have lunch at 1 p.m. today.",
+        "I'm going home at 1 p.m. today."
     ],
 
     answer: 0,
 
-    tip: "make progress = 進歩する・進捗がある",
+    tip: "have a meeting = 会議がある",
 
-    extra: "I'm making good progress in English.",
+    extra: "I have a meeting at 3 p.m. tomorrow.",
 
-    pattern: "make progress",
+    pattern: "I have a meeting at + 時間",
 
     category: "Work",
 
@@ -1463,26 +1463,26 @@ const questionBank = [
     id: 54,
     day: 11,
 
-    japanese: "おかわりをいただけますか？",
+    japanese: "この書類は金曜日までに提出する必要があります。",
 
-    english: "I'd like another serving.",
+    english: "I need to submit this document by Friday.",
 
     choices: [
-        "I'd like another serving.",
-        "I'd like the bill.",
-        "I'd like some water.",
-        "I'd like to leave."
+        "I need to submit this document by Friday.",
+        "I need to check this document today.",
+        "I submitted this document yesterday.",
+        "I need to print this document tomorrow."
     ],
 
     answer: 0,
 
-    tip: "another serving = おかわり",
+    tip: "need to + 動詞 = ～する必要がある / submit = 提出する / by = ～までに",
 
-    extra: "Could I have another serving?",
+    extra: "I need to submit this report by tomorrow.",
 
-    pattern: "I'd like + 名詞",
+    pattern: "I need to + 動詞 + by + 時間",
 
-    category: "Travel",
+    category: "Work",
 
     level: 2
 },
