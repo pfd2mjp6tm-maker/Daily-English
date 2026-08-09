@@ -1575,26 +1575,26 @@ const questionBank = [
     id: 58,
     day: 12,
 
-    japanese: "その考えは気に入りました。",
+    japanese: "明日の会議の準備をしています。",
 
-    english: "I like that idea.",
+    english: "I'm preparing for tomorrow's meeting.",
 
     choices: [
-        "I like that idea.",
-        "I forgot that idea.",
-        "I don't have any ideas.",
-        "I made that yesterday."
+        "I'm preparing for tomorrow's meeting.",
+        "I'm attending tomorrow's meeting.",
+        "I finished tomorrow's meeting.",
+        "I'm canceling today's meeting."
     ],
 
     answer: 0,
 
-    tip: "I like that idea. = その考えいいね",
+    tip: "prepare for ~ = ～の準備をする",
 
-    extra: "That's a great idea.",
+    extra: "I'm preparing for my presentation.",
 
-    pattern: "I like + 名詞",
+    pattern: "be preparing for + 名詞",
 
-    category: "Conversation",
+    category: "Work",
 
     level: 2
 },
