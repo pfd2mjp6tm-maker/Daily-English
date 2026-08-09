@@ -159,7 +159,7 @@ else{
                         padding:0;
                         margin:0;
 
-                        font-size:32px;
+                        font-size:28px;
                         line-height:34px;
 
                         cursor:pointer;
@@ -187,7 +187,7 @@ else{
                     margin-top:18px;
                     margin-bottom:18px;
 
-                    font-size:20px;
+                    font-size:18px;
                     line-height:1.5;
 
                     font-weight:bold;
