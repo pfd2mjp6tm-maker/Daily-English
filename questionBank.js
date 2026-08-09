@@ -473,7 +473,7 @@ const questionBank = [
 
     extra: "My job is challenging but rewarding.",
 
-    category: "Conversation",
+    category: "Motivation",
 
     level: 1
 },
@@ -553,7 +553,7 @@ const questionBank = [
 
     extra: "Could you speak more slowly?",
 
-    category: "Travel",
+    category: "Conversation",
 
     level: 1
 },
@@ -661,7 +661,7 @@ const questionBank = [
 
     extra: "Could you help me find this place?",
 
-    category: "Travel",
+    category: "Conversation",
 
     level: 1
 },
@@ -875,7 +875,7 @@ const questionBank = [
 
     extra: "I've been working on new projects.",
 
-    category: "Conversation",
+    category: "Work",
 
     level: 1
 },
@@ -929,7 +929,7 @@ const questionBank = [
 
     extra: "I'd like to work with people from different countries.",
 
-    category: "Conversation",
+    category: "Work",
 
     level: 1
 },
@@ -1790,7 +1790,7 @@ const questionBank = [
 
     pattern: "～ comes first",
 
-    category: "Motivation",
+    category: "Health",
 
     level: 2
 },
