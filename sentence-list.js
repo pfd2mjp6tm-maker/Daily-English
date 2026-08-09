@@ -555,7 +555,7 @@ function createQuestionCard(
 
     // ==================================================
     // カード内容
-    // ==================================================
+// ==================================================
 
     card.innerHTML = `
 
@@ -598,10 +598,13 @@ function createQuestionCard(
         <div
             class="sentence-english"
             style="
+                display:none;
+
                 font-size:18px;
                 line-height:1.5;
                 font-weight:bold;
                 font-family:Arial, Helvetica, sans-serif;
+
                 margin-bottom:18px;
             "
         >
@@ -609,6 +612,36 @@ function createQuestionCard(
             ${question.english}
 
         </div>
+
+
+        <!-- ============================
+             Show Answer
+        ============================= -->
+
+        <button
+            class="show-answer"
+            style="
+                width:100%;
+
+                margin-bottom:12px;
+
+                padding:12px 15px;
+
+                border:none;
+                border-radius:12px;
+
+                background:#f1f1f1;
+
+                color:#333;
+
+                font-size:15px;
+                font-weight:bold;
+
+                cursor:pointer;
+            "
+        >
+            👀 Show Answer
+        </button>
 
 
         <!-- ============================
@@ -627,6 +660,66 @@ function createQuestionCard(
     sentenceList.appendChild(
         card
     );
+
+
+    // ==================================================
+    // 英語
+    // ==================================================
+
+    const englishText =
+        card.querySelector(
+            ".sentence-english"
+        );
+
+
+    // ==================================================
+    // Show Answer
+    // ==================================================
+
+    const showAnswerButton =
+        card.querySelector(
+            ".show-answer"
+        );
+
+
+    showAnswerButton.onclick =
+    function(){
+
+        const isHidden =
+            englishText.style.display ===
+            "none";
+
+
+        if(isHidden){
+
+            // ----------------------------
+            // 英語を表示
+            // ----------------------------
+
+            englishText.style.display =
+                "block";
+
+
+            showAnswerButton.textContent =
+                "🙈 Hide Answer";
+
+
+        }else{
+
+            // ----------------------------
+            // 英語を非表示
+            // ----------------------------
+
+            englishText.style.display =
+                "none";
+
+
+            showAnswerButton.textContent =
+                "👀 Show Answer";
+
+        }
+
+    };
 
 
     // ==================================================
@@ -666,12 +759,6 @@ function createQuestionCard(
     // ==================================================
     // 英語フォントをListenと合わせる
     // ==================================================
-
-    const englishText =
-        card.querySelector(
-            ".sentence-english"
-        );
-
 
     const listenStyle =
         getComputedStyle(
