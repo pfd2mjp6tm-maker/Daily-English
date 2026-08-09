@@ -8,13 +8,12 @@
 // 設定
 // ========================================
 
-// どのくらい似ていたら「類似」と判断するか
-// 数字を小さくすると厳しくなる
+// この数値以上なら「似ている」と判断
 const SIMILARITY_THRESHOLD = 0.75;
 
 
 // ========================================
-// チェック開始
+// Question Bankチェック
 // ========================================
 
 function validateQuestionBank() {
@@ -22,23 +21,28 @@ function validateQuestionBank() {
     const errors = [];
     const warnings = [];
 
-    // ------------------------------------
-    // Question Bank が存在するか
-    // ------------------------------------
 
-    if (typeof questionBank === "undefined") {
+    // ====================================
+    // Question Bankが存在するか確認
+    // ====================================
+
+    if (
+        typeof questionBank === "undefined" ||
+        !Array.isArray(questionBank)
+    ) {
 
         alert(
             "🚨 Question Bank Error\n\n" +
-            "questionBank.js が読み込まれていません。"
+            "questionBank.js が正しく読み込まれていません。"
         );
 
         return;
+
     }
 
 
     // ====================================
-    // ① 基本データチェック
+    // ① 基本チェック
     // ====================================
 
     questionBank.forEach(function(question, index) {
@@ -70,6 +74,7 @@ function validateQuestionBank() {
 
         });
 
+
         if (sameId.length > 1) {
 
             errors.push(
@@ -81,7 +86,7 @@ function validateQuestionBank() {
 
 
         // --------------------------------
-        // day
+        // Day
         // --------------------------------
 
         if (typeof question.day !== "number") {
@@ -123,7 +128,7 @@ function validateQuestionBank() {
 
 
         // --------------------------------
-        // choices
+        // Choices
         // --------------------------------
 
         if (
@@ -140,7 +145,7 @@ function validateQuestionBank() {
 
 
         // --------------------------------
-        // answer
+        // Answer
         // --------------------------------
 
         if (
@@ -158,7 +163,7 @@ function validateQuestionBank() {
 
 
         // --------------------------------
-        // 正解とenglishが一致しているか
+        // Englishと正解選択肢
         // --------------------------------
 
         if (
@@ -176,7 +181,7 @@ function validateQuestionBank() {
 
 
         // --------------------------------
-        // tip
+        // Tip
         // --------------------------------
 
         if (!question.tip) {
@@ -190,7 +195,7 @@ function validateQuestionBank() {
 
 
         // --------------------------------
-        // extra
+        // Extra
         // --------------------------------
 
         if (!question.extra) {
@@ -206,12 +211,20 @@ function validateQuestionBank() {
 
 
     // ====================================
-    // ② 完全一致チェック
+    // ② 完全重複チェック
     // ====================================
 
-    for (let i = 0; i < questionBank.length; i++) {
+    for (
+        let i = 0;
+        i < questionBank.length;
+        i++
+    ) {
 
-        for (let j = i + 1; j < questionBank.length; j++) {
+        for (
+            let j = i + 1;
+            j < questionBank.length;
+            j++
+        ) {
 
             const q1 = questionBank[i];
             const q2 = questionBank[j];
@@ -229,7 +242,7 @@ function validateQuestionBank() {
                 warnings.push(
                     `ID ${q1.id} と ID ${q2.id}\n` +
                     "→ 英文が完全に同じです。\n\n" +
-                    `"${q1.english}"`
+                    `「${q1.english}」`
                 );
 
             }
@@ -247,7 +260,7 @@ function validateQuestionBank() {
                 warnings.push(
                     `ID ${q1.id} と ID ${q2.id}\n` +
                     "→ 日本語が完全に同じです。\n\n" +
-                    `"${q1.japanese}"`
+                    `「${q1.japanese}」`
                 );
 
             }
@@ -258,40 +271,52 @@ function validateQuestionBank() {
 
 
     // ====================================
-    // ③ 英文の類似チェック
+    // ③ 英文類似チェック
     // ====================================
 
-    for (let i = 0; i < questionBank.length; i++) {
+    for (
+        let i = 0;
+        i < questionBank.length;
+        i++
+    ) {
 
-        for (let j = i + 1; j < questionBank.length; j++) {
+        for (
+            let j = i + 1;
+            j < questionBank.length;
+            j++
+        ) {
 
             const q1 = questionBank[i];
             const q2 = questionBank[j];
 
 
+            const text1 = normalizeText(q1.english);
+            const text2 = normalizeText(q2.english);
+
+
+            // 完全一致は②でチェック済み
+            if (text1 === text2) {
+                continue;
+            }
+
+
             const similarity =
                 calculateSimilarity(
-                    q1.english,
-                    q2.english
+                    text1,
+                    text2
                 );
 
 
-            if (similarity >= SIMILARITY_THRESHOLD) {
+            if (
+                similarity >= SIMILARITY_THRESHOLD
+            ) {
 
-                // 完全一致は②でチェックしているので除外
-                if (
-                    normalizeText(q1.english) !==
-                    normalizeText(q2.english)
-                ) {
-
-                    warnings.push(
-                        `ID ${q1.id} と ID ${q2.id}\n` +
-                        "→ 英文がかなり似ています。\n\n" +
-                        `① ${q1.english}\n` +
-                        `② ${q2.english}`
-                    );
-
-                }
+                warnings.push(
+                    `ID ${q1.id} と ID ${q2.id}\n` +
+                    "→ 英文がかなり似ています。\n\n" +
+                    `① ${q1.english}\n` +
+                    `② ${q2.english}`
+                );
 
             }
 
@@ -301,10 +326,13 @@ function validateQuestionBank() {
 
 
     // ====================================
-    // ④ 結果表示
+    // 結果表示
     // ====================================
 
-    showValidationResult(errors, warnings);
+    showValidationResult(
+        errors,
+        warnings
+    );
 
 }
 
@@ -319,6 +347,7 @@ function normalizeText(text) {
         return "";
     }
 
+
     return text
         .toLowerCase()
         .replace(/[.,!?'"`]/g, "")
@@ -332,22 +361,26 @@ function normalizeText(text) {
 // 類似度計算
 // ========================================
 
-function calculateSimilarity(text1, text2) {
+function calculateSimilarity(
+    text1,
+    text2
+) {
 
-    const a = normalizeText(text1);
-    const b = normalizeText(text2);
-
-
-    if (a === b) {
+    if (text1 === text2) {
         return 1;
     }
 
 
     const longer =
-        a.length > b.length ? a : b;
+        text1.length > text2.length
+            ? text1
+            : text2;
+
 
     const shorter =
-        a.length > b.length ? b : a;
+        text1.length > text2.length
+            ? text2
+            : text1;
 
 
     if (longer.length === 0) {
@@ -363,8 +396,8 @@ function calculateSimilarity(text1, text2) {
 
 
     return (
-        (longer.length - distance)
-        / longer.length
+        (longer.length - distance) /
+        longer.length
     );
 
 }
@@ -374,30 +407,52 @@ function calculateSimilarity(text1, text2) {
 // Levenshtein Distance
 // ========================================
 
-function levenshteinDistance(a, b) {
+function levenshteinDistance(
+    a,
+    b
+) {
 
     const matrix = [];
 
 
-    for (let i = 0; i <= b.length; i++) {
+    for (
+        let i = 0;
+        i <= b.length;
+        i++
+    ) {
 
         matrix[i] = [i];
 
     }
 
 
-    for (let j = 0; j <= a.length; j++) {
+    for (
+        let j = 0;
+        j <= a.length;
+        j++
+    ) {
 
         matrix[0][j] = j;
 
     }
 
 
-    for (let i = 1; i <= b.length; i++) {
+    for (
+        let i = 1;
+        i <= b.length;
+        i++
+    ) {
 
-        for (let j = 1; j <= a.length; j++) {
+        for (
+            let j = 1;
+            j <= a.length;
+            j++
+        ) {
 
-            if (b.charAt(i - 1) === a.charAt(j - 1)) {
+            if (
+                b.charAt(i - 1) ===
+                a.charAt(j - 1)
+            ) {
 
                 matrix[i][j] =
                     matrix[i - 1][j - 1];
@@ -428,10 +483,13 @@ function levenshteinDistance(a, b) {
 
 
 // ========================================
-// 結果をポップアップ表示
+// 結果表示
 // ========================================
 
-function showValidationResult(errors, warnings) {
+function showValidationResult(
+    errors,
+    warnings
+) {
 
 
     // ------------------------------------
@@ -448,13 +506,13 @@ function showValidationResult(errors, warnings) {
     }
 
 
-    // ------------------------------------
-    // エラー
-    // ------------------------------------
-
     let message =
         "🔐 Question Bank Check\n\n";
 
+
+    // ------------------------------------
+    // エラー
+    // ------------------------------------
 
     if (errors.length > 0) {
 
@@ -464,7 +522,10 @@ function showValidationResult(errors, warnings) {
             "件\n\n";
 
 
-        errors.forEach(function(error, index) {
+        errors.forEach(function(
+            error,
+            index
+        ) {
 
             message +=
                 `${index + 1}. ${error}\n\n`;
@@ -486,7 +547,10 @@ function showValidationResult(errors, warnings) {
             "件\n\n";
 
 
-        warnings.forEach(function(warning, index) {
+        warnings.forEach(function(
+            warning,
+            index
+        ) {
 
             message +=
                 `${index + 1}. ${warning}\n\n`;
@@ -506,14 +570,11 @@ function showValidationResult(errors, warnings) {
 
 
 // ========================================
-// アプリ起動時にチェック
+// Validator開始
+// ========================================
+//
+// questionBank.jsの直後に読み込まれるため、
+// ここで直接チェックします。
 // ========================================
 
-window.addEventListener(
-    "load",
-    function() {
-
-        validateQuestionBank();
-
-    }
-);
+validateQuestionBank();
