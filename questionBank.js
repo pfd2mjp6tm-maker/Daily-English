@@ -1939,51 +1939,138 @@ const questionBank = [
     id: 71,
     day: 15,
 
-    japanese: "いつか海外で仕事をしてみたいです。",
+    japanese: "赤羽駅で乗り換える必要があります。",
 
-    english: "I want to work abroad someday.",
+    english: "You need to change trains at Akabane Station.",
 
     choices: [
-        "I want to work abroad someday.",
-        "I want to travel abroad someday.",
-        "I want to work in Japan someday.",
-        "I work abroad every day."
+        "You need to change trains at Akabane Station.",
+        "You should get off at Akabane Station.",
+        "You can take the train from Akabane Station.",
+        "You need to get to Akabane Station tomorrow."
     ],
 
     answer: 0,
 
-    tip: "work abroad = 海外で働く",
+    tip: "need to + 動詞 = ～する必要がある",
 
-    extra: "I'd like to work abroad someday.",
+    extra: "You need to change trains at Shinjuku Station.",
 
-    category: "Work",
+    pattern: "need to + 動詞",
+
+    category: "Travel",
 
     level: 2
 },
-
 
 {
     id: 72,
     day: 15,
 
-    japanese: "いつか海外で働いてみたいです。",
+    japanese: "大宮駅で降りてください。",
 
-    english: "I would like to work abroad someday.",
+    english: "You should get off at Omiya Station.",
 
     choices: [
-        "I would like to work abroad someday.",
-        "I want to work in Japan someday.",
-        "I would like to travel abroad tomorrow.",
-        "I work abroad every day."
+        "You should get off at Omiya Station.",
+        "You need to change trains at Omiya Station.",
+        "You should get on at Omiya Station.",
+        "You can walk to Omiya Station."
     ],
 
     answer: 0,
 
-    tip: "would like to + 動詞 = ～したいです",
+    tip: "get off at + 場所 = ～で降りる",
 
-    extra: "I would like to work with people from different countries.",
+    extra: "You should get off at the next station.",
 
-    category: "Work",
+    pattern: "get off at + 場所",
+
+    category: "Travel",
+
+    level: 2
+},
+
+{
+    id: 73,
+    day: 15,
+
+    japanese: "次はもっと上手に説明できるようになりたいです。",
+
+    english: "Next time, I want to be able to explain it better.",
+
+    choices: [
+        "Next time, I want to be able to explain it better.",
+        "Next time, I want to explain it yesterday.",
+        "Next time, I don't want to explain it.",
+        "Next time, I was able to explain it."
+    ],
+
+    answer: 0,
+
+    tip: "want to be able to + 動詞 = ～できるようになりたい",
+
+    extra: "I want to be able to speak English more naturally.",
+
+    pattern: "want to be able to + 動詞",
+
+    category: "Conversation",
+
+    level: 3
+},
+
+{
+    id: 74,
+    day: 15,
+
+    japanese: "大宮駅にはどうやって行けばいいですか？",
+
+    english: "How can I get to Omiya Station?",
+
+    choices: [
+        "How can I get to Omiya Station?",
+        "Where can I get off the train?",
+        "How long did I stay in Omiya?",
+        "When did I leave Omiya Station?"
+    ],
+
+    answer: 0,
+
+    tip: "How can I get to ～? = ～へはどうやって行けばいい？",
+
+    extra: "How can I get to the nearest station?",
+
+    pattern: "How can I get to + 場所?",
+
+    category: "Travel",
+
+    level: 2
+},
+
+{
+    id: 75,
+    day: 15,
+
+    japanese: "この電車は大宮駅に行きますか？",
+
+    english: "Is this train going to Omiya Station?",
+
+    choices: [
+        "Is this train going to Omiya Station?",
+        "Does this train stop at Akabane Station?",
+        "Where is Omiya Station?",
+        "How can I get off this train?"
+    ],
+
+    answer: 0,
+
+    tip: "Is this train going to ～? = この電車は～に行きますか？",
+
+    extra: "Is this train going to Tokyo Station?",
+
+    pattern: "Is this train going to + 場所?",
+
+    category: "Travel",
 
     level: 2
 },
