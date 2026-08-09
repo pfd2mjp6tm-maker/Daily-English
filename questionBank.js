@@ -1183,26 +1183,26 @@ const questionBank = [
     id: 44,
     day: 9,
 
-    japanese: "楽しみにしています。",
+    japanese: "予定を変更してもいい？",
 
-    english: "I'm looking forward to it.",
+    english: "Can we change the plan?",
 
     choices: [
-        "I'm looking forward to it.",
-        "I'm tired of it.",
-        "I'm worried about it.",
-        "I'm thinking about it."
+        "Can we change the plan?",
+        "Can we cancel the meeting?",
+        "Did you make a plan?",
+        "Are you planning a trip?"
     ],
 
     answer: 0,
 
-    tip: "look forward to = 楽しみにする",
+    tip: "change the plan = 予定を変更する",
 
-    extra: "I'm looking forward to seeing you.",
+    extra: "Can we change the plan for tomorrow?",
 
-    pattern: "look forward to + 名詞 / 動名詞",
+    pattern: "Can we + 動詞 + the plan?",
 
-    category: "Daily",
+    category: "Conversation",
 
     level: 2
 },
@@ -1211,28 +1211,28 @@ const questionBank = [
     id: 45,
     day: 9,
 
-    japanese: "今日は本当に楽しかったです。",
+    japanese: "もう準備できた？",
 
-    english: "I had a great time today.",
+    english: "Are you ready yet?",
 
     choices: [
-        "I had a great time today.",
-        "I had a bad day today.",
-        "I stayed home today.",
-        "I worked all day."
+        "Are you ready yet?",
+        "Are you tired already?",
+        "Did you get there yet?",
+        "Are you busy today?"
     ],
 
     answer: 0,
 
-    tip: "have a great time = 楽しい時間を過ごす",
+    tip: "Are you ready yet? = もう準備できた？",
 
-    extra: "We had a great time together.",
+    extra: "Are you ready to leave yet?",
 
-    pattern: "have a great time",
+    pattern: "Are you + 形容詞 + yet?",
 
-    category: "Daily",
+    category: "Conversation",
 
-    level: 1
+    level: 2
 },
 
 {
@@ -1267,26 +1267,26 @@ const questionBank = [
     id: 47,
     day: 10,
 
-    japanese: "もっと英語が話せるように勉強します。",
+    japanese: "何時に集合する？",
 
-    english: "I'll study hard so I can speak English better.",
+    english: "What time should we meet?",
 
     choices: [
-        "I'll study hard so I can speak English better.",
-        "I'll study tomorrow.",
-        "I'll speak only Japanese.",
-        "I'll stop studying."
+        "What time should we meet?",
+        "What time did you leave?",
+        "Where should we go?",
+        "When did you get home?"
     ],
 
     answer: 0,
 
-    tip: "so I can = ～できるように",
+    tip: "What time should we ~? = 何時に～する？",
 
-    extra: "I'll practice every day so I can improve.",
+    extra: "What time should we meet tomorrow?",
 
-    pattern: "so I can + 動詞",
+    pattern: "What time should we + 動詞?",
 
-    category: "Daily",
+    category: "Conversation",
 
     level: 2
 },
@@ -1519,26 +1519,26 @@ const questionBank = [
     id: 56,
     day: 12,
 
-    japanese: "少し考えさせてください。",
+    japanese: "今のところ順調です。",
 
-    english: "Let me think for a moment.",
+    english: "Everything is going well so far.",
 
     choices: [
-        "Let me think for a moment.",
-        "Let me sleep for a moment.",
-        "Give me your answer.",
-        "I know the answer."
+        "Everything is going well so far.",
+        "Everything went wrong yesterday.",
+        "Everything is ready for tomorrow.",
+        "Everything has already finished."
     ],
 
     answer: 0,
 
-    tip: "for a moment = 少しの間",
+    tip: "so far = 今のところ / going well = 順調に進んでいる",
 
-    extra: "Let me think about it.",
+    extra: "Everything is going well so far with the project.",
 
-    pattern: "Let me + 動詞",
+    pattern: "Everything is going well + so far",
 
-    category: "Conversation",
+    category: "Work",
 
     level: 2
 },
@@ -1883,24 +1883,24 @@ const questionBank = [
     id: 69,
     day: 14,
 
-    japanese: "私に任せて！",
+    japanese: "それについてどう思う？",
 
-    english: "You can count on me.",
+    english: "What do you think about it?",
 
     choices: [
-        "You can count on me.",
-        "You can forget about me.",
-        "You should wait for me.",
-        "You don't need me."
+        "What do you think about it?",
+        "What did you talk about yesterday?",
+        "What are you worried about?",
+        "What do you know about it?"
     ],
 
     answer: 0,
 
-    tip: "count on someone = 人を頼りにする、任せる",
+    tip: "What do you think about ~? = ～についてどう思う？",
 
-    extra: "You can count on me to help you.",
+    extra: "What do you think about this idea?",
 
-    pattern: "You can count on me to + 動詞",
+    pattern: "What do you think about + 名詞?",
 
     category: "Conversation",
 
