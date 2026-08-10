@@ -2075,4 +2075,168 @@ const questionBank = [
     level: 2
 },
 
+{
+    id: 76,
+    day: 16,
+
+    japanese: "それを見て、昔のことを思い出しました。",
+
+    english: "It reminded me of the past.",
+
+    choices: [
+        "It reminded me of the past.",
+        "It made me forget the past.",
+        "It happened in the past.",
+        "I changed my plans for the past."
+    ],
+
+    answer: 0,
+
+    tip: "It reminded me of ~ = ～を思い出した、～を連想した",
+
+    extra: "It reminded me of my high school days.",
+
+    pattern: `It reminded me of + 名詞
+
+• It reminded me of my hometown.
+• It reminded me of my family.
+• It reminded me of my high school days.`,
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 77,
+    day: 16,
+
+    japanese: "値段を見て「えっ！？」ってなりました。",
+
+    english: 'I saw the price and I was like, "What?!"',
+
+    choices: [
+        'I saw the price and I was like, "What?!"',
+        'I saw the price and I said it was cheap.',
+        'I saw the price and I bought it immediately.',
+        'I saw the price and I forgot about it.'
+    ],
+
+    answer: 0,
+
+    tip: 'I was like, "～" = 「～って感じだった」「～って思った」',
+
+    extra: 'I was like, "Why?!"',
+
+    pattern: `I was like, "～"
+
+• I was like, "Really?"
+• I was like, "No way!"
+• I was like, "What?!"`,
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 78,
+    day: 16,
+
+    japanese: "その写真を見て、家族のことを思い出しました。",
+
+    english: "That photo made me think of my family.",
+
+    choices: [
+        "That photo made me think of my family.",
+        "That photo made me forget my family.",
+        "That photo was taken by my family.",
+        "That photo showed me a new family."
+    ],
+
+    answer: 0,
+
+    tip: "make me think of ~ = 私に～を思い出させる、～を連想させる",
+
+    extra: "This song makes me think of my hometown.",
+
+    pattern: `make + 人 + think of + 名詞
+
+• This song makes me think of summer.
+• This food makes me think of Japan.
+• That place makes me think of my hometown.`,
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 79,
+    day: 16,
+
+    japanese: "こんなに混んでいるとは思いませんでした。",
+
+    english: "I didn't expect it to be this crowded.",
+
+    choices: [
+        "I didn't expect it to be this crowded.",
+        "I knew it would be completely empty.",
+        "I wanted it to be more crowded.",
+        "I expected it to be closed."
+    ],
+
+    answer: 0,
+
+    tip: "I didn't expect ~ = ～だとは思わなかった、予想していなかった",
+
+    extra: "I didn't expect it to be this expensive.",
+
+    pattern: `I didn't expect + 名詞 / 代名詞 + to + 動詞
+
+• I didn't expect it to be this busy.
+• I didn't expect him to come.
+• I didn't expect it to rain.`,
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 80,
+    day: 16,
+
+    japanese: "結局、全部食べてしまいました。",
+
+    english: "I ended up eating all of it.",
+
+    choices: [
+        "I ended up eating all of it.",
+        "I decided not to eat it.",
+        "I stopped eating halfway through.",
+        "I forgot to eat it."
+    ],
+
+    answer: 0,
+
+    tip: "end up ~ing = 結局～する、最終的に～になる",
+
+    extra: "I ended up buying it.",
+
+    pattern: `end up + ～ing
+
+• I ended up buying it.
+• We ended up staying home.
+• I ended up eating too much.`,
+
+    category: "Conversation",
+
+    level: 2
+},
+
 ];
