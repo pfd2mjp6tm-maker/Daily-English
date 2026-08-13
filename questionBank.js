@@ -2239,4 +2239,148 @@ const questionBank = [
     level: 2
 },
 
+{
+    id: 81,
+    day: 17,
+
+    japanese: "お腹がすごく痛い。",
+
+    english: "My stomach really hurts.",
+
+    choices: [
+        "My stomach really hurts.",
+        "My stomach feels better now.",
+        "My stomach is a little hungry.",
+        "My stomach was fine yesterday."
+    ],
+
+    answer: 0,
+
+    tip: "My stomach hurts = お腹が痛い / really = すごく",
+
+    extra: "My stomach hurts a lot.",
+
+    pattern: "My + 体の部位 + hurts",
+
+    category: "Health",
+
+    level: 2
+},
+
+
+{
+    id: 82,
+    day: 17,
+
+    japanese: "逃げ場がない感じがした。",
+
+    english: "I felt trapped.",
+
+    choices: [
+        "I felt trapped.",
+        "I felt relaxed.",
+        "I felt excited.",
+        "I felt free."
+    ],
+
+    answer: 0,
+
+    tip: "feel trapped = 逃げ場がない・身動きが取れないように感じる",
+
+    extra: "I felt trapped in the crowded train.",
+
+    pattern: "I felt + 形容詞",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 83,
+    day: 17,
+
+    japanese: "だんだん不安になった。",
+
+    english: "I started to feel nervous.",
+
+    choices: [
+        "I started to feel nervous.",
+        "I started to feel relaxed.",
+        "I stopped feeling nervous.",
+        "I didn't feel anything."
+    ],
+
+    answer: 0,
+
+    tip: "start to feel = だんだん～と感じ始める / nervous = 不安な、緊張した",
+
+    extra: "I started to feel nervous before the presentation.",
+
+    pattern: "start to feel + 形容詞",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 84,
+    day: 17,
+
+    japanese: "どこにも行けなかった。",
+
+    english: "I couldn't go anywhere.",
+
+    choices: [
+        "I couldn't go anywhere.",
+        "I could go anywhere.",
+        "I didn't want to go anywhere.",
+        "I went somewhere nearby."
+    ],
+
+    answer: 0,
+
+    tip: "couldn't + 動詞 = ～できなかった / anywhere = どこにも",
+
+    extra: "I couldn't go anywhere because of the rain.",
+
+    pattern: "couldn't + 動詞 + anywhere",
+
+    category: "Travel",
+
+    level: 2
+},
+
+
+{
+    id: 85,
+    day: 17,
+
+    japanese: "冷や汗が出た。",
+
+    english: "I broke out in a cold sweat.",
+
+    choices: [
+        "I broke out in a cold sweat.",
+        "I broke out laughing.",
+        "I started sweating because it was hot.",
+        "I felt completely relaxed."
+    ],
+
+    answer: 0,
+
+    tip: "break out in a cold sweat = 冷や汗が出る",
+
+    extra: "I broke out in a cold sweat when I realized I was on the wrong train.",
+
+    pattern: "break out in a cold sweat",
+
+    category: "Health",
+
+    level: 2
+},
+
 ];
