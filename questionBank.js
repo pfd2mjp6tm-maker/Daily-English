@@ -2383,4 +2383,438 @@ const questionBank = [
     level: 2
 },
 
+{
+    id: 86,
+    day: 18,
+
+    japanese: "あと5分で着くよ。",
+
+    english: "I'll be there in five minutes.",
+
+    choices: [
+        "I'll be there in five minutes.",
+        "I'll leave in five minutes.",
+        "I'll stay there for five minutes.",
+        "I'll be home in five hours."
+    ],
+
+    answer: 0,
+
+    tip: "I'll be there = そこに着くよ / in five minutes = 5分後に",
+
+    extra: "I'll be there in ten minutes.",
+
+    pattern: "I'll be there in + 時間",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 87,
+    day: 18,
+
+    japanese: "最近すごく忙しいです。",
+
+    english: "I've been really busy lately.",
+
+    choices: [
+        "I've been really busy lately.",
+        "I was really busy tomorrow.",
+        "I've been really tired yesterday.",
+        "I'm going to be busy last week."
+    ],
+
+    answer: 0,
+
+    tip: "I've been + 形容詞 = 最近ずっと～です / lately = 最近",
+
+    extra: "I've been really busy this week.",
+
+    pattern: "I've been + 形容詞 + lately",
+
+    category: "Daily",
+
+    level: 2
+},
+
+
+{
+    id: 88,
+    day: 18,
+
+    japanese: "どっちでもいいよ。",
+
+    english: "Either is fine with me.",
+
+    choices: [
+        "Either is fine with me.",
+        "Both are difficult for me.",
+        "Either one is too expensive.",
+        "Neither one is available."
+    ],
+
+    answer: 0,
+
+    tip: "Either is fine with me. = どちらでも大丈夫・どっちでもいい",
+
+    extra: "Either day is fine with me.",
+
+    pattern: "Either is fine with me.",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 89,
+    day: 18,
+
+    japanese: "場合によるかな。",
+
+    english: "It depends.",
+
+    choices: [
+        "It depends.",
+        "It doesn't matter.",
+        "It sounds good.",
+        "It looks easy."
+    ],
+
+    answer: 0,
+
+    tip: "It depends. = 場合による・状況次第",
+
+    extra: "It depends on the situation.",
+
+    pattern: "It depends (on + 名詞).",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 90,
+    day: 18,
+
+    japanese: "あとで連絡するね。",
+
+    english: "I'll text you later.",
+
+    choices: [
+        "I'll text you later.",
+        "I'll call you yesterday.",
+        "I'll meet you tomorrow morning.",
+        "I'll email you last week."
+    ],
+
+    answer: 0,
+
+    tip: "text someone = 人にメッセージを送る / later = あとで",
+
+    extra: "I'll text you when I get home.",
+
+    pattern: "I'll + 動詞 + you later",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 91,
+    day: 19,
+
+    japanese: "今日は家でゆっくりしたい。",
+
+    english: "I just want to relax at home today.",
+
+    choices: [
+        "I just want to relax at home today.",
+        "I want to go out all day today.",
+        "I have to work at home today.",
+        "I don't want to stay home today."
+    ],
+
+    answer: 0,
+
+    tip: "just want to = ただ～したい / relax = ゆっくりする",
+
+    extra: "I just want to relax this weekend.",
+
+    pattern: "I just want to + 動詞",
+
+    category: "Daily",
+
+    level: 2
+},
+
+
+{
+    id: 92,
+    day: 19,
+
+    japanese: "最近何してるの？",
+
+    english: "What have you been up to lately?",
+
+    choices: [
+        "What have you been up to lately?",
+        "What did you do tomorrow?",
+        "What are you going to eat yesterday?",
+        "Where did you work last year?"
+    ],
+
+    answer: 0,
+
+    tip: "What have you been up to? = 最近何してるの？",
+
+    extra: "What have you been up to recently?",
+
+    pattern: "What have you been up to + lately/recently?",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 93,
+    day: 19,
+
+    japanese: "思ったより難しかった。",
+
+    english: "It was harder than I expected.",
+
+    choices: [
+        "It was harder than I expected.",
+        "It was easier than I expected.",
+        "It was exactly what I expected.",
+        "It wasn't difficult at all."
+    ],
+
+    answer: 0,
+
+    tip: "harder than I expected = 思ったより難しい",
+
+    extra: "The test was harder than I expected.",
+
+    pattern: "比較級 + than I expected",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 94,
+    day: 19,
+
+    japanese: "まだ決めてない。",
+
+    english: "I haven't decided yet.",
+
+    choices: [
+        "I haven't decided yet.",
+        "I already decided yesterday.",
+        "I don't want to decide.",
+        "I will decide it last week."
+    ],
+
+    answer: 0,
+
+    tip: "haven't + 過去分詞 + yet = まだ～していない",
+
+    extra: "I haven't decided what to do yet.",
+
+    pattern: "I haven't + 過去分詞 + yet",
+
+    category: "Conversation",
+
+    level: 2
+},
+
+
+{
+    id: 95,
+    day: 19,
+
+    japanese: "英語が上達してきた気がします。",
+
+    english: "I feel like my English is getting better.",
+
+    choices: [
+        "I feel like my English is getting better.",
+        "I feel like my English is getting worse.",
+        "I know my English was perfect.",
+        "I don't study English anymore."
+    ],
+
+    answer: 0,
+
+    tip: "I feel like ~ = ～な気がする / get better = 上達する・良くなる",
+
+    extra: "I feel like I'm getting better at speaking English.",
+
+    pattern: "I feel like + 文",
+
+    category: "Motivation",
+
+    level: 2
+},
+
+
+{
+    id: 96,
+    day: 20,
+
+    japanese: "あなたがおすすめしてくれた本を読んでみたい。",
+
+    english: "I want to read the book that you recommended.",
+
+    choices: [
+        "I want to read the book that you recommended.",
+        "I want to buy the book that I lost.",
+        "I want to read the book that I wrote.",
+        "I want to recommend the book that you read."
+    ],
+
+    answer: 0,
+
+    tip: "the book that you recommended = あなたがおすすめしてくれた本",
+
+    extra: "I bought the book that you recommended.",
+
+    pattern: "the + 名詞 + that + 主語 + 動詞",
+
+    category: "Conversation",
+
+    level: 3
+},
+
+
+{
+    id: 97,
+    day: 20,
+
+    japanese: "あなたが教えてくれたレシピを作ってみた。",
+
+    english: "I tried the recipe that you told me about.",
+
+    choices: [
+        "I tried the recipe that you told me about.",
+        "I forgot the recipe that I made yesterday.",
+        "I bought the recipe that you cooked.",
+        "I told you about the recipe that I ate."
+    ],
+
+    answer: 0,
+
+    tip: "the recipe that you told me about = あなたが教えてくれたレシピ",
+
+    extra: "I want to try the recipe that you recommended.",
+
+    pattern: "the + 名詞 + that + 主語 + 動詞",
+
+    category: "Conversation",
+
+    level: 3
+},
+
+
+{
+    id: 98,
+    day: 20,
+
+    japanese: "私に英語を教えてくれた先生はとても親切でした。",
+
+    english: "The teacher who taught me English was very kind.",
+
+    choices: [
+        "The teacher who taught me English was very kind.",
+        "The teacher who I met English was very kind.",
+        "The teacher which taught me English was very busy.",
+        "The teacher where I learned English was very kind."
+    ],
+
+    answer: 0,
+
+    tip: "who = 人について「～する人・～してくれた人」",
+
+    extra: "The person who helped me was very kind.",
+
+    pattern: "the + 人 + who + 動詞",
+
+    category: "Conversation",
+
+    level: 3
+},
+
+
+{
+    id: 99,
+    day: 20,
+
+    japanese: "あなたが住んでいた場所にいつか行ってみたい。",
+
+    english: "I want to visit the place where you used to live.",
+
+    choices: [
+        "I want to visit the place where you used to live.",
+        "I want to visit the place who you visited.",
+        "I want to visit the place which you live yesterday.",
+        "I want to live the place where you visited."
+    ],
+
+    answer: 0,
+
+    tip: "where = 場所について「そこで・～する場所」 / used to live = 以前住んでいた",
+
+    extra: "I'd like to visit the place where you grew up.",
+
+    pattern: "the place where + 主語 + 動詞",
+
+    category: "Travel",
+
+    level: 3
+},
+
+
+{
+    id: 100,
+    day: 20,
+
+    japanese: "昨日探していた資料を見つけました。",
+
+    english: "I found the document that I was looking for yesterday.",
+
+    choices: [
+        "I found the document that I was looking for yesterday.",
+        "I found the document that I wrote tomorrow.",
+        "I lost the document that I was looking for yesterday.",
+        "I found the document where I was working yesterday."
+    ],
+
+    answer: 0,
+
+    tip: "the document that I was looking for = 私が探していた資料",
+
+    extra: "I finally found the file that I was looking for.",
+
+    pattern: "the + 名詞 + that + 主語 + 動詞",
+
+    category: "Work",
+
+    level: 3
+},
+
 ];
