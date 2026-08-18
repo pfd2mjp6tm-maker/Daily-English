@@ -2817,4 +2817,148 @@ const questionBank = [
     level: 3
 },
 
+{
+    id: 101,
+    day: 21,
+
+    japanese: "そこに行くのは初めてでした。",
+
+    english: "It was my first time there.",
+
+    choices: [
+        "It was my first time there.",
+        "It was my second time there.",
+        "It was my first day at work.",
+        "I went there for the first time yesterday."
+    ],
+
+    answer: 0,
+
+    tip: "It was my first time there. = そこに行くのは初めてでした",
+
+    extra: "It was my first time in Kyoto.",
+
+    pattern: "It was my first time + 場所",
+
+    category: "Travel",
+
+    level: 2
+},
+
+
+{
+    id: 102,
+    day: 21,
+
+    japanese: "一番印象に残っているのはお寿司です。",
+
+    english: "What I remember most is the sushi.",
+
+    choices: [
+        "What I remember most is the sushi.",
+        "What I ate most was the sushi.",
+        "What I remember most is the hotel.",
+        "What I liked most was the restaurant."
+    ],
+
+    answer: 0,
+
+    tip: "What I remember most is ~ = 一番印象に残っているのは～",
+
+    extra: "What I remember most is the beautiful scenery.",
+
+    pattern: "What I + 動詞 + most is + 名詞",
+
+    category: "Travel",
+
+    level: 3
+},
+
+
+{
+    id: 103,
+    day: 21,
+
+    japanese: "料理がすごく気に入ったので、次の日も行きました。",
+
+    english: "I really liked the food, so I went back the next day.",
+
+    choices: [
+        "I really liked the food, so I went back the next day.",
+        "I didn't like the food, so I went back the next day.",
+        "I really liked the food, but I stayed home the next day.",
+        "I ordered the same food every day."
+    ],
+
+    answer: 0,
+
+    tip: "I really liked ~, so I ~ = ～がすごく気に入ったので、～しました",
+
+    extra: "I really liked the restaurant, so I went back again.",
+
+    pattern: "I + 動詞, so I + 動詞",
+
+    category: "Travel",
+
+    level: 2
+},
+
+
+{
+    id: 104,
+    day: 21,
+
+    japanese: "思っていたより早く帰りました。",
+
+    english: "I went home earlier than I expected.",
+
+    choices: [
+        "I went home earlier than I expected.",
+        "I went home later than I expected.",
+        "I went home earlier than usual.",
+        "I stayed out later than I expected."
+    ],
+
+    answer: 0,
+
+    tip: "earlier than I expected = 思っていたより早く",
+
+    extra: "I got home earlier than I expected.",
+
+    pattern: "比較級 + than I expected",
+
+    category: "Daily",
+
+    level: 2
+},
+
+
+{
+    id: 105,
+    day: 21,
+
+    japanese: "暑さで疲れてるのかな。",
+
+    english: "Maybe I'm just tired from the heat.",
+
+    choices: [
+        "Maybe I'm just tired from the heat.",
+        "Maybe I'm just hungry from the heat.",
+        "I think I'm tired because I slept too much.",
+        "Maybe the heat is getting better."
+    ],
+
+    answer: 0,
+
+    tip: "Maybe I'm just ~ = たぶんただ～なだけかな / tired from ~ = ～で疲れている",
+
+    extra: "Maybe I'm just tired from work.",
+
+    pattern: "Maybe I'm just + 形容詞 + from + 名詞",
+
+    category: "Daily",
+
+    level: 2
+},
+
 ];
