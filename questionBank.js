@@ -2961,4 +2961,148 @@ const questionBank = [
     level: 2
 },
 
+{
+    id: 106,
+    day: 22,
+
+    japanese: "新製品の発売のお祝い会をしました。",
+
+    english: "We had a celebration dinner for the launch of our new product.",
+
+    choices: [
+        "We had a celebration dinner for the launch of our new product.",
+        "We had a meeting about our old product.",
+        "We had lunch before launching our new project.",
+        "We celebrated the end of our new product."
+    ],
+
+    answer: 0,
+
+    tip: "have a celebration dinner for ~ = ～のお祝いの食事会をする / launch = 発売・立ち上げ",
+
+    extra: "We had a celebration dinner for the new project.",
+
+    pattern: "have a celebration dinner for + 名詞",
+
+    category: "Work",
+
+    level: 2
+},
+
+
+{
+    id: 107,
+    day: 22,
+
+    japanese: "初めて幹事を担当しました。",
+
+    english: "I was in charge of organizing it for the first time.",
+
+    choices: [
+        "I was in charge of organizing it for the first time.",
+        "I helped organize it for the second time.",
+        "I was invited to the event for the first time.",
+        "I was in charge of attending the meeting."
+    ],
+
+    answer: 0,
+
+    tip: "be in charge of ~ = ～を担当する / organize = 企画・運営する",
+
+    extra: "I was in charge of the data analysis.",
+
+    pattern: "be in charge of + 名詞 / 動名詞",
+
+    category: "Work",
+
+    level: 3
+},
+
+
+{
+    id: 108,
+    day: 22,
+
+    japanese: "少し緊張しましたが、同僚が助けてくれました。",
+
+    english: "I was a little nervous, but my coworkers helped me.",
+
+    choices: [
+        "I was a little nervous, but my coworkers helped me.",
+        "I was very relaxed, but my coworkers left early.",
+        "I was a little tired, so my coworkers went home.",
+        "I was nervous because my coworkers didn't help me."
+    ],
+
+    answer: 0,
+
+    tip: "I was a little ~, but ~ = 少し～でしたが、～でした",
+
+    extra: "I was a little nervous, but everything went well.",
+
+    pattern: "I was a little + 形容詞, but + 文",
+
+    category: "Work",
+
+    level: 2
+},
+
+
+{
+    id: 109,
+    day: 22,
+
+    japanese: "こんなイベントを企画したことは、それまで一度もありませんでした。",
+
+    english: "I had never organized an event like this before.",
+
+    choices: [
+        "I had never organized an event like this before.",
+        "I had already organized several events like this.",
+        "I had never attended an event like this before.",
+        "I organized an event like this last year."
+    ],
+
+    answer: 0,
+
+    tip: "had never + 過去分詞 + before = それまで一度も～したことがなかった",
+
+    extra: "I had never done anything like this before.",
+
+    pattern: "I had never + 過去分詞 + before",
+
+    category: "Work",
+
+    level: 3
+},
+
+
+{
+    id: 110,
+    day: 22,
+
+    japanese: "同僚が今日あまり二日酔いになっていないといいな。",
+
+    english: "I hope my coworkers aren't too hungover today.",
+
+    choices: [
+        "I hope my coworkers aren't too hungover today.",
+        "I hope my coworkers had a great time yesterday.",
+        "I hope my coworkers aren't too tired from work today.",
+        "I hope my coworkers can join us tonight."
+    ],
+
+    answer: 0,
+
+    tip: "I hope + 文 = ～だといいな / be hungover = 二日酔いである",
+
+    extra: "I hope you're not too tired today.",
+
+    pattern: "I hope + 主語 + 動詞",
+
+    category: "Conversation",
+
+    level: 2
+},
+
 ];
