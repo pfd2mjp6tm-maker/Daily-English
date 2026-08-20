@@ -10,7 +10,7 @@ const reviewHistory =
 
 
 // ============================
-// Favorites
+// Favorites読み込み
 // ============================
 
 let favorites =
@@ -21,24 +21,348 @@ let favorites =
 
 
 // ============================
-// Reviewする問題取得
-// 最新Lessonのみ
+// Review Stats読み込み
+// ============================
+// 問題ごとの復習履歴を保存します
+//
+// 例:
+// {
+//     "1": {
+//         correct: 3,
+//         incorrect: 1,
+//         lastReviewed: "2026-08-20"
+//     }
+// }
+//
 // ============================
 
-let reviewQuestions = [];
+let reviewStats =
+    JSON.parse(
+        localStorage.getItem("reviewStats")
+    )
+    || {};
 
 
-if(reviewHistory.length > 0){
+// ============================
+// 全問題取得
+// ============================
 
-    const latestLesson =
-        reviewHistory[
-            reviewHistory.length - 1
-        ];
+let allQuestions = [];
 
-    reviewQuestions =
-        latestLesson.questions;
+reviewHistory.forEach(function(lesson){
+
+    if(
+        lesson.questions
+        &&
+        Array.isArray(lesson.questions)
+    ){
+
+        allQuestions.push(
+            ...lesson.questions
+        );
+
+    }
+
+});
+
+
+// ============================
+// 問題の重複を削除
+// ============================
+// 同じidの問題が複数回
+// reviewHistoryに入っていても
+// 1問として扱います。
+// ============================
+
+const uniqueQuestions = [];
+
+const usedIds = new Set();
+
+
+allQuestions.forEach(function(question){
+
+    if(
+        question
+        &&
+        !usedIds.has(question.id)
+    ){
+
+        usedIds.add(
+            question.id
+        );
+
+        uniqueQuestions.push(
+            question
+        );
+
+    }
+
+});
+
+
+// ============================
+// 今日の日付
+// ============================
+
+function getToday(){
+
+    const date =
+        new Date();
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(2, "0");
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2, "0");
+
+    return (
+        year
+        +
+        "-"
+        +
+        month
+        +
+        "-"
+        +
+        day
+    );
 
 }
+
+
+// ============================
+// 日付の差を計算
+// ============================
+
+function getDaysSince(dateString){
+
+    if(!dateString){
+
+        return 999;
+
+    }
+
+
+    const today =
+        new Date(
+            getToday()
+        );
+
+    const lastReviewed =
+        new Date(
+            dateString
+        );
+
+
+    const difference =
+        today.getTime()
+        -
+        lastReviewed.getTime();
+
+
+    return Math.floor(
+        difference
+        /
+        (
+            1000
+            *
+            60
+            *
+            60
+            *
+            24
+        )
+    );
+
+}
+
+
+// ============================
+// 復習優先度
+// ============================
+// 日数が経つほど
+// 出やすくします。
+//
+// 未レビュー      → 100
+// 15日以上        → 90
+// 8～14日         → 70
+// 4～7日          → 50
+// 2～3日          → 30
+// 1日             → 15
+// 今日            → 5
+//
+// ============================
+
+function getReviewWeight(question){
+
+    const stats =
+        reviewStats[
+            String(question.id)
+        ];
+
+
+    // ============================
+    // 一度もレビューしていない
+    // ============================
+
+    if(!stats){
+
+        return 100;
+
+    }
+
+
+    const days =
+        getDaysSince(
+            stats.lastReviewed
+        );
+
+
+    if(days >= 15){
+
+        return 90;
+
+    }
+
+
+    if(days >= 8){
+
+        return 70;
+
+    }
+
+
+    if(days >= 4){
+
+        return 50;
+
+    }
+
+
+    if(days >= 2){
+
+        return 30;
+
+    }
+
+
+    if(days >= 1){
+
+        return 15;
+
+    }
+
+
+    return 5;
+
+}
+
+
+// ============================
+// 重み付きランダム
+// ============================
+// 優先度が高い問題ほど
+// 選ばれやすくします。
+// ============================
+
+function weightedRandomQuestions(
+    questions,
+    count
+){
+
+    const pool =
+        [...questions];
+
+    const selected = [];
+
+
+    while(
+        pool.length > 0
+        &&
+        selected.length < count
+    ){
+
+        let totalWeight = 0;
+
+
+        pool.forEach(function(question){
+
+            totalWeight +=
+                getReviewWeight(
+                    question
+                );
+
+        });
+
+
+        let random =
+            Math.random()
+            *
+            totalWeight;
+
+
+        let selectedIndex =
+            0;
+
+
+        for(
+            let i = 0;
+            i < pool.length;
+            i++
+        ){
+
+            random -=
+                getReviewWeight(
+                    pool[i]
+                );
+
+
+            if(random <= 0){
+
+                selectedIndex =
+                    i;
+
+                break;
+
+            }
+
+        }
+
+
+        selected.push(
+            pool[selectedIndex]
+        );
+
+
+        pool.splice(
+            selectedIndex,
+            1
+        );
+
+    }
+
+
+    return selected;
+
+}
+
+
+// ============================
+// Random 5問
+// ============================
+
+let reviewQuestions =
+    weightedRandomQuestions(
+        uniqueQuestions,
+        5
+    );
 
 
 // ============================
@@ -46,7 +370,6 @@ if(reviewHistory.length > 0){
 // ============================
 
 if(reviewQuestions.length === 0){
-
 
     document.querySelector(".quiz").innerHTML = `
 
@@ -62,11 +385,9 @@ if(reviewQuestions.length === 0){
                 🌱
             </div>
 
-
             <h2>
                 No Review Yet
             </h2>
-
 
             <p style="
                 color:#666;
@@ -74,7 +395,6 @@ if(reviewQuestions.length === 0){
             ">
                 Complete Today's Lesson first!
             </p>
-
 
             <a href="index.html"
                style="
@@ -89,7 +409,6 @@ if(reviewQuestions.length === 0){
                ">
                 🏠 Back to Home
             </a>
-
 
         </div>
 
@@ -110,53 +429,202 @@ let score = 0;
 let answered = false;
 
 
-
-// ============================
-// シャッフル
-// ============================
-
-function shuffleArray(array){
-
-    const newArray =
-        [...array];
-
-
-    return newArray.sort(
-        () => Math.random() - 0.5
-    );
-
-}
-
-
-
 // ============================
 // 音声
 // ============================
 
 function speakEnglish(text){
 
-
     const speech =
         new SpeechSynthesisUtterance(
             text
         );
 
-
     speech.lang =
         "en-US";
 
-
     speech.rate =
         0.8;
-
 
     speechSynthesis.speak(
         speech
     );
 
+}
+
+
+// ============================
+// Favorite表示更新
+// ============================
+
+function updateFavoriteButton(){
+
+    const favoriteButton =
+        document.getElementById(
+            "favoriteButton"
+        );
+
+
+    if(!favoriteButton)
+        return;
+
+
+    const currentQuestion =
+        reviewQuestions[currentIndex];
+
+
+    if(
+        favorites.includes(
+            currentQuestion.id
+        )
+    ){
+
+        favoriteButton.textContent =
+            "★";
+
+        favoriteButton.classList.add(
+            "active"
+        );
+
+    }else{
+
+        favoriteButton.textContent =
+            "☆";
+
+        favoriteButton.classList.remove(
+            "active"
+        );
+
+    }
 
 }
 
+
+// ============================
+// Favoriteボタン
+// ============================
+
+const favoriteButton =
+    document.getElementById(
+        "favoriteButton"
+    );
+
+
+if(favoriteButton){
+
+    favoriteButton.onclick =
+    function(){
+
+        const currentQuestion =
+            reviewQuestions[currentIndex];
+
+
+        const index =
+            favorites.indexOf(
+                currentQuestion.id
+            );
+
+
+        if(index === -1){
+
+            favorites.push(
+                currentQuestion.id
+            );
+
+        }else{
+
+            favorites.splice(
+                index,
+                1
+            );
+
+        }
+
+
+        localStorage.setItem(
+            "favorites",
+            JSON.stringify(
+                favorites
+            )
+        );
+
+
+        updateFavoriteButton();
+
+    };
+
+}
+
+
+// ============================
+// Review結果保存
+// ============================
+
+function saveReviewResult(
+    question,
+    isCorrect
+){
+
+    const id =
+        String(
+            question.id
+        );
+
+
+    // ============================
+    // 初回
+    // ============================
+
+    if(!reviewStats[id]){
+
+        reviewStats[id] = {
+
+            correct: 0,
+
+            incorrect: 0,
+
+            lastReviewed: null
+
+        };
+
+    }
+
+
+    // ============================
+    // 正解・不正解
+    // ============================
+
+    if(isCorrect){
+
+        reviewStats[id].correct++;
+
+    }else{
+
+        reviewStats[id].incorrect++;
+
+    }
+
+
+    // ============================
+    // 最終レビュー日
+    // ============================
+
+    reviewStats[id].lastReviewed =
+        getToday();
+
+
+    // ============================
+    // 保存
+    // ============================
+
+    localStorage.setItem(
+        "reviewStats",
+        JSON.stringify(
+            reviewStats
+        )
+    );
+
+}
 
 
 // ============================
@@ -165,7 +633,6 @@ function speakEnglish(text){
 
 function showQuestion(){
 
-
     answered = false;
 
 
@@ -173,6 +640,9 @@ function showQuestion(){
         reviewQuestions[currentIndex];
 
 
+    // ============================
+    // 問題番号
+    // ============================
 
     document.getElementById(
         "question-number"
@@ -187,6 +657,9 @@ function showQuestion(){
         reviewQuestions.length;
 
 
+    // ============================
+    // 日本語
+    // ============================
 
     document.getElementById(
         "question-text"
@@ -195,12 +668,18 @@ function showQuestion(){
         currentQuestion.japanese;
 
 
+    // ============================
+    // 結果リセット
+    // ============================
 
     document.getElementById(
         "result"
     ).innerHTML = "";
 
 
+    // ============================
+    // 選択肢リセット
+    // ============================
 
     const choicesDiv =
         document.getElementById(
@@ -211,6 +690,9 @@ function showQuestion(){
     choicesDiv.innerHTML = "";
 
 
+    // ============================
+    // Nextボタン
+    // ============================
 
     const nextButton =
         document.querySelector(
@@ -222,61 +704,44 @@ function showQuestion(){
         true;
 
 
-
     // ============================
     // Favorite表示
     // ============================
 
-    const favoriteButton =
-        document.getElementById(
-            "favoriteButton"
-        );
+    updateFavoriteButton();
 
 
-    if(favoriteButton){
-
-        if(
-            favorites.includes(
-                currentQuestion.id
-            )
-        ){
-
-            favoriteButton.textContent =
-                "★";
-
-            favoriteButton.classList.add(
-                "active"
-            );
-
-        }else{
-
-            favoriteButton.textContent =
-                "☆";
-
-            favoriteButton.classList.remove(
-                "active"
-            );
-
-        }
-
-    }
-
-
+    // ============================
+    // 正解
+    // ============================
 
     const correctAnswer =
         currentQuestion.english;
 
 
+    // ============================
+    // 選択肢シャッフル
+    // ============================
 
     const choices =
-        shuffleArray(
-            currentQuestion.choices
-        );
+        [
+            ...currentQuestion.choices
+        ];
 
 
+    choices.sort(
+        () =>
+            Math.random()
+            -
+            0.5
+    );
+
+
+    // ============================
+    // 選択肢作成
+    // ============================
 
     choices.forEach(function(choice){
-
 
         const button =
             document.createElement(
@@ -292,10 +757,8 @@ function showQuestion(){
             choice;
 
 
-
         button.onclick =
         function(){
-
 
             if(answered)
                 return;
@@ -303,6 +766,10 @@ function showQuestion(){
 
             answered = true;
 
+
+            // ============================
+            // 全ボタン無効化
+            // ============================
 
             const buttons =
                 document.querySelectorAll(
@@ -320,16 +787,21 @@ function showQuestion(){
             );
 
 
-
             const result =
                 document.getElementById(
                     "result"
                 );
 
 
+            // ============================
+            // 正誤判定
+            // ============================
 
-            if(choice === correctAnswer){
+            const isCorrect =
+                choice === correctAnswer;
 
+
+            if(isCorrect){
 
                 score++;
 
@@ -344,7 +816,6 @@ function showQuestion(){
 
             }else{
 
-
                 button.style.border =
                     "3px solid #d9534f";
 
@@ -357,10 +828,22 @@ function showQuestion(){
                     +
                     correctAnswer;
 
-
             }
 
 
+            // ============================
+            // Review結果保存
+            // ============================
+
+            saveReviewResult(
+                currentQuestion,
+                isCorrect
+            );
+
+
+            // ============================
+            // Listenボタン
+            // ============================
 
             const listenButton =
                 document.createElement(
@@ -387,112 +870,23 @@ function showQuestion(){
             );
 
 
+            // ============================
+            // Next有効化
+            // ============================
 
             nextButton.disabled =
                 false;
 
-
         };
-
 
 
         choicesDiv.appendChild(
             button
         );
 
-
     });
 
-
 }
-
-
-
-// ============================
-// Favoriteボタン
-// ============================
-
-const favoriteButton =
-    document.getElementById(
-        "favoriteButton"
-    );
-
-
-if(favoriteButton){
-
-    favoriteButton.onclick =
-    function(){
-
-
-        const currentQuestion =
-            reviewQuestions[currentIndex];
-
-
-        const index =
-            favorites.indexOf(
-                currentQuestion.id
-            );
-
-
-        if(index === -1){
-
-            // お気に入り追加
-
-            favorites.push(
-                currentQuestion.id
-            );
-
-
-        }else{
-
-            // お気に入り解除
-
-            favorites.splice(
-                index,
-                1
-            );
-
-        }
-
-
-        localStorage.setItem(
-            "favorites",
-            JSON.stringify(
-                favorites
-            )
-        );
-
-
-        // 表示更新
-
-        if(
-            favorites.includes(
-                currentQuestion.id
-            )
-        ){
-
-            favoriteButton.textContent =
-                "★";
-
-            favoriteButton.classList.add(
-                "active"
-            );
-
-        }else{
-
-            favoriteButton.textContent =
-                "☆";
-
-            favoriteButton.classList.remove(
-                "active"
-            );
-
-        }
-
-    };
-
-}
-
 
 
 // ============================
@@ -504,99 +898,121 @@ document.querySelector(
 ).onclick =
 function(){
 
-
     if(
-        currentIndex <
+        currentIndex
+        <
         reviewQuestions.length - 1
     ){
 
-
         currentIndex++;
-
 
         showQuestion();
 
 
     }else{
 
+        // ============================
+        // 5問終了
+        // ============================
 
-        showFinishScreen();
+        currentIndex = 0;
 
+        score = 0;
+
+
+        // ============================
+        // 最新のReview Historyから
+        // 問題を再取得
+        // ============================
+
+        let latestQuestions = [];
+
+
+        reviewHistory.forEach(
+            function(lesson){
+
+                if(
+                    lesson.questions
+                    &&
+                    Array.isArray(
+                        lesson.questions
+                    )
+                ){
+
+                    latestQuestions.push(
+                        ...lesson.questions
+                    );
+
+                }
+
+            }
+        );
+
+
+        // ============================
+        // 重複削除
+        // ============================
+
+        const latestUniqueQuestions = [];
+
+        const latestUsedIds =
+            new Set();
+
+
+        latestQuestions.forEach(
+            function(question){
+
+                if(
+                    question
+                    &&
+                    !latestUsedIds.has(
+                        question.id
+                    )
+                ){
+
+                    latestUsedIds.add(
+                        question.id
+                    );
+
+                    latestUniqueQuestions.push(
+                        question
+                    );
+
+                }
+
+            }
+        );
+
+
+        // ============================
+        // 新しい5問を選ぶ
+        // ============================
+
+        const newQuestions =
+            weightedRandomQuestions(
+                latestUniqueQuestions,
+                5
+            );
+
+
+        reviewQuestions.length =
+            0;
+
+
+        reviewQuestions.push(
+            ...newQuestions
+        );
+
+
+        // ============================
+        // 新しい5問を表示
+        // ============================
+
+        showQuestion();
 
     }
 
-
 };
-
-
-
-// ============================
-// 完了画面
-// ============================
-
-function showFinishScreen(){
-
-
-    document.querySelector(
-        ".quiz"
-    ).innerHTML = `
-
-
-    <div style="
-        text-align:center;
-        padding:20px 0;
-    ">
-
-
-    <div style="
-        font-size:48px;
-    ">
-    🎉
-    </div>
-
-
-    <h2>
-    Review Completed!
-    </h2>
-
-
-    <p>
-    Score
-    </p>
-
-
-    <p style="
-        font-size:36px;
-        font-weight:bold;
-        color:#3E7D3A;
-    ">
-    ${score} / ${reviewQuestions.length}
-    </p>
-
-
-
-    <a href="index.html"
-       style="
-       display:block;
-       margin-top:30px;
-       padding:15px;
-       background:#3E7D3A;
-       color:white;
-       text-decoration:none;
-       border-radius:15px;
-       ">
-       🏠 Back to Home
-    </a>
-
-
-    </div>
-
-
-    `;
-
-
-}
-
 
 
 // ============================
